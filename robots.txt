@@ -1,4 +1,6 @@
+# Staging deploy: block crawling until DNS for sherocosmetic.com is live.
+# Flip back to "Allow: /" when the production domain is serving.
 User-agent: *
-Allow: /
+Disallow: /
 
 Sitemap: https://sherocosmetic.com/sitemap.xml
