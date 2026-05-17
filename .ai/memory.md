@@ -47,20 +47,21 @@ Bugs found during onboarding:
    is missing. All IDs currently exist; added optional-chaining for safety.
 3. GSAP CDN scripts had no SRI integrity hashes. Fixed in Phase 0.
 
-## Current status — 2026-05-17 (paused awaiting owner)
+## Current status — 2026-05-17 (paused awaiting owner, NEW CHAT incoming)
 
-The session paused with R1 of the visual-identity redesign **live on
-staging** and a pending question about which redesign batch to do next.
-The user paused to restart their application; next session resumes here.
+The owner is starting a fresh chat to continue. R1 + R2 of the
+visual-identity redesign are **both live on staging**; R3 and R4
+are still queued. The next session resumes from the R3-vs-R4-vs-pause
+decision.
 
 ### What's done
-- Phases 0, 1, 3 (UI/UX pass — Batches 1–4), 5 (staging), and
-  redesign R1 (B&W tokens + dark mode + Manrope) — all committed
-  and pushed.
-- Latest commit on `main` is the R1 commit `7d6b26d`.
+- Phases 0, 1, 3 (UI/UX pass — Batches 1–4), 5 (staging), redesign
+  R1 (B&W tokens + dark mode + Manrope), and redesign R2 (bottle
+  + leaf SVGs to line-art) — all committed and pushed.
+- Latest commit on `main` is the R2 commit `8064ea3`.
 
 ### Live URLs
-- **Staging (with R1 redesign):**
+- **Staging (with R1 + R2 redesign):**
   https://wecooked01-sketch.github.io/shero-cosmetic/
   (noindex / Disallow — see ADR-0009)
 - **GitHub repo:** https://github.com/wecooked01-sketch/shero-cosmetic
@@ -71,27 +72,37 @@ The user paused to restart their application; next session resumes here.
 
 | Option | Status | Estimate |
 |---|---|---|
-| **R2** — Redraw the 3 product bottle SVGs as monochrome line-art | Recommended | 2–4 hr |
-| R3 — Animation rework (mask reveals, magnetic CTAs, cursor-follow, sticky scrub) | | 3–6 hr |
-| R4 — Section-level UI/UX polish (hero composition, quiz card, press marquee cleanup) | | 2–4 hr |
-| Pause to review R1 first | | — |
+| R3 — Animation rework (mask reveals, magnetic CTAs, cursor-follow on hero, sticky scrub on routine 5-step) | Bigger, more dramatic | 3–6 hr |
+| R4 — Section-level polish (hero composition rethink, quiz card treatment, press marquee variant cleanup, footer/newsletter) | Smaller, more bounded | 2–4 hr |
+| Pause to review R1+R2 live first | | — |
 
-Owner dismissed the question to restart their application. Re-ask
-politely on next session unless they bring it up themselves.
+The owner asked us to wait (literal words: "wait here remember where
+we left. I will start a new chat to continue this project"). Re-ask
+the R3-vs-R4 question politely on next session unless they bring up
+something different.
 
-### Known intermediate state to watch for
-- **Bottle SVGs still embed rose-gold + blush gradient defs** in
-  `index.html`. Visible mismatch in light mode, jarring in dark mode.
-  This is R2 work — do NOT touch in R3 or R4 without confirming.
-- Bg-text "SHERO COSMETIC" hero wordmark gradient is now neutral
-  but very subtle — intentional, but check if owner wants more
-  visible.
-- The `.product-glow` radial gradient is now dark-on-cream which
-  reads as a shadow rather than a glow. Will resolve in R2 with
-  the bottle redraw.
-- Compat-aliased tokens (`--rose-gold → --ink`, etc.) work but are
-  semantically confusing in source. Cleanup pass planned but not
-  prioritized.
+### Known state to watch for
+- R1 + R2 visuals coherent in both light and dark mode. Verified
+  in preview at desktop and mobile (375×812 and ~360 narrow).
+- The `--rose-gold`, `--blush`, `--cream` etc. tokens are now
+  backward-compat aliases pointing at the neutral tokens. Existing
+  selectors keep working. Cleanup pass to rename properly is in
+  backlog but NOT prioritized — it's source-readability only.
+- `--rose-gold-text` resolves to `--ink` since contrast in B&W is
+  automatic. Variable still exists for compat.
+- The `.product-glow` div is in DOM (animateSlideIn still targets
+  it) but visibility:hidden + 0×0 so it has no paint. Don't
+  remove from HTML — would break the GSAP animation timeline.
+- The hero's big bg-text "SHERO COSMETIC" wordmark uses rgba(22,
+  22, 20, low-alpha) — visible in light, very subtle in dark.
+  Owner hasn't complained but if they want it more visible in
+  dark, use a theme-aware token instead.
+- Hardcoded `rgba(0,0,0,.12)` on `.bottle` drop-shadow is
+  intentional — in dark mode it's near-invisible, which matches
+  the apothecary-flat aesthetic. Don't "fix" without confirming.
+- Search icon hidden on mobile (`<= 820px`) because it's
+  non-functional and the new theme toggle needed the row space.
+  Re-show when search is wired up.
 
 ### Two upstream blockers from earlier (still pending)
 1. **External store URL** for Phase 2 integrations + CTA UTM hooks.
