@@ -171,19 +171,7 @@
         </div>
       </div>
 
-      <!-- Decoration slots — replace inline SVG with actual PNG cutout when ready. -->
-      <div class="decor decor--leaf-left" aria-hidden="true" data-asset="decor-leaf">
-        <svg viewBox="0 0 140 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M70 10 Q40 50 35 100 Q32 140 70 170 Q108 140 105 100 Q100 50 70 10 Z"
-                stroke="var(--leaf)" stroke-width="1.4" fill="rgba(111, 125, 85, 0.12)"/>
-          <path d="M70 20 V160" stroke="var(--leaf)" stroke-width="1" opacity="0.6"/>
-          <path d="M70 60 Q55 70 50 85" stroke="var(--leaf)" stroke-width="1" opacity="0.5"/>
-          <path d="M70 60 Q85 70 90 85" stroke="var(--leaf)" stroke-width="1" opacity="0.5"/>
-          <path d="M70 100 Q52 112 46 130" stroke="var(--leaf)" stroke-width="1" opacity="0.5"/>
-          <path d="M70 100 Q88 112 94 130" stroke="var(--leaf)" stroke-width="1" opacity="0.5"/>
-        </svg>
-      </div>
-
+      <!-- Decoration slot — replace inline SVG with actual PNG cutout when ready. -->
       <div class="decor decor--bloom-right" aria-hidden="true" data-asset="decor-bloom">
         <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(60 60)">
@@ -239,12 +227,146 @@
   </div>
 </section>
 
-<!-- ============ STUB SECTIONS — replaced as each block lands ============ -->
-<section class="section section--tight" id="press"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 2</span><h2 class="stub__title">Press marquee</h2><p class="stub__hint">As-featured-in scroll · coming next.</p></div></div></section>
+<!-- ============ PRESS MARQUEE ============ -->
+<section class="press" id="press" aria-label="Featured in">
+  <span class="press__label">As featured in</span>
+  <div class="press__viewport">
+    <div class="press__track">
+      <span class="press-logo">VOGUE</span>
+      <span class="press-logo">ELLE</span>
+      <span class="press-logo">ALLURE</span>
+      <span class="press-logo">HARPER&rsquo;S BAZAAR</span>
+      <span class="press-logo">BYRDIE</span>
+      <span class="press-logo">REFINERY29</span>
+      <span class="press-logo">COSMOPOLITAN</span>
+      <!-- duplicate for seamless marquee loop -->
+      <span class="press-logo" aria-hidden="true">VOGUE</span>
+      <span class="press-logo" aria-hidden="true">ELLE</span>
+      <span class="press-logo" aria-hidden="true">ALLURE</span>
+      <span class="press-logo" aria-hidden="true">HARPER&rsquo;S BAZAAR</span>
+      <span class="press-logo" aria-hidden="true">BYRDIE</span>
+      <span class="press-logo" aria-hidden="true">REFINERY29</span>
+      <span class="press-logo" aria-hidden="true">COSMOPOLITAN</span>
+    </div>
+  </div>
+</section>
 
-<section class="section" id="about"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 2</span><h2 class="stub__title">About / brand story</h2><p class="stub__hint">Two-column editorial intro with founder note · coming next.</p></div></div></section>
+<!-- ============ ABOUT / BRAND STORY ============ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__copy" data-reveal>
+        <span class="eyebrow">Our story</span>
+        <h2 class="section-title">
+          Made in <span class="display">Istanbul.</span><br/>
+          <em>Formulated</em> for everywhere.
+        </h2>
+        <p class="lead">
+          SHERO began in a small Istanbul atelier with a single question:
+          why does effective skincare need to feel clinical? We pair
+          dermatology-grade actives with botanical extracts from the
+          Mediterranean to make routines that work hard, but feel like
+          a ritual.
+        </p>
+        <a href="#products" class="btn btn--ghost">Shop the collection <span class="arrow">→</span></a>
+      </div>
 
-<section class="section section--sand" id="ingredients"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 2</span><h2 class="stub__title">Ingredients grid</h2><p class="stub__hint">Four key actives — Vit C, HA, Retinol, Niacinamide · coming next.</p></div></div></section>
+      <div class="about__visual" data-reveal>
+        <div class="about__image" data-asset="about-atelier">
+          <span>Atelier / founder photo</span>
+        </div>
+        <div class="about__quote">
+          <p>&ldquo;Skincare that takes you seriously &mdash; without taking itself too seriously.&rdquo;</p>
+          <span class="about__quote__cite">Founder &middot; SHERO</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__stats">
+      <div class="about__stat">
+        <strong>72hr</strong>
+        <span>Hydration retention<br/>(clinical, 28 days)</span>
+      </div>
+      <div class="about__stat">
+        <strong>6</strong>
+        <span>Formulas in the<br/>core ritual</span>
+      </div>
+      <div class="about__stat">
+        <strong>97<i>%</i></strong>
+        <span>Of reviewers see<br/>visible glow in 7 days</span>
+      </div>
+      <div class="about__stat">
+        <strong>0</strong>
+        <span>Parabens, sulfates,<br/>synthetic dyes &mdash; ever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INGREDIENTS GRID ============ -->
+<section class="section section--sand ingredients" id="ingredients">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What&rsquo;s inside</span>
+      <h2 class="section-title">Four actives, <em>doing the work.</em></h2>
+      <p class="lead">Every formula is built around a hero ingredient with proven, dermo-grade evidence. No fillers. No buzzwords.</p>
+    </div>
+
+    <div class="ingredients__grid">
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="24" r="14"/>
+            <path d="M24 10v28M10 24h28M14 14l20 20M34 14L14 34"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Brightens</span>
+        <h3>Vitamin C</h3>
+        <p>15% stabilized L-ascorbic acid &mdash; evens tone, fades sun spots, shields against free radicals.</p>
+        <span class="ingredient__where">In: Radiance Serum</span>
+      </article>
+
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M24 8 Q12 20 12 30 a12 12 0 0 0 24 0 Q36 20 24 8 Z"/>
+            <path d="M18 28 Q20 31 24 31 Q28 31 30 28" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Hydrates</span>
+        <h3>Hyaluronic Acid</h3>
+        <p>Triple-molecular-weight HA plus squalane &mdash; 72-hour deep hydration without the heavy feel.</p>
+        <span class="ingredient__where">In: Hydra Cream</span>
+      </article>
+
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="24" r="9"/>
+            <path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4.5 4.5M32.5 32.5l4.5 4.5M37 11l-4.5 4.5M15.5 32.5L11 37"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Renews</span>
+        <h3>Retinol 0.3%</h3>
+        <p>Encapsulated overnight retinol &mdash; smooths fine lines, refines texture, no irritation curve.</p>
+        <span class="ingredient__where">In: Glow Elixir</span>
+      </article>
+
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M14 16 L24 6 L34 16 L34 32 Q34 38 28 40 L20 40 Q14 38 14 32 Z"/>
+            <path d="M20 24 H28 M20 30 H28"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Balances</span>
+        <h3>Niacinamide 5%</h3>
+        <p>Regulates oil, calms redness, tightens pores &mdash; the quiet workhorse of the daily routine.</p>
+        <span class="ingredient__where">In: Bloom Essence</span>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="products"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 3 · new</span><h2 class="stub__title">Full product grid</h2><p class="stub__hint">All six SKUs as an editorial product index · coming next.</p></div></div></section>
 
