@@ -689,7 +689,8 @@ button {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 420px; height: 420px;
+  width: min(420px, 90vw);
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--blush-soft) 0%, var(--blush) 100%);
   opacity: .5;
@@ -1650,13 +1651,20 @@ body.is-locked { overflow: hidden; }
   .nav { display: none; }
   .menu-btn { display: flex; }
 
-  .hero { padding: 110px 0 60px; }
+  .hero { padding: 110px 0 40px; min-height: auto; }
+  .hero__slider { min-height: 0; }
   .slide {
+    /* Slides flow in document order on mobile so .hero__controls can sit
+       below them instead of fighting the CTAs for the same pixels. */
+    position: relative;
+    inset: auto;
     grid-template-columns: 1fr;
     gap: 30px;
     padding: 20px 22px 0;
     text-align: center;
+    transition: none;
   }
+  .slide:not(.is-active) { display: none; }
   .slide__content { margin: 0 auto; }
   .slide__actions { justify-content: center; }
   .slide__meta { justify-content: center; flex-wrap: wrap; }
@@ -1664,7 +1672,13 @@ body.is-locked { overflow: hidden; }
 
   .hero__bg-text { font-size: clamp(4rem, 22vw, 9rem); }
   .hero__scroll-hint { display: none; }
-  .hero__controls { bottom: 30px; }
+  .hero__controls {
+    position: relative;
+    bottom: auto; left: auto;
+    transform: none;
+    margin: 36px 0 0;
+    justify-content: center;
+  }
 
   .section { padding: 90px 0; }
   .section-head { margin-bottom: 50px; }
