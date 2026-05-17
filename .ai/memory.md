@@ -22,9 +22,10 @@ External store URL is **not yet provided** — placeholder for now.
 
 ## Current stack
 
-Vanilla HTML + CSS + JS, with GSAP 3.12 + ScrollTrigger for animation.
-Google Fonts. Python `http.server` for dev. No framework, no bundler, no
-`package.json`. See `CLAUDE.md` for full stack snapshot.
+Vanilla HTML + CSS + JS. **GSAP is now removed** — `IntersectionObserver`
+handles reveal-on-scroll. Google Fonts: Bagel Fat One (display) +
+Manrope (heading/body). Python `http.server` for dev. No framework, no
+bundler, no `package.json`. See `CLAUDE.md` for full stack snapshot.
 
 ## What was already built when I took over
 
@@ -47,21 +48,33 @@ Bugs found during onboarding:
    is missing. All IDs currently exist; added optional-chaining for safety.
 3. GSAP CDN scripts had no SRI integrity hashes. Fixed in Phase 0.
 
-## Current status — 2026-05-18 (R1+R2+R3+R4 all live)
+## Current status — 2026-05-18 (full rewrite shipped)
 
-Phase R — the full visual identity redesign — is complete. R3 lands
-the animation rework; R4 landed the section-level polish; both went
-live on staging in the same session. The whole apothecary pass is
-now in production-ready state pending the upstream blockers (store
-URL + DNS) tracked below.
+Owner reviewed the apothecary B&W build (R1+R2+R3+R4) and pivoted to a
+warm + decorative + photography-led aesthetic. The whole site was
+rewritten from scratch in four blocks across this session. ADR-0011
+supersedes ADR-0010 with the rationale.
 
-### What's done
-- Phases 0, 1, 3 (UI/UX pass — Batches 1–4), 5 (staging), redesign
-  R1 (B&W tokens + dark mode + Manrope), R2 (bottle + leaf SVGs
-  to line-art), R4 (section-level apothecary polish), and R3
-  (mask reveals + magnetic CTAs + hero cursor-follow + routine
-  sticky scrub) — all committed.
-- Pre-R3 commit: `54ee871` (R4). R3 commit lands this session.
+### What's done (latest rewrite)
+- **Foundation** (`77a0c02`) — warm cream / sand / orange-accent tokens,
+  Bagel Fat One display font, Manrope heading/body, primitives
+  (container, section, surface-card, btn, btn-play, chip, pill,
+  trust-row, decor slots). Header pill, full hero, trust row, stubs
+  for everything else.
+- **Block 2** (`630091d`) — press marquee + about (two-col with quote
+  card overlay + 4-stat row) + ingredients (4-up white cards with
+  accent-soft icons on sand bg). Leaf decoration removed from hero per
+  owner request, bloom kept.
+- **Block 3** (`5b39042`) — full product grid (new: 6 SKUs in 3×2 grid
+  with chip filters), lab/clinical results (new: two-col with cert
+  pills + three result cards, one inverted to ink), skin quiz rewritten
+  with the new aesthetic + accent progress bar + accent-soft selected
+  state.
+- **Block 4** (this commit) — routine 5-step (feature step 03 inverted
+  to ink), testimonials 3-up grid (middle inverted to ink), contact
+  (split with info list + form on sand bg), full footer (4-col brand /
+  shop / story / newsletter + bottom legal row), mobile nav drawer
+  rebuilt for the new aesthetic.
 
 ### Live URLs
 - **Staging (with R1 + R2 redesign):**
@@ -71,23 +84,26 @@ URL + DNS) tracked below.
 
 ### Pending question (owner to answer next session)
 
-"What's next now that Phase R is done?"
+"What's next now that the rewrite is shipped?"
 
 | Option | Status | Estimate |
 |---|---|---|
+| Drop in real photography + decoration PNGs the owner is producing | Owner-blocked | swap into `data-asset` slots, ~30 min once received |
 | Phase 4 — Legal pages (privacy/terms/KVKK/cookie) | Unblocked | 2–4 hr |
 | Phase 2 — Real integrations (Klaviyo / Formspree / CF Analytics / UTM-tagged outbound) | Blocked on store URL + accounts | 2–4 hr |
 | Production migration (Cloudflare Pages + custom domain) | Blocked on DNS + account | 30 min once unblocked |
-| Backlog cleanup — token renaming (`--rose-gold` → neutrals), favicons, Lighthouse run | Source-readability + polish | 1–3 hr |
 
 ### Known state to watch for
-- R1+R2+R4 visuals coherent in both light and dark mode. Verified
-  in preview at desktop (1440×900) and mobile (375×812). Dark mode
-  hero verified end-to-end via screenshot.
-- The `--rose-gold`, `--blush`, `--cream` etc. tokens are now
-  backward-compat aliases pointing at the neutral tokens. Existing
-  selectors keep working. Cleanup pass to rename properly is in
-  backlog but NOT prioritized — it's source-readability only.
+- The current visual system is the warm + decorative one from ADR-0011.
+  Apothecary B&W (ADR-0010) is retired; do not mix its tokens or fonts
+  into new work. If reverting, start from the R3 commit `b1c9e96`.
+- All photography slots use `data-asset="..."` attributes (hero-main,
+  hero-product-cutout, decor-bloom, about-atelier, product-{id},
+  etc.). Replace the placeholder `<span>` with `<img src="..." alt="">`
+  when assets arrive.
+- The leaf decoration was explicitly REMOVED from the hero per owner
+  request. Don't re-add unless asked. The bloom (flower) decoration
+  remains in the hero bottom-right.
 - `--rose-gold-text` resolves to `--ink` since contrast in B&W is
   automatic. Variable still exists for compat.
 - The `.product-glow` div is in DOM (animateSlideIn still targets
@@ -106,22 +122,15 @@ URL + DNS) tracked below.
   R4 wrapped each slide title's second word in a `<span>` so the
   italic + ink-soft typographic contrast actually applies. If
   you add new slides, keep that pattern: `Title<br/><span>Word</span>`.
-- The headless preview server has a quirk: GSAP's RAF loop does
-  not tick reliably, so slide entry animations stall at
-  `autoAlpha: 0`. Real browsers are fine. To screenshot for
-  verification, snap manually first:
-  `document.querySelectorAll('.slide *').forEach(el => { el.style.opacity = '1'; el.style.visibility = 'visible'; el.style.transform = 'none'; })`
-  This is a preview-tooling quirk, NOT a regression in the site.
-- R3 sticky scrub uses `gsap.matchMedia` so it's reactive on
-  resize. ScrollTrigger pin uses `+=140%` of viewport — section
-  pins for ~1.4× viewport-height of scroll. The `pin-spacer`
-  div ScrollTrigger inserts is what makes the page taller. Don't
-  worry if the page's total scroll height jumps after R3 — that's
-  the pin spacer doing its job.
-- Magnetic CTAs use raw GSAP `x`/`y` translates. Don't combine
-  with CSS `transform: translateY(...)` on the same buttons —
-  GSAP would clobber it. Use `gsap.set` if you need to add a
-  baseline transform.
+- The headless preview server has two real quirks worth knowing:
+  (a) `window.innerWidth`/`Height` may be `0` during initial script
+  execution before resize; (b) `requestAnimationFrame` doesn't tick
+  reliably so any rAF-driven animations stall. The current build
+  doesn't depend on rAF (IntersectionObserver-driven reveals only),
+  so this matters less than it did under R3. Verification via
+  `preview_inspect` (CSS values) is more reliable than screenshots.
+- To force-reveal all `[data-reveal]` elements for a clean screenshot:
+  `document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'))`.
 
 ### Two upstream blockers from earlier (still pending)
 1. **External store URL** for Phase 2 integrations + CTA UTM hooks.

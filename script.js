@@ -92,13 +92,84 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 }
 
-/* ---------- Mobile menu (stub — full markup arrives with final nav block) ---------- */
-const menuBtn = document.getElementById('menuBtn');
-menuBtn?.addEventListener('click', () => {
-  const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-  menuBtn.setAttribute('aria-expanded', String(!expanded));
-  // Full mobile drawer markup re-introduced in the final block.
-});
+/* ---------- Mobile nav drawer ---------- */
+(function setupMobileNav() {
+  const menuBtn   = document.getElementById('menuBtn');
+  const drawer    = document.getElementById('mobileNav');
+  const overlay   = document.getElementById('mobileNavOverlay');
+  const closeBtn  = document.getElementById('mobileNavClose');
+  if (!menuBtn || !drawer) return;
+
+  let lastFocus = null;
+
+  function focusables() {
+    return Array.from(drawer.querySelectorAll(
+      'a[href], button:not([disabled])'
+    )).filter((el) => {
+      const cs = getComputedStyle(el);
+      return cs.visibility !== 'hidden' && cs.display !== 'none';
+    });
+  }
+
+  function open() {
+    lastFocus = document.activeElement;
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('is-locked');
+    setTimeout(() => focusables()[0]?.focus(), 60);
+  }
+  function close() {
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('is-locked');
+    (lastFocus instanceof HTMLElement ? lastFocus : menuBtn).focus();
+  }
+
+  menuBtn.addEventListener('click', () => {
+    drawer.classList.contains('is-open') ? close() : open();
+  });
+  closeBtn?.addEventListener('click', close);
+  overlay?.addEventListener('click', close);
+
+  // Close on link tap (after smooth-scroll fires)
+  drawer.querySelectorAll('a[href]').forEach((a) => {
+    a.addEventListener('click', () => setTimeout(close, 80));
+  });
+
+  // Escape + Tab focus trap
+  window.addEventListener('keydown', (e) => {
+    if (!drawer.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    const items = focusables();
+    if (!items.length) return;
+    const first = items[0];
+    const last  = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
+})();
+
+/* ---------- Contact form (client-side only — wire to Formspree later) ---------- */
+(function setupContactForm() {
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (note) note.hidden = false;
+    form.reset();
+  });
+})();
 
 /* ---------- Product grid filter chips ---------- */
 (function setupProductFilters() {

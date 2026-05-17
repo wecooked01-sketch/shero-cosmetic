@@ -133,7 +133,28 @@
   5. Disable GitHub Pages on the repo (Settings → Pages → None) to
      avoid two live mirrors
 
-## Phase R — Visual identity redesign 🔄 (in progress, 2026-05-17)
+## Phase W — Warm + decorative rewrite ✅ (done 2026-05-18)
+
+Owner reviewed the apothecary B&W build and pivoted to a warm,
+decorative, photography-led direction (ADR-0011 supersedes ADR-0010).
+Full rewrite shipped in four commits during the same session.
+
+- ✅ ADR-0011 records the pivot with the asset-slot strategy.
+- ✅ Foundation (`77a0c02`): warm cream / sand / orange-accent tokens,
+  Bagel Fat One display + Manrope, header, hero, trust row, stubs.
+- ✅ Block 2 (`630091d`): press marquee + about + ingredients.
+- ✅ Block 3 (`5b39042`): full product grid (NEW), lab/clinical (NEW),
+  skin quiz rebuilt.
+- ✅ Block 4 (this commit): routine 5-step, testimonials 3-up,
+  contact form, full footer, mobile nav drawer.
+
+Asset gap: every photograph/decoration spot is marked with
+`data-asset="..."` for drop-in replacement once the owner supplies the
+imagery.
+
+## Phase R — Apothecary B&W redesign ✅ (done 2026-05-18, RETIRED)
+
+Superseded by Phase W. Kept here for git-history orientation.
 
 Triggered by owner's "redesign the UI UX" + B&W + Manrope + dark mode
 + better animations request. ADR-0010 records the decision.
