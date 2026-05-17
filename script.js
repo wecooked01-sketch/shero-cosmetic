@@ -12,6 +12,40 @@ gsap.registerPlugin(ScrollTrigger);
 // state). This is WCAG 2.3.3 territory and required for EU EAA compliance.
 const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* Theme toggle (light / dark / system).
+   The no-flash inline script in index.html has already applied the persisted
+   preference to <html data-theme>. Here we wire the toggle button. */
+(function setupThemeToggle() {
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+
+  const html = document.documentElement;
+  const sysDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const current = () => html.getAttribute('data-theme') || (sysDark() ? 'dark' : 'light');
+
+  function apply(next) {
+    if (next === current()) return;
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('shero-theme', next); } catch (e) {}
+    btn.setAttribute('aria-pressed', String(next === 'dark'));
+  }
+
+  // Initial aria state
+  btn.setAttribute('aria-pressed', String(current() === 'dark'));
+
+  btn.addEventListener('click', () => apply(current() === 'dark' ? 'light' : 'dark'));
+
+  // If the user hasn't made a manual choice yet, keep tracking OS preference
+  // changes so the page flips when they change their system theme mid-session.
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', (e) => {
+    let stored = null;
+    try { stored = localStorage.getItem('shero-theme'); } catch (err) {}
+    if (stored !== 'dark' && stored !== 'light') {
+      btn.setAttribute('aria-pressed', String(e.matches));
+    }
+  });
+})();
+
 // Polite live-region announcer for dynamic UI changes (slider, quiz steps).
 const a11yAnnouncer = document.getElementById('a11y-announcer');
 function announce(message) {

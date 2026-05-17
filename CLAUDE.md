@@ -36,8 +36,9 @@ docs/decisions/  — architecture decision records (start with README.md)
 - Based in Istanbul (Turkey)
 - Target market: Turkish + general European audiences
 - Tone: clean, science-backed, quietly luxurious — never gimmicky
-- Visual palette: warm cream, blush, rose-gold, deep brown
-- Typography: Playfair Display (serif, italic for `<em>`) + Outfit (sans)
+- Positioning: apothecary minimal (Aesop / Le Labo references). See [ADR-0010](docs/decisions/0010-visual-identity-apothecary-bw-manrope.md).
+- Visual palette: warm off-white (#F5F2EC) / near-black ink (#161614), full dark-mode support (no flash)
+- Typography: Manrope only — variable-weight 200..800, italics for emphasis
 
 ## What this site is NOT
 

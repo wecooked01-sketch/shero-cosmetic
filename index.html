@@ -66,10 +66,23 @@
 }
 </script>
 
+<!-- Apply persisted theme BEFORE the stylesheet so there's no flash of
+     wrong colors on first paint. Runs synchronously before any render. -->
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('shero-theme');
+    if (t === 'dark' || t === 'light') {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  } catch (e) { /* localStorage blocked — fall back to OS preference via CSS */ }
+})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -96,8 +109,17 @@
     </nav>
 
     <div class="header__actions">
-      <button class="icon-btn" aria-label="Search">
+      <button class="icon-btn icon-btn--search" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light / dark">
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
       </button>
       <button class="icon-btn" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14l-1.5 11a2 2 0 0 1-2 1.7H8.5a2 2 0 0 1-2-1.7L5 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
@@ -619,7 +641,7 @@
           <div class="stars">★★★★★</div>
           <blockquote>"I'd tried every brightening serum on the market — and most made my skin worse. Two weeks with the Radiance Serum and my dark spots are visibly fading. The texture is silky, never sticky. I'm a forever customer."</blockquote>
           <div class="testimonial__author">
-            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #f3d8d4, #b76e79);">A</div>
+            <div class="testimonial__avatar">A</div>
             <div>
               <strong>Aylin K.</strong>
               <span>Combination · Age 34 · Radiance Serum</span>
@@ -631,7 +653,7 @@
           <div class="stars">★★★★★</div>
           <blockquote>"Honestly skeptical at first — the price is on the higher end. But after a month with Hydra Cream, my skin doesn't get tight anymore, and the dewy 'I-slept-10-hours' look is real. Worth every lira."</blockquote>
           <div class="testimonial__author">
-            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #e8c39a, #b88a5f);">M</div>
+            <div class="testimonial__avatar">M</div>
             <div>
               <strong>Maya T.</strong>
               <span>Dry · Age 41 · Hydra Cream</span>
@@ -643,7 +665,7 @@
           <div class="stars">★★★★★</div>
           <blockquote>"I have sensitive skin and retinol always ruined me. The Glow Elixir is the first one I can actually use — no flaking, no redness, just smoother skin in the morning. Game-changer."</blockquote>
           <div class="testimonial__author">
-            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #fbe1e0, #e8b4b8);">S</div>
+            <div class="testimonial__avatar">S</div>
             <div>
               <strong>Selin Y.</strong>
               <span>Sensitive · Age 29 · Glow Elixir</span>
@@ -655,7 +677,7 @@
           <div class="stars">★★★★★</div>
           <blockquote>"The skin quiz pointed me to a 3-step routine I actually stick to. My skin looks healthier than it has in years and I'm not drowning in 12 bottles. The team's recommendations are spot on."</blockquote>
           <div class="testimonial__author">
-            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #eec0b8, #a25e63);">D</div>
+            <div class="testimonial__avatar">D</div>
             <div>
               <strong>Defne A.</strong>
               <span>Oily · Age 26 · The Quick Ritual</span>

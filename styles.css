@@ -1,27 +1,50 @@
 /* ============================================================
    SHERO COSMETIC — landing page
-   Palette: warm cream, blush, rose-gold, deep brown
+   Apothecary B&W palette (Aesop/Le Labo references).
+   Light is the default; dark engages via prefers-color-scheme OR
+   the manual data-theme="dark" attribute on <html>.
    ============================================================ */
 
 :root {
-  --cream:        #FBF5F1;
-  --cream-deep:   #F5E6E0;
-  --blush:        #E8B4B8;
-  --blush-soft:   #F3D8D4;
-  --rose-gold:    #B76E79;
-  /* AA-passing variant for small text on cream backgrounds.
-     #B76E79 on #FBF5F1 = 4.04:1 (fails AA 4.5:1 for <18px).
-     #9A4F5C on #FBF5F1 ≈ 5.4:1 (passes AA comfortably). */
-  --rose-gold-text: #9A4F5C;
-  --gold:         #B88A5F;
-  --gold-deep:    #8A5E3A;
-  --ink:          #2A1F1D;
-  --ink-soft:     #5A4944;
-  --line:         #E8D9D3;
-  --white:        #FFFFFF;
+  /* Surfaces */
+  --bg:         #F5F2EC;   /* warm off-white */
+  --bg-alt:     #ECE8E1;   /* alternate section bg */
+  --surface:    #FFFFFF;   /* card / form */
 
-  --font-serif:   'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-sans:    'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Ink (text + icons) */
+  --ink:        #161614;   /* near-black, warm */
+  --ink-soft:   #57544E;   /* secondary text */
+  --ink-mute:   #8A8780;   /* tertiary / meta */
+  --line:       #DDD8CF;   /* subtle warm divider */
+
+  --shadow:           0 30px 80px -30px rgba(22, 22, 20, .14);
+  --shadow-soft:      0 16px 40px -16px rgba(22, 22, 20, .18);
+
+  /* Translucent surfaces (backdrop blur for header, slide tag pills,
+     glass-effect arrow buttons). Light values; dark mode overrides below. */
+  --bg-translucent:        rgba(245, 242, 236, .85);
+  --surface-translucent:   rgba(255, 255, 255, .72);
+  --focus-glow:            rgba(22, 22, 20, .15);
+  --ink-on-dark:           #F2EFE8;   /* always-light text for permanently-dark surfaces */
+
+  /* Compat aliases — old palette tokens map to neutrals so the existing
+     selectors keep working. This is intentional and documented in
+     ADR-0010; tokens will be renamed in a later cleanup pass. */
+  --cream:          var(--bg);
+  --cream-deep:     var(--bg-alt);
+  --blush:          var(--ink-mute);
+  --blush-soft:     var(--bg-alt);
+  --rose-gold:      var(--ink);
+  --rose-gold-text: var(--ink);
+  --gold:           var(--ink-soft);
+  --gold-deep:      var(--ink);
+  --white:          var(--surface);
+
+  --font-body:    'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Compat aliases */
+  --font-sans:    var(--font-body);
+  --font-serif:   var(--font-display);
 
   --container:    1240px;
   --radius:       14px;
@@ -29,6 +52,43 @@
 
   --ease:         cubic-bezier(.4, 0, .2, 1);
   --ease-out:     cubic-bezier(.16, 1, .3, 1);
+
+  color-scheme: light;
+}
+
+/* Dark mode — applies when the user has set data-theme="dark" OR when
+   their OS prefers dark and they haven't overridden to light. */
+:root[data-theme="dark"] {
+  --bg:         #0E0D0B;
+  --bg-alt:     #16140F;
+  --surface:    #1B1815;
+  --ink:        #F2EFE8;
+  --ink-soft:   #A8A39A;
+  --ink-mute:   #6F6B61;
+  --line:       #2A271F;
+  --shadow:                0 30px 80px -30px rgba(0, 0, 0, .55);
+  --shadow-soft:           0 16px 40px -16px rgba(0, 0, 0, .60);
+  --bg-translucent:        rgba(14, 13, 11, .85);
+  --surface-translucent:   rgba(27, 24, 21, .72);
+  --focus-glow:            rgba(242, 239, 232, .18);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #0E0D0B;
+    --bg-alt:     #16140F;
+    --surface:    #1B1815;
+    --ink:        #F2EFE8;
+    --ink-soft:   #A8A39A;
+    --ink-mute:   #6F6B61;
+    --line:       #2A271F;
+    --shadow:                0 30px 80px -30px rgba(0, 0, 0, .55);
+    --shadow-soft:           0 16px 40px -16px rgba(0, 0, 0, .60);
+    --bg-translucent:        rgba(14, 13, 11, .85);
+    --surface-translucent:   rgba(27, 24, 21, .72);
+    --focus-glow:            rgba(242, 239, 232, .18);
+    color-scheme: dark;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -149,13 +209,14 @@
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   color: var(--ink);
-  background: var(--cream);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color .4s var(--ease), color .4s var(--ease);
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -252,7 +313,7 @@ button {
 .btn--primary:hover {
   background: var(--rose-gold);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -10px rgba(183,110,121,.55);
+  box-shadow: 0 14px 30px -10px rgba(22, 22, 20,.55);
 }
 
 .btn--ghost {
@@ -276,7 +337,7 @@ button {
   transition: background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
 }
 .site-header.is-scrolled {
-  background: rgba(251, 245, 241, .85);
+  background: var(--bg-translucent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   padding: 14px 0;
@@ -359,7 +420,29 @@ button {
   transition: background .3s var(--ease), color .3s var(--ease);
 }
 .icon-btn svg { width: 18px; height: 18px; }
-.icon-btn:hover { background: var(--cream-deep); color: var(--rose-gold); }
+.icon-btn:hover { background: var(--bg-alt); color: var(--ink); }
+
+/* Theme toggle: stacks the sun + moon SVGs and shows the one matching the
+   current theme. Smooth swap via opacity + rotation. */
+.theme-toggle { position: relative; }
+.theme-toggle .theme-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px; height: 18px;
+  transition: opacity .3s var(--ease), transform .4s var(--ease-out);
+}
+/* Default = light theme → show sun */
+.theme-toggle .theme-icon--sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+.theme-toggle .theme-icon--moon { opacity: 0; transform: rotate(-90deg) scale(.6); }
+/* Dark theme (manual override) → show moon */
+:root[data-theme="dark"] .theme-toggle .theme-icon--sun  { opacity: 0; transform: rotate(90deg) scale(.6); }
+:root[data-theme="dark"] .theme-toggle .theme-icon--moon { opacity: 1; transform: rotate(0deg) scale(1); }
+/* Dark theme (system preference, no manual override) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .theme-icon--sun  { opacity: 0; transform: rotate(90deg) scale(.6); }
+  :root:not([data-theme="light"]) .theme-toggle .theme-icon--moon { opacity: 1; transform: rotate(0deg) scale(1); }
+}
 
 .menu-btn {
   display: none;
@@ -408,7 +491,7 @@ button {
   white-space: nowrap;
 }
 .hero__bg-text span {
-  background: linear-gradient(180deg, rgba(183,110,121,.18) 0%, rgba(232,180,184,.06) 100%);
+  background: linear-gradient(180deg, rgba(22, 22, 20,.18) 0%, rgba(22, 22, 20,.06) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -418,7 +501,7 @@ button {
 }
 .hero__bg-text span:nth-child(2) {
   font-style: italic;
-  background: linear-gradient(180deg, rgba(183,110,121,.22) 0%, rgba(183,110,121,.04) 100%);
+  background: linear-gradient(180deg, rgba(22, 22, 20,.22) 0%, rgba(22, 22, 20,.04) 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -459,7 +542,7 @@ button {
   display: inline-flex;
   align-items: center;
   padding: 7px 16px;
-  background: rgba(255,255,255,.7);
+  background: var(--surface-translucent);
   backdrop-filter: blur(6px);
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -517,7 +600,7 @@ button {
   width: auto;
   height: 100%;
   max-height: 580px;
-  filter: drop-shadow(0 50px 60px rgba(183,110,121,.28));
+  filter: drop-shadow(0 50px 60px rgba(22, 22, 20,.28));
   position: relative;
   z-index: 2;
 }
@@ -525,7 +608,7 @@ button {
   position: absolute;
   width: 70%;
   height: 70%;
-  background: radial-gradient(circle, rgba(232,180,184,.55) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(22, 22, 20,.55) 0%, transparent 65%);
   filter: blur(40px);
   border-radius: 50%;
   z-index: 1;
@@ -546,7 +629,7 @@ button {
   width: 48px; height: 48px;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,.7);
+  background: var(--surface-translucent);
   backdrop-filter: blur(8px);
   display: grid; place-items: center;
   color: var(--ink);
@@ -627,7 +710,7 @@ button {
   padding: 140px 0;
   position: relative;
 }
-.section--alt { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%); }
+.section--alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%); }
 
 .section-head {
   max-width: 760px;
@@ -710,7 +793,7 @@ button {
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 60px 50px 40px;
-  box-shadow: 0 30px 80px -30px rgba(183,110,121,.25);
+  box-shadow: 0 30px 80px -30px rgba(22, 22, 20,.25);
   position: relative;
   min-height: 540px;
   overflow: hidden;
@@ -789,7 +872,7 @@ button {
   background: var(--white);
   border-color: var(--blush);
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px -16px rgba(183,110,121,.3);
+  box-shadow: 0 16px 40px -16px rgba(22, 22, 20,.3);
 }
 .quiz-option .o-emoji {
   font-size: 22px;
@@ -810,7 +893,7 @@ button {
 .quiz-option.is-selected {
   background: var(--white);
   border-color: var(--rose-gold);
-  box-shadow: 0 16px 40px -16px rgba(183,110,121,.4);
+  box-shadow: 0 16px 40px -16px rgba(22, 22, 20,.4);
 }
 
 .quiz-nav {
@@ -908,7 +991,7 @@ button {
 .routine-step:hover {
   transform: translateY(-8px);
   border-color: var(--blush);
-  box-shadow: 0 30px 60px -25px rgba(183,110,121,.35);
+  box-shadow: 0 30px 60px -25px rgba(22, 22, 20,.35);
 }
 .routine-step:hover::before { opacity: 1; }
 
@@ -1021,7 +1104,7 @@ button {
   background: var(--white);
   padding: 48px 44px;
   border-radius: var(--radius-lg);
-  box-shadow: 0 30px 80px -30px rgba(183,110,121,.25);
+  box-shadow: 0 30px 80px -30px rgba(22, 22, 20,.25);
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -1050,9 +1133,9 @@ button {
 .field select:focus,
 .field textarea:focus {
   outline: none;
-  background: var(--white);
-  border-color: var(--blush);
-  box-shadow: 0 0 0 4px rgba(232,180,184,.25);
+  background: var(--surface);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 4px var(--focus-glow);
 }
 .form-note {
   margin: 0;
@@ -1066,11 +1149,15 @@ button {
 
 /* ====================== FOOTER ====================== */
 
+/* Footer: theme-adaptive. Sits flush with the page background instead of a
+   dramatic dark band — apothecary brands (Aesop, Le Labo) handle the
+   bottom of the page this way. Top hairline grounds it. */
 .site-footer {
-  background: var(--ink);
-  color: rgba(251, 245, 241, .78);
+  background: var(--bg-alt);
+  color: var(--ink-soft);
   padding: 90px 0 30px;
   margin-top: 80px;
+  border-top: 1px solid var(--line);
 }
 
 .footer__grid {
@@ -1078,7 +1165,7 @@ button {
   grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
   gap: 60px;
   padding-bottom: 70px;
-  border-bottom: 1px solid rgba(251,245,241,.1);
+  border-bottom: 1px solid var(--line);
 }
 
 .footer__brand p {
@@ -1087,16 +1174,16 @@ button {
   max-width: 32ch;
   line-height: 1.6;
 }
-.logo--light .logo__word { color: var(--cream); }
-.logo--light .logo__word em { color: var(--blush); }
+.logo--light .logo__word { color: var(--ink); }
+.logo--light .logo__word em { color: var(--ink-mute); }
 
 .footer__col h4 {
   font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--blush);
+  color: var(--ink);
   margin: 0 0 22px;
 }
 .footer__col ul {
@@ -1109,10 +1196,11 @@ button {
 }
 .footer__col li a {
   font-size: .92rem;
+  color: var(--ink-soft);
   transition: color .25s var(--ease), padding-left .25s var(--ease);
 }
 .footer__col li a:hover {
-  color: var(--blush);
+  color: var(--ink);
   padding-left: 4px;
 }
 
@@ -1124,34 +1212,34 @@ button {
 .newsletter {
   display: flex;
   gap: 0;
-  border: 1px solid rgba(251,245,241,.18);
+  border: 1px solid var(--line);
   border-radius: 999px;
   padding: 4px;
-  background: rgba(251,245,241,.05);
+  background: var(--surface);
 }
 .newsletter input {
   flex: 1;
   background: transparent;
   border: 0;
   padding: 10px 18px;
-  color: var(--cream);
+  color: var(--ink);
   font-family: inherit;
   font-size: .9rem;
   outline: none;
 }
-.newsletter input::placeholder { color: rgba(251,245,241,.4); }
+.newsletter input::placeholder { color: var(--ink-mute); }
 .newsletter button {
   padding: 10px 22px;
-  background: var(--blush);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
-  transition: background .3s var(--ease);
+  transition: background .3s var(--ease), color .3s var(--ease);
 }
-.newsletter button:hover { background: var(--white); }
+.newsletter button:hover { background: var(--ink-soft); }
 
 .footer__bottom {
   display: flex;
@@ -1159,10 +1247,10 @@ button {
   align-items: center;
   padding-top: 30px;
   font-size: .82rem;
-  color: rgba(251,245,241,.5);
+  color: var(--ink-mute);
 }
 .footer__bottom div { display: flex; gap: 24px; }
-.footer__bottom a:hover { color: var(--blush); }
+.footer__bottom a:hover { color: var(--ink); }
 
 /* ====================== Reveal helpers (used by GSAP) ====================== */
 .reveal { opacity: 0; }
@@ -1262,7 +1350,7 @@ button {
 .ingredient:hover {
   transform: translateY(-8px);
   border-color: var(--blush);
-  box-shadow: 0 30px 60px -25px rgba(183,110,121,.32);
+  box-shadow: 0 30px 60px -25px rgba(22, 22, 20,.32);
 }
 .ingredient:hover::after { opacity: 1; }
 
@@ -1341,12 +1429,12 @@ button {
   border-radius: 50%;
   background: var(--rose-gold);
   flex-shrink: 0;
-  box-shadow: 0 0 0 4px rgba(183,110,121,.18);
+  box-shadow: 0 0 0 4px rgba(22, 22, 20,.18);
   animation: notePulse 2.2s var(--ease-out) infinite;
 }
 @keyframes notePulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(183,110,121,.18); }
-  50%      { box-shadow: 0 0 0 8px rgba(183,110,121,.05); }
+  0%, 100% { box-shadow: 0 0 0 4px rgba(22, 22, 20,.18); }
+  50%      { box-shadow: 0 0 0 8px rgba(22, 22, 20,.05); }
 }
 
 /* ====================== TESTIMONIALS ====================== */
@@ -1391,7 +1479,7 @@ button {
   background: var(--white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
-  box-shadow: 0 30px 80px -30px rgba(183,110,121,.25);
+  box-shadow: 0 30px 80px -30px rgba(22, 22, 20,.25);
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
@@ -1439,10 +1527,11 @@ button {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--white);
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 1.2rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 .testimonial__author strong {
   display: block;
@@ -1489,7 +1578,7 @@ button {
 .mobile-nav__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(42, 31, 29, .4);
+  background: rgba(0, 0, 0, .45);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   opacity: 0;
@@ -1502,13 +1591,13 @@ button {
   top: 0; right: 0;
   height: 100%;
   width: min(380px, 88vw);
-  background: var(--cream);
+  background: var(--bg);
   padding: 28px 32px 32px;
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
   transition: transform .5s var(--ease-out);
-  box-shadow: -40px 0 80px -30px rgba(42,31,29,.3);
+  box-shadow: -40px 0 80px -30px rgba(0, 0, 0, .35);
 }
 .mobile-nav.is-open .mobile-nav__panel { transform: translateX(0); }
 
@@ -1650,6 +1739,9 @@ body.is-locked { overflow: hidden; }
   .container { padding: 0 22px; }
   .nav { display: none; }
   .menu-btn { display: flex; }
+  /* Hide non-functional search on mobile so header fits theme-toggle + cart
+     + menu alongside the logo. Re-enable when search is wired up. */
+  .icon-btn--search { display: none; }
 
   .hero { padding: 110px 0 40px; min-height: auto; }
   .hero__slider { min-height: 0; }

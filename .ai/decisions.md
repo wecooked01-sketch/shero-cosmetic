@@ -15,3 +15,4 @@ file when a new ADR is added.
 | [0007](../docs/decisions/0007-utm-tagged-outbound-cta-pattern.md) | UTM-tagged outbound CTA pattern | Proposed |
 | [0008](../docs/decisions/0008-gsap-via-cdn-with-sri.md) | GSAP via CDN with SRI integrity hashes | Accepted |
 | [0009](../docs/decisions/0009-github-pages-staging-then-cloudflare-pages.md) | GitHub Pages for staging; Cloudflare Pages for production | Accepted |
+| [0010](../docs/decisions/0010-visual-identity-apothecary-bw-manrope.md) | Visual identity pivot: apothecary B&W + Manrope | Accepted |

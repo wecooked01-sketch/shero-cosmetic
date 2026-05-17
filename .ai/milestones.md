@@ -133,6 +133,42 @@
   5. Disable GitHub Pages on the repo (Settings → Pages → None) to
      avoid two live mirrors
 
+## Phase R — Visual identity redesign 🔄 (in progress, 2026-05-17)
+
+Triggered by owner's "redesign the UI UX" + B&W + Manrope + dark mode
++ better animations request. ADR-0010 records the decision.
+
+### R1 — Foundation ✅
+- ✅ New apothecary B&W token system (--bg, --ink, --ink-soft, etc.)
+- ✅ Light + dark themes (auto via prefers-color-scheme, manual via
+  data-theme + localStorage)
+- ✅ No-flash inline script in <head>
+- ✅ Theme toggle button in header with sun/moon SVG swap
+- ✅ Manrope swap (display + body, single family)
+- ✅ Hardcoded rose/blush rgba values replaced with neutral
+- ✅ Footer rebuilt to theme-adapt (was hardcoded dark band, broken
+  in dark mode)
+- ✅ Testimonial avatars: removed inline pink gradients, now solid ink
+- ✅ Search icon hidden on mobile so theme toggle fits the row
+- ✅ Existing :focus-visible / contrast / touch-target work all
+  carries forward (uses --ink which contrasts in both themes)
+
+### R2 — SVG bottles → monochrome line-art ⏳
+- The 3 hero-slider product bottles still use rose-gold/blush gradient
+  defs (visibly out of place in dark mode). Need redraw as B&W line-art.
+
+### R3 — Animation rework ⏳
+- Replace opacity+y entries with mask reveals
+- Magnetic CTAs (~6px drift toward cursor)
+- Cursor-follow on hero (desktop only)
+- Sticky scrub on the routine 5-step section
+
+### R4 — Section-level UI/UX polish ⏳
+- Hero composition rethink (current grid was tuned for warm-luxe)
+- Quiz card visual treatment under apothecary
+- Footer / newsletter polish
+- Press marquee — drop the script/serif font variants (Manrope-only now)
+
 ## Phase 6 — Content / product expansion (optional) ⏳
 
 - Per-product pages or modal detail views
