@@ -47,6 +47,20 @@ Bugs found during onboarding:
    is missing. All IDs currently exist; added optional-chaining for safety.
 3. GSAP CDN scripts had no SRI integrity hashes. Fixed in Phase 0.
 
+## Current status — 2026-05-17
+
+- Phases 0, 1, 3 (UI/UX pass), and 5 staging are done.
+- Phase 5 production migration is blocked on the owner setting up
+  Cloudflare Pages + DNS for sherocosmetic.com.
+- Phases 2 (real integrations) and 4 (legal) still pending.
+
+**Live staging URL:** https://wecooked01-sketch.github.io/shero-cosmetic/
+(noindex / Disallow — won't appear in search until the migration to
+the production domain happens; see ADR-0009 for the migration steps)
+
+**GitHub repo:** https://github.com/wecooked01-sketch/shero-cosmetic
+(public)
+
 ## Phase tracker
 
 See `milestones.md`.

@@ -12,7 +12,7 @@ channel the brand uses (Shopify, Amazon, retail partners, etc.).
 | Styles | Plain CSS with custom properties (`styles.css`) |
 | Behavior | Vanilla JS + GSAP 3.12 + ScrollTrigger (`script.js`) |
 | Fonts | Playfair Display + Outfit (Google Fonts) |
-| Hosting | Cloudflare Pages (planned) |
+| Hosting | GitHub Pages (staging, live) → Cloudflare Pages (production, planned). See [ADR-0009](docs/decisions/0009-github-pages-staging-then-cloudflare-pages.md). |
 | Dev server | `python3 -m http.server 5173` (see `.claude/launch.json`) |
 
 No framework, no bundler, no `package.json`. Keep it that way unless there's a

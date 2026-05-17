@@ -18,6 +18,7 @@ one, supersede it explicitly (new ADR, mark the old one `Superseded by NNNN`).
 | [0006](0006-formspree-for-contact-form.md) | Formspree for the contact form | Proposed | 2026-05-17 |
 | [0007](0007-utm-tagged-outbound-cta-pattern.md) | UTM-tagged outbound CTA pattern | Proposed | 2026-05-17 |
 | [0008](0008-gsap-via-cdn-with-sri.md) | GSAP via CDN with SRI integrity hashes | Accepted | 2026-05-17 |
+| [0009](0009-github-pages-staging-then-cloudflare-pages.md) | GitHub Pages for staging; Cloudflare Pages for production | Accepted | 2026-05-17 |
 
 ## Statuses
 

@@ -112,12 +112,26 @@
 - Accessibility statement
 - Imprint (depends on jurisdictions targeted)
 
-## Phase 5 — Deploy ⏳
+## Phase 5 — Deploy 🔄 (staging done, production migration pending)
 
-- Cloudflare Pages connection (GitHub → CF Pages)
-- Custom domain
-- SSL + HSTS
-- Staging URL for review
+- ✅ git remote: `wecooked01-sketch/shero-cosmetic` on GitHub (public)
+- ✅ All 7 commits pushed to `main`
+- ✅ GitHub Pages enabled, serving from `main /`, HTTPS-enforced
+- ✅ Staging live: https://wecooked01-sketch.github.io/shero-cosmetic/
+- ✅ Staging guardrails:
+  - `<meta name="robots" content="noindex, nofollow">` in index.html
+  - `Disallow: /` in robots.txt
+  - Canonical / og:url / og:image still pinned to sherocosmetic.com
+- ✅ ADR-0009 records the staging-now / production-later split
+
+- ⏳ Production migration (blocked on the owner):
+  1. Create/use a Cloudflare account, point DNS for sherocosmetic.com
+  2. Cloudflare Pages → Connect Git → pick `shero-cosmetic` → Deploy
+  3. CF Pages → Custom domain → sherocosmetic.com → SSL auto
+  4. In the repo: flip meta robots back to `index, follow, ...` and
+     robots.txt back to `Allow: /`
+  5. Disable GitHub Pages on the repo (Settings → Pages → None) to
+     avoid two live mirrors
 
 ## Phase 6 — Content / product expansion (optional) ⏳
 
