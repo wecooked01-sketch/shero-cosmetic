@@ -187,41 +187,25 @@
         <div class="product-glow"></div>
         <!-- Serum dropper bottle -->
         <svg class="bottle bottle--serum" viewBox="0 0 220 420" xmlns="http://www.w3.org/2000/svg" aria-label="Radiance Serum bottle">
-          <defs>
-            <linearGradient id="serumGlass" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#fbe1e0"/>
-              <stop offset="55%" stop-color="#e8b4b8"/>
-              <stop offset="100%" stop-color="#b76e79"/>
-            </linearGradient>
-            <linearGradient id="capGold" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#e8c39a"/>
-              <stop offset="50%" stop-color="#b88a5f"/>
-              <stop offset="100%" stop-color="#8a5e3a"/>
-            </linearGradient>
-            <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f7c9a4"/>
-              <stop offset="100%" stop-color="#d88c6a"/>
-            </linearGradient>
-          </defs>
-          <!-- dropper bulb -->
-          <rect x="92" y="6" width="36" height="36" rx="8" fill="url(#capGold)"/>
-          <!-- cap -->
-          <rect x="78" y="40" width="64" height="64" rx="10" fill="url(#capGold)"/>
-          <rect x="78" y="58" width="64" height="6" fill="#8a5e3a" opacity=".35"/>
-          <!-- neck -->
-          <rect x="96" y="100" width="28" height="20" fill="#a55f6b" opacity=".8"/>
-          <!-- bottle body -->
-          <path d="M50 130 Q50 118 64 118 H156 Q170 118 170 130 V380 Q170 410 140 410 H80 Q50 410 50 380 Z" fill="url(#serumGlass)"/>
-          <!-- liquid level -->
-          <path d="M62 230 Q62 220 74 220 H146 Q158 220 158 230 V378 Q158 398 138 398 H82 Q62 398 62 378 Z" fill="url(#liquid)" opacity=".75"/>
-          <!-- highlight -->
-          <path d="M68 150 Q66 250 80 360" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".55" fill="none"/>
-          <!-- label -->
-          <rect x="70" y="250" width="80" height="90" fill="#fff" opacity=".92" rx="2"/>
-          <text x="110" y="285" text-anchor="middle" font-family="Playfair Display, serif" font-size="14" fill="#2a1f1d" font-style="italic">SHERO</text>
-          <line x1="80" y1="295" x2="140" y2="295" stroke="#b76e79" stroke-width=".8"/>
-          <text x="110" y="312" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9" letter-spacing="2" fill="#2a1f1d">RADIANCE</text>
-          <text x="110" y="326" text-anchor="middle" font-family="Outfit, sans-serif" font-size="7" letter-spacing="1.5" fill="#8a5e3a">VITAMIN C · 15%</text>
+          <!-- Dropper bulb (solid cap, visual weight up top) -->
+          <rect x="92" y="6" width="36" height="34" rx="6" fill="currentColor"/>
+          <!-- Dropper collar (outlined) -->
+          <rect x="78" y="42" width="64" height="58" rx="6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="78" y1="68" x2="142" y2="68" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+          <!-- Neck -->
+          <path d="M96 100 H124 V120 H96 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <!-- Body — outlined rounded rectangle, slight shoulder -->
+          <path d="M50 130 Q50 118 64 118 H156 Q170 118 170 130 V380 Q170 410 140 410 H80 Q50 410 50 380 Z"
+                fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <!-- Label surface — theme-adaptive background, framed -->
+          <rect class="bottle__label" x="68" y="232" width="84" height="102" rx="1"/>
+          <rect x="68" y="232" width="84" height="102" rx="1" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+          <!-- Label typography -->
+          <text x="110" y="262" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-style="italic" font-weight="600" fill="currentColor" letter-spacing=".5">SHERO</text>
+          <line x1="86" y1="274" x2="134" y2="274" stroke="currentColor" stroke-width=".8"/>
+          <text x="110" y="294" text-anchor="middle" font-family="Manrope, sans-serif" font-size="9" letter-spacing="2.4" fill="currentColor" font-weight="600">RADIANCE</text>
+          <text x="110" y="312" text-anchor="middle" font-family="Manrope, sans-serif" font-size="6.5" letter-spacing="1.6" fill="currentColor" font-weight="500" opacity=".72">SERUM</text>
+          <text x="110" y="326" text-anchor="middle" font-family="Manrope, sans-serif" font-size="6.5" letter-spacing="1.6" fill="currentColor" font-weight="500" opacity=".72">VITAMIN C · 15%</text>
         </svg>
       </div>
     </article>
@@ -244,34 +228,27 @@
         <div class="product-glow"></div>
         <!-- Round pump bottle -->
         <svg class="bottle bottle--pump" viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" aria-label="Hydra Cream bottle">
-          <defs>
-            <linearGradient id="pumpBody" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#fff6f4"/>
-              <stop offset="55%" stop-color="#f3d8d4"/>
-              <stop offset="100%" stop-color="#d29ea3"/>
-            </linearGradient>
-            <linearGradient id="pumpCap" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#e8c39a"/>
-              <stop offset="100%" stop-color="#8a5e3a"/>
-            </linearGradient>
-          </defs>
-          <!-- pump nozzle -->
-          <path d="M134 6 H170 V30 H150 L138 60 H126 Z" fill="url(#pumpCap)"/>
-          <!-- pump collar -->
-          <rect x="86" y="60" width="68" height="40" rx="8" fill="url(#pumpCap)"/>
-          <rect x="86" y="78" width="68" height="4" fill="#8a5e3a" opacity=".35"/>
-          <!-- neck -->
-          <rect x="98" y="100" width="44" height="14" fill="#a55f6b" opacity=".8"/>
-          <!-- body (rounded) -->
-          <path d="M30 160 Q30 120 90 116 H150 Q210 120 210 160 V370 Q210 410 150 410 H90 Q30 410 30 370 Z" fill="url(#pumpBody)"/>
-          <!-- highlight -->
-          <path d="M52 180 Q42 290 70 380" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".6" fill="none"/>
-          <!-- label -->
-          <rect x="55" y="240" width="130" height="110" fill="#fff" opacity=".95" rx="2"/>
-          <text x="120" y="280" text-anchor="middle" font-family="Playfair Display, serif" font-size="16" fill="#2a1f1d" font-style="italic">SHERO</text>
-          <line x1="80" y1="290" x2="160" y2="290" stroke="#b76e79" stroke-width=".8"/>
-          <text x="120" y="312" text-anchor="middle" font-family="Outfit, sans-serif" font-size="11" letter-spacing="2.5" fill="#2a1f1d">HYDRA CREAM</text>
-          <text x="120" y="332" text-anchor="middle" font-family="Outfit, sans-serif" font-size="8" letter-spacing="1.5" fill="#8a5e3a">HYALURONIC · SQUALANE</text>
+          <!-- Pump nozzle (angled spout) -->
+          <path d="M134 8 H168 V30 H150 L138 58 H126 Z" fill="currentColor"/>
+          <!-- Pump shaft -->
+          <rect x="126" y="58" width="12" height="6" fill="currentColor"/>
+          <!-- Pump collar — outlined -->
+          <rect x="86" y="62" width="68" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="86" y1="80" x2="154" y2="80" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+          <!-- Neck -->
+          <path d="M98 102 H142 V116 H98 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <!-- Body — outlined, shoulders-then-straight -->
+          <path d="M30 160 Q30 120 90 116 H150 Q210 120 210 160 V370 Q210 410 150 410 H90 Q30 410 30 370 Z"
+                fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <!-- Label surface -->
+          <rect class="bottle__label" x="52" y="222" width="136" height="124" rx="1"/>
+          <rect x="52" y="222" width="136" height="124" rx="1" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+          <!-- Label typography -->
+          <text x="120" y="256" text-anchor="middle" font-family="Manrope, sans-serif" font-size="15" font-style="italic" font-weight="600" fill="currentColor" letter-spacing=".5">SHERO</text>
+          <line x1="80" y1="270" x2="160" y2="270" stroke="currentColor" stroke-width=".8"/>
+          <text x="120" y="294" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" letter-spacing="2.8" fill="currentColor" font-weight="600">HYDRA</text>
+          <text x="120" y="312" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" letter-spacing="2.8" fill="currentColor" font-weight="600">CREAM</text>
+          <text x="120" y="332" text-anchor="middle" font-family="Manrope, sans-serif" font-size="7" letter-spacing="1.8" fill="currentColor" font-weight="500" opacity=".72">HYALURONIC · SQUALANE</text>
         </svg>
       </div>
     </article>
@@ -294,33 +271,24 @@
         <div class="product-glow"></div>
         <!-- Frosted jar -->
         <svg class="bottle bottle--jar" viewBox="0 0 260 420" xmlns="http://www.w3.org/2000/svg" aria-label="Glow Elixir jar">
-          <defs>
-            <linearGradient id="jarGlass" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#fff0ec"/>
-              <stop offset="60%" stop-color="#eec0b8"/>
-              <stop offset="100%" stop-color="#a25e63"/>
-            </linearGradient>
-            <linearGradient id="jarCap" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#f0d6b6"/>
-              <stop offset="60%" stop-color="#b88a5f"/>
-              <stop offset="100%" stop-color="#7a4f30"/>
-            </linearGradient>
-          </defs>
-          <!-- cap -->
-          <ellipse cx="130" cy="80" rx="100" ry="14" fill="#7a4f30" opacity=".4"/>
-          <rect x="30" y="40" width="200" height="50" rx="6" fill="url(#jarCap)"/>
-          <rect x="30" y="78" width="200" height="6" fill="#7a4f30" opacity=".35"/>
-          <!-- jar body -->
-          <path d="M20 110 Q20 100 35 100 H225 Q240 100 240 110 V360 Q240 410 180 410 H80 Q20 410 20 360 Z" fill="url(#jarGlass)"/>
-          <!-- highlight -->
-          <path d="M44 140 Q34 260 60 380" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".55" fill="none"/>
-          <!-- label -->
-          <rect x="55" y="200" width="150" height="140" fill="#fff" opacity=".95" rx="2"/>
-          <text x="130" y="245" text-anchor="middle" font-family="Playfair Display, serif" font-size="18" fill="#2a1f1d" font-style="italic">SHERO</text>
-          <line x1="85" y1="258" x2="175" y2="258" stroke="#b76e79" stroke-width=".8"/>
-          <text x="130" y="284" text-anchor="middle" font-family="Outfit, sans-serif" font-size="12" letter-spacing="3" fill="#2a1f1d">GLOW ELIXIR</text>
-          <text x="130" y="306" text-anchor="middle" font-family="Outfit, sans-serif" font-size="8" letter-spacing="1.5" fill="#8a5e3a">RETINOL · 0.3%</text>
-          <text x="130" y="324" text-anchor="middle" font-family="Outfit, sans-serif" font-size="7" letter-spacing="1.5" fill="#8a5e3a">NIGHT TREATMENT</text>
+          <!-- Cap — solid block with horizontal seam, gives visual weight -->
+          <rect x="30" y="40" width="200" height="50" rx="4" fill="currentColor"/>
+          <line x1="30" y1="60" x2="230" y2="60" stroke="currentColor" stroke-width=".6" opacity=".4"/>
+          <!-- Cap shadow line under cap -->
+          <line x1="30" y1="92" x2="230" y2="92" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <!-- Jar body — outlined squat rounded rectangle -->
+          <path d="M20 110 Q20 100 35 100 H225 Q240 100 240 110 V360 Q240 410 180 410 H80 Q20 410 20 360 Z"
+                fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <!-- Label surface -->
+          <rect class="bottle__label" x="50" y="180" width="160" height="170" rx="1"/>
+          <rect x="50" y="180" width="160" height="170" rx="1" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/>
+          <!-- Label typography -->
+          <text x="130" y="220" text-anchor="middle" font-family="Manrope, sans-serif" font-size="17" font-style="italic" font-weight="600" fill="currentColor" letter-spacing=".5">SHERO</text>
+          <line x1="85" y1="234" x2="175" y2="234" stroke="currentColor" stroke-width=".8"/>
+          <text x="130" y="262" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" letter-spacing="3" fill="currentColor" font-weight="600">GLOW</text>
+          <text x="130" y="282" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" letter-spacing="3" fill="currentColor" font-weight="600">ELIXIR</text>
+          <text x="130" y="306" text-anchor="middle" font-family="Manrope, sans-serif" font-size="7.5" letter-spacing="1.8" fill="currentColor" font-weight="500" opacity=".72">RETINOL · 0.3%</text>
+          <text x="130" y="322" text-anchor="middle" font-family="Manrope, sans-serif" font-size="7.5" letter-spacing="1.8" fill="currentColor" font-weight="500" opacity=".72">NIGHT TREATMENT</text>
         </svg>
       </div>
     </article>
@@ -390,13 +358,16 @@
     </div>
     <div class="about__visual">
       <div class="about__circle"></div>
-      <svg class="about__leaf" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 10 C40 80 40 220 100 310 C160 220 160 80 100 10 Z" fill="#e8b4b8" opacity=".55"/>
-        <path d="M100 10 C100 110 100 230 100 310" stroke="#b76e79" stroke-width="1" fill="none"/>
-        <path d="M100 80 C70 90 60 110 60 130" stroke="#b76e79" stroke-width="1" fill="none"/>
-        <path d="M100 80 C130 90 140 110 140 130" stroke="#b76e79" stroke-width="1" fill="none"/>
-        <path d="M100 160 C70 170 60 190 60 210" stroke="#b76e79" stroke-width="1" fill="none"/>
-        <path d="M100 160 C130 170 140 190 140 210" stroke="#b76e79" stroke-width="1" fill="none"/>
+      <svg class="about__leaf" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Leaf outline — line-art apothecary style, theme-adaptive via currentColor -->
+        <path d="M100 10 C40 80 40 220 100 310 C160 220 160 80 100 10 Z" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".75"/>
+        <!-- Central vein -->
+        <path d="M100 10 C100 110 100 230 100 310" stroke="currentColor" stroke-width="1" fill="none" opacity=".55"/>
+        <!-- Lateral veins -->
+        <path d="M100 80 C70 90 60 110 60 130" stroke="currentColor" stroke-width="1" fill="none" opacity=".45"/>
+        <path d="M100 80 C130 90 140 110 140 130" stroke="currentColor" stroke-width="1" fill="none" opacity=".45"/>
+        <path d="M100 160 C70 170 60 190 60 210" stroke="currentColor" stroke-width="1" fill="none" opacity=".45"/>
+        <path d="M100 160 C130 170 140 190 140 210" stroke="currentColor" stroke-width="1" fill="none" opacity=".45"/>
       </svg>
     </div>
   </div>

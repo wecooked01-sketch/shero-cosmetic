@@ -600,19 +600,25 @@ button {
   width: auto;
   height: 100%;
   max-height: 580px;
-  filter: drop-shadow(0 50px 60px rgba(22, 22, 20,.28));
   position: relative;
   z-index: 2;
+  color: var(--ink);
+  /* Subtle ground-shadow only — apothecary product images don't float
+     dramatically. drop-shadow takes a literal color (no var() with alpha),
+     so we use a low-alpha black that reads as a gentle hint in both modes. */
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .12));
 }
+/* .product-glow stays in the DOM so the GSAP entry animation can still
+   target it, but its paint is hidden — apothecary doesn't need a halo. */
 .product-glow {
   position: absolute;
-  width: 70%;
-  height: 70%;
-  background: radial-gradient(circle, rgba(22, 22, 20,.55) 0%, transparent 65%);
-  filter: blur(40px);
-  border-radius: 50%;
+  width: 0; height: 0;
+  visibility: hidden;
   z-index: 1;
 }
+/* Label surface inside each bottle SVG — adapts to theme so the label
+   always has its own breathing room against the bottle outline. */
+.bottle__label { fill: var(--bg); }
 
 /* Slider controls */
 .hero__controls {
@@ -775,10 +781,12 @@ button {
   width: min(420px, 90vw);
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--blush-soft) 0%, var(--blush) 100%);
-  opacity: .5;
+  /* Subtle warm-neutral wash, theme-adapts. */
+  background: linear-gradient(135deg, var(--bg-alt) 0%, var(--line) 100%);
+  opacity: .55;
   filter: blur(8px);
 }
+.about__leaf { color: var(--ink); }
 .about__leaf {
   position: relative;
   height: 100%;

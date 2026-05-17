@@ -153,9 +153,20 @@ Triggered by owner's "redesign the UI UX" + B&W + Manrope + dark mode
 - ✅ Existing :focus-visible / contrast / touch-target work all
   carries forward (uses --ink which contrasts in both themes)
 
-### R2 — SVG bottles → monochrome line-art ⏳
-- The 3 hero-slider product bottles still use rose-gold/blush gradient
-  defs (visibly out of place in dark mode). Need redraw as B&W line-art.
+### R2 — SVG bottles → monochrome line-art ✅
+- ✅ All 3 hero bottles (Radiance Serum / Hydra Cream / Glow Elixir)
+  redrawn as line-art: stroke="currentColor", fill="none" outlines,
+  solid currentColor caps for visual weight, `.bottle__label` class
+  with fill: var(--bg) so the label surface adapts per theme
+- ✅ Manrope typography on every label (italic SHERO, tracked product
+  name, smaller variant line)
+- ✅ Heavy pink drop-shadow on .bottle replaced with subtle
+  rgba(0,0,0,.12) drop-shadow for grounding without floating
+- ✅ .product-glow neutralized (kept in DOM for the GSAP entry
+  animation; visibility: hidden + zero size so it has no paint)
+- ✅ .about__leaf SVG also de-pinked — same currentColor + opacity
+  treatment, theme-adaptive
+- ✅ .about__circle gradient swapped to neutral bg-alt → line
 
 ### R3 — Animation rework ⏳
 - Replace opacity+y entries with mask reveals
