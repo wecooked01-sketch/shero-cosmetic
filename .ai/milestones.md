@@ -1,6 +1,6 @@
 # Milestones
 
-## Phase 0 — Foundation 🔄 (in progress, 2026-05-17)
+## Phase 0 — Foundation ✅ (done, 2026-05-17)
 
 - ✅ git init + .gitignore
 - ✅ Memory + ADR scaffolding (`.ai/`, `docs/decisions/`, `CLAUDE.md`, `README.md`)
@@ -10,18 +10,25 @@
 - ✅ Remove dead `:scope::after` querySelector line
 - ✅ Add optional-chaining guards for DOM lookups
 - ✅ Add SRI integrity hashes to GSAP CDN scripts
-- ⏳ Smoke test via local preview
-- ⏳ Initial commit
+- ✅ Smoke test via local preview
+- ✅ Initial commit (30408b6)
 
-## Phase 1 — SEO + social ⏳
+## Phase 1 — SEO + social ✅ (done, 2026-05-17)
 
-- `<title>` and meta description per-section concept (single page, but tunable)
-- Favicon set (16/32/180/512)
-- Open Graph tags + Twitter cards
-- `Organization` + `Product` JSON-LD structured data
-- `sitemap.xml`, `robots.txt`
-- Canonical URL
-- `lang="en"` is current — confirm whether `tr` or bilingual is needed
+- ✅ Canonical URL (`https://sherocosmetic.com/`) + meta robots
+- ✅ Open Graph tags (type, site_name, title, description, url, image, image:width/height/alt, locale)
+- ✅ Twitter Cards (summary_large_image)
+- ✅ JSON-LD structured data: Organization + WebSite (linked via @id)
+- ✅ `sitemap.xml`
+- ✅ `robots.txt` (allow all + sitemap pointer)
+- ✅ `theme-color` meta for mobile chrome
+- ✅ OG image `1200x630.png` confirmed landscape and serving 200
+- ⏳ Favicon set — deferred per owner request
+- ⏳ Product JSON-LD — deferred until product detail pages exist with offers
+  (Google requires offers or aggregateRating for Product rich results)
+- ⏳ `lang="en"` confirmation vs Turkish/bilingual — backlog
+
+## Phase 2 — Real integrations ⏳
 
 ## Phase 2 — Real integrations ⏳
 
