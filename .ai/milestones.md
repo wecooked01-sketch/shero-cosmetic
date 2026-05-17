@@ -38,17 +38,71 @@
 - UTM-tagged outbound CTAs once the external store URL is known
 - Outbound link tracking event hooks
 
-## Phase 3 — Accessibility + performance ⏳
+## Phase 3 — UI/UX Pass ✅ (done 2026-05-17, four-batch full pass)
 
-- WCAG 2.2 AA pass
-  - `aria-live` regions for quiz step + slider transitions
-  - Focus management on mobile nav open/close
-  - `prefers-reduced-motion` short-circuit for GSAP
-  - Color contrast audit
-  - Keyboard-only traversal test
-- Lighthouse target: ≥95 across Performance / Accessibility / Best Practices / SEO
-- Image / SVG optimization audit
-- Font preloading review
+### Batch 1 — Accessibility primitives (commit 573e1e5)
+- ✅ `prefers-reduced-motion` CSS guards (zero animation/transition,
+  kill scroll-line / press marquee / pulsing dot loops)
+- ✅ REDUCE_MOTION constant in script.js — skips hero scrub parallax,
+  snaps slide-in animation to final state, fast-paths reveal helpers
+- ✅ ARIA live announcer + announce() helper
+- ✅ Quiz step transitions: focus the new h3 + announce step number
+- ✅ Slider manual nav announce with innerHTML→space conversion
+- ✅ Mobile nav focus trap (Tab/Shift-Tab wrap) + restore on close
+- ✅ `transition: all` on .mobile-nav__close → specific properties
+  (prevents the visibility-transition focus-trap bug)
+- ✅ Slider gets `aria-roledescription="carousel"` + label
+- ✅ form-note gets `role="status"`
+
+### Batch 2 — Contrast, focus rings, touch targets (commit 7b79864)
+- ✅ Added `--rose-gold-text: #9A4F5C` (≈5.4:1 on cream, vs original
+  4.04:1 fail) and applied to 10 small-text sites
+- ✅ 11 :focus-visible rules covering every interactive element;
+  blush rings for dark-bg controls, dashed ring for programmatic
+  focus on quiz step headings
+- ✅ Touch-target bumps: icon-btn, menu-btn, mobile-nav__close,
+  slider-arrow--small, mobile-nav__socials all → 44×44
+- ✅ Dot tap area expanded via transparent ::before pseudo (inset:-18px)
+  without changing the visible 10/8px dot
+
+### Batch 3 — Mobile layout + perf (commit 111e0e5)
+- ✅ Hero slider controls flow below the slide on mobile/tablet
+  (was absolute-positioned and overlapping the SHOP NOW / DISCOVER
+  buttons at the 768x1024 breakpoint)
+- ✅ Inactive slides hidden via display:none in the mobile media
+  query so the active slide is the only one occupying flow
+- ✅ Hero auto-height on mobile (removes 100vh constraint that was
+  cramping content)
+- ✅ .about__circle: width: min(420px, 90vw) + aspect-ratio: 1/1
+  (no overflow on small screens)
+- ✅ `<link rel="preconnect">` for jsdelivr.net so GSAP CDN handshake
+  overlaps document parse
+
+### Batch 4 — Conversion-flow polish (commit pending)
+- ✅ Quiz result: "Explore your routine" promoted to primary `<a>`
+  → #routine, "Retake quiz" demoted to ghost secondary
+- ✅ Routine CTA: "Build my set" → "Find my set" rewired to #quiz
+  (was misleading link to #contact)
+- ✅ Routine description rewritten to support the new flow
+- ✅ All forward CTAs marked with `data-cta` + `data-cta-campaign`
+  + `data-cta-content` per ADR-0007 — ready for Phase 2 to swap
+  internal anchors for UTM-tagged external store URLs
+
+### Verified
+- 768x1024 (tablet): hero CTAs no longer overlap slider controls
+- 375x812 (mobile): clean stack across hero / about / quiz /
+  ingredients / routine / testimonials / contact / footer
+- Quiz E2E: combo → dullness → balanced renders 3 product cards
+  reading from inline JSON data, focus + announce both fire
+- No console errors at any breakpoint
+- All :focus-visible rules registered (11 selectors)
+
+### Deferred from this phase (in `.ai/backlog.md`)
+- Lighthouse measurement (need a deployed URL — comes after Phase 5)
+- Routine card mobile "tap to expand" affordance (current copy says
+  "Hover each card" which is misleading on touch devices)
+- Full keyboard-traversal manual audit (preview can't reliably
+  simulate Tab key)
 
 ## Phase 4 — Legal + compliance ⏳
 

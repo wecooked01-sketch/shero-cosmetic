@@ -6,7 +6,21 @@ Items deferred from the current phase, ordered roughly by value.
 
 - **External store URL** — required for Phase 2 UTM tagging. Currently blocked
   on a business decision (which channel sells: own Shopify, Amazon, retail).
-  Until then, CTAs anchor to in-page sections.
+  CTAs are already marked with `data-cta` + `data-cta-campaign` +
+  `data-cta-content` attributes (per ADR-0007); when the store URL is known,
+  a tiny `script.js` helper will rewrite the `href` on every `[data-cta]`
+  anchor to the UTM-tagged destination. Until then, CTAs anchor to in-page
+  sections.
+- **Routine card "Hover each card to see the why" copy** — misleading on
+  touch devices (no hover). Either change copy to "Tap each card…" plus a
+  tap-to-expand affordance, or drop the help line entirely.
+- **Lighthouse measurement** — needs a deployed URL (Phase 5). Target ≥95
+  across all four metrics.
+- **Manual keyboard-traversal audit** — preview tooling can't reliably
+  simulate Tab. Walk the page with keyboard once it's deployed.
+- **"Save 15% as a set" discount language** — removed from the routine CTA
+  copy because there's no transactional surface to honour it. Re-add when
+  the external store has the bundle.
 - **Real product photography** — current product visuals are hand-drawn SVGs.
   Beautiful, but a real launch will want photography (or a deliberate decision
   to keep illustrations as the brand language).
