@@ -99,3 +99,145 @@ menuBtn?.addEventListener('click', () => {
   menuBtn.setAttribute('aria-expanded', String(!expanded));
   // Full mobile drawer markup re-introduced in the final block.
 });
+
+/* ---------- Product grid filter chips ---------- */
+(function setupProductFilters() {
+  const chips = document.querySelectorAll('.products__filters .chip');
+  const cards = document.querySelectorAll('.product-card');
+  if (!chips.length || !cards.length) return;
+
+  // The card's data-category is a single token (cleanse/tone/treat/...).
+  // 'all' shows every card; otherwise we substring-match against the token.
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => {
+        const active = c === chip;
+        c.classList.toggle('is-active', active);
+        c.setAttribute('aria-selected', String(active));
+      });
+      cards.forEach((card) => {
+        const cat = card.dataset.category || '';
+        const match = filter === 'all' || cat === filter;
+        card.classList.toggle('is-filtered-out', !match);
+      });
+    });
+  });
+})();
+
+/* ---------- Skin quiz ---------- */
+(function setupQuiz() {
+  const card = document.getElementById('quizCard');
+  if (!card) return;
+
+  const steps        = Array.from(card.querySelectorAll('.quiz-step'));
+  const stepLabels   = Array.from(card.querySelectorAll('.quiz__steps li'));
+  const progressFill = document.getElementById('quizProgress');
+  const counter      = document.getElementById('quizCounter');
+  const backBtn      = document.getElementById('quizBack');
+  const restartBtn   = document.getElementById('quizRestart');
+
+  const state  = { type: null, concern: null, time: null };
+  let stepIdx  = 0;
+
+  const TOTAL = 4; // 3 questions + result
+
+  function showStep(idx) {
+    steps.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+    stepLabels.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+
+    const progressPct = [25, 50, 75, 100][idx] ?? 25;
+    if (progressFill) progressFill.style.width = progressPct + '%';
+
+    if (counter) {
+      counter.textContent = idx === 3 ? 'Your result' : `Step ${idx + 1} of 3`;
+    }
+    if (backBtn) backBtn.disabled = idx === 0;
+
+    stepIdx = idx;
+
+    // Move focus to the heading for screen-reader + keyboard users.
+    const heading = steps[idx]?.querySelector('h3');
+    if (heading) {
+      heading.focus({ preventScroll: true });
+      const label = idx === 3 ? 'Quiz result' : `Quiz step ${idx + 1} of 3`;
+      announce(`${label}: ${heading.textContent.trim()}`);
+    }
+  }
+
+  // Handle option selection
+  card.querySelectorAll('.quiz-option').forEach((opt) => {
+    opt.addEventListener('click', () => {
+      const q = opt.dataset.q;
+      const v = opt.dataset.v;
+      state[q] = v;
+
+      opt.parentElement.querySelectorAll('.quiz-option').forEach((o) => o.classList.remove('is-selected'));
+      opt.classList.add('is-selected');
+
+      setTimeout(() => {
+        if (stepIdx < 2) {
+          showStep(stepIdx + 1);
+        } else {
+          renderResult();
+          showStep(3);
+        }
+      }, 350);
+    });
+  });
+
+  backBtn?.addEventListener('click', () => {
+    if (stepIdx > 0) showStep(stepIdx - 1);
+  });
+
+  restartBtn?.addEventListener('click', () => {
+    state.type = state.concern = state.time = null;
+    card.querySelectorAll('.quiz-option').forEach((o) => o.classList.remove('is-selected'));
+    showStep(0);
+  });
+
+  function renderResult() {
+    const { type, concern, time } = state;
+
+    const titleByConcern = {
+      dullness:  'The Radiant Reset',
+      aging:     'The Smooth & Renew',
+      acne:      'The Clear Calm',
+      hydration: 'The Hydration Deep-Dive',
+    };
+
+    const concernToProductIds = {
+      dullness:  ['cleanser', 'serumC', 'spf'],
+      aging:     ['retinol', 'hydra', 'spf'],
+      acne:      ['cleanser', 'essence', 'hydra'],
+      hydration: ['essence', 'hydra', 'spf'],
+    };
+
+    let pickIds = concernToProductIds[concern] || [];
+    if (time === 'ritual' && pickIds.length < 5) {
+      pickIds = ['cleanser', 'essence', 'serumC', 'hydra', 'spf'];
+    } else if (time === 'quick') {
+      pickIds = pickIds.slice(0, 3);
+    }
+
+    const picks = pickIds.map((id) => PRODUCTS[id]).filter(Boolean);
+
+    const titleEl = document.getElementById('resultTitle');
+    const descEl  = document.getElementById('resultDesc');
+    const wrap    = document.getElementById('resultProducts');
+
+    if (titleEl) titleEl.textContent = titleByConcern[concern] || 'Your custom ritual';
+    if (descEl) {
+      const cadence = time === 'ritual' ? 'full' : time === 'quick' ? 'streamlined' : 'balanced';
+      descEl.textContent = `A ${cadence} routine tailored to ${type} skin, focused on ${concern}.`;
+    }
+    if (wrap) {
+      wrap.innerHTML = picks.map((p) => `
+        <div class="result-product">
+          <strong>${p.name}</strong>
+          <span>${p.tag}</span>
+        </div>
+      `).join('');
+    }
+  }
+})();

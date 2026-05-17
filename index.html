@@ -368,11 +368,272 @@
   </div>
 </section>
 
-<section class="section" id="products"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 3 · new</span><h2 class="stub__title">Full product grid</h2><p class="stub__hint">All six SKUs as an editorial product index · coming next.</p></div></div></section>
+<!-- ============ FULL PRODUCT GRID ============ -->
+<section class="section products" id="products">
+  <div class="container">
+    <div class="section-head section-head--split">
+      <div>
+        <span class="eyebrow">Shop the ritual</span>
+        <h2 class="section-title">The full <span class="display">collection.</span></h2>
+      </div>
+      <p class="lead">Six formulas, one ritual. Each one built around a hero active, dermo-tested, and quietly luxurious.</p>
+    </div>
 
-<section class="section section--sand" id="lab"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 3 · new</span><h2 class="stub__title">Lab / clinical results</h2><p class="stub__hint">Formulation philosophy, clinical proof, certifications · coming next.</p></div></div></section>
+    <div class="products__filters" role="tablist" aria-label="Product categories">
+      <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="chip" data-filter="cleanse" role="tab" aria-selected="false">Cleanse</button>
+      <button class="chip" data-filter="tone" role="tab" aria-selected="false">Tone</button>
+      <button class="chip" data-filter="treat" role="tab" aria-selected="false">Treat</button>
+      <button class="chip" data-filter="moisturize" role="tab" aria-selected="false">Moisturize</button>
+      <button class="chip" data-filter="protect" role="tab" aria-selected="false">Protect</button>
+    </div>
 
-<section class="section" id="quiz"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 3</span><h2 class="stub__title">Skin quiz</h2><p class="stub__hint">Three-step interactive quiz with routine match · coming next.</p></div></div></section>
+    <div class="products__grid">
+      <article class="product-card" data-category="cleanse" data-reveal>
+        <div class="product-card__image" data-asset="product-cleanser">
+          <span class="product-card__step">01</span>
+          <span class="product-card__placeholder">Velvet Cleanser photo</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Velvet Cleanser</h3>
+            <span class="product-card__size">150ml</span>
+          </div>
+          <p>pH-balanced gel that lifts SPF and pollution without stripping the barrier.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Cleanse</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="velvet-cleanser" aria-label="Shop Velvet Cleanser">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tone" data-reveal>
+        <div class="product-card__image" data-asset="product-essence">
+          <span class="product-card__step">02</span>
+          <span class="product-card__placeholder">Bloom Essence photo</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Bloom Essence</h3>
+            <span class="product-card__size">200ml</span>
+          </div>
+          <p>A featherlight essence prepping skin to absorb everything that follows.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Tone</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="bloom-essence" aria-label="Shop Bloom Essence">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card product-card--feature" data-category="treat" data-reveal>
+        <div class="product-card__image" data-asset="product-serumC">
+          <span class="product-card__badge">Bestseller</span>
+          <span class="product-card__step">03</span>
+          <span class="product-card__placeholder">Radiance Serum photo</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Radiance Serum</h3>
+            <span class="product-card__size">50ml</span>
+          </div>
+          <p>15% stabilized vitamin C &mdash; brightens, evens, shields against the day.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Treat · AM</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="radiance-serum" aria-label="Shop Radiance Serum">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="treat" data-reveal>
+        <div class="product-card__image" data-asset="product-retinol">
+          <span class="product-card__step">03</span>
+          <span class="product-card__placeholder">Glow Elixir photo</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Glow Elixir</h3>
+            <span class="product-card__size">30ml</span>
+          </div>
+          <p>0.3% encapsulated retinol &mdash; smooths, refines, renews overnight.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Treat · PM</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="glow-elixir" aria-label="Shop Glow Elixir">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="moisturize" data-reveal>
+        <div class="product-card__image" data-asset="product-hydra">
+          <span class="product-card__step">04</span>
+          <span class="product-card__placeholder">Hydra Cream photo</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Hydra Cream</h3>
+            <span class="product-card__size">75ml</span>
+          </div>
+          <p>Triple-weight hyaluronic + squalane. 72-hour deep hydration, never heavy.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Moisturize</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="hydra-cream" aria-label="Shop Hydra Cream">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="protect" data-reveal>
+        <div class="product-card__image" data-asset="product-spf">
+          <span class="product-card__step">05</span>
+          <span class="product-card__placeholder">Daily Shield photo</span>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Daily Shield SPF</h3>
+            <span class="product-card__size">50ml</span>
+          </div>
+          <p>Mineral SPF 50 &mdash; the single most powerful anti-aging step you&rsquo;ll take.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Protect · AM</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="daily-shield" aria-label="Shop Daily Shield SPF">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAB / CLINICAL RESULTS ============ -->
+<section class="section section--sand lab" id="lab">
+  <div class="container">
+    <div class="lab__grid">
+      <div class="lab__copy" data-reveal>
+        <span class="eyebrow">In the lab</span>
+        <h2 class="section-title">
+          Tested on volunteers.<br/>
+          <em>Never</em> on animals.
+        </h2>
+        <p class="lead">
+          Every SHERO formula is third-party tested for stability,
+          irritation, and efficacy &mdash; then run past a panel of 40 to
+          120 testers across skin types and tones for 28 days before it
+          ships.
+        </p>
+        <div class="lab__certs">
+          <span class="pill">Dermatologist tested</span>
+          <span class="pill">Cruelty-free</span>
+          <span class="pill">Vegan</span>
+          <span class="pill">Made in EU</span>
+        </div>
+      </div>
+
+      <div class="lab__results" data-reveal>
+        <article class="lab__result">
+          <strong>+44<i>%</i></strong>
+          <span class="lab__metric">Hydration retention</span>
+          <span class="lab__note">28 days · Radiance Serum + Hydra Cream</span>
+        </article>
+        <article class="lab__result lab__result--accent">
+          <strong>97<i>%</i></strong>
+          <span class="lab__metric">Saw visible glow within 7 days</span>
+          <span class="lab__note">Self-report · panel of 120</span>
+        </article>
+        <article class="lab__result">
+          <strong>&minus;32<i>%</i></strong>
+          <span class="lab__metric">Fine line depth</span>
+          <span class="lab__note">12 weeks · Glow Elixir nightly</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKIN QUIZ ============ -->
+<section class="section quiz" id="quiz">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Skin quiz · 60 seconds</span>
+      <h2 class="section-title">Find your <em>perfect ritual.</em></h2>
+      <p class="lead">Three quick questions. We&rsquo;ll match a routine to your skin type, your top concern, and how much time you actually want to spend.</p>
+    </div>
+
+    <div class="quiz__card" id="quizCard">
+      <header class="quiz__head">
+        <div class="quiz__progress" aria-hidden="true">
+          <span class="quiz__progress-fill" id="quizProgress" style="width: 25%"></span>
+        </div>
+        <ol class="quiz__steps">
+          <li class="is-active">01 &middot; Type</li>
+          <li>02 &middot; Concern</li>
+          <li>03 &middot; Time</li>
+          <li>Result</li>
+        </ol>
+      </header>
+
+      <!-- Step 1 -->
+      <div class="quiz-step is-active" data-step="0">
+        <h3 tabindex="-1">What&rsquo;s your skin type today?</h3>
+        <p class="quiz-help">Pick the description that feels most true right now.</p>
+        <div class="quiz-options quiz-options--4">
+          <button class="quiz-option" data-q="type" data-v="oily" type="button"><strong>Oily</strong><em>Shine by midday, prone to breakouts</em></button>
+          <button class="quiz-option" data-q="type" data-v="dry" type="button"><strong>Dry</strong><em>Tight, flaky, dull patches</em></button>
+          <button class="quiz-option" data-q="type" data-v="combo" type="button"><strong>Combination</strong><em>Oily T-zone, dry cheeks</em></button>
+          <button class="quiz-option" data-q="type" data-v="sensitive" type="button"><strong>Sensitive</strong><em>Reacts easily, redness, stinging</em></button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" data-step="1">
+        <h3 tabindex="-1">What&rsquo;s your top concern?</h3>
+        <p class="quiz-help">Pick the one you&rsquo;d most love to see change.</p>
+        <div class="quiz-options quiz-options--4">
+          <button class="quiz-option" data-q="concern" data-v="dullness" type="button"><strong>Dullness</strong><em>I want my glow back</em></button>
+          <button class="quiz-option" data-q="concern" data-v="aging" type="button"><strong>Fine lines</strong><em>Soften and firm</em></button>
+          <button class="quiz-option" data-q="concern" data-v="acne" type="button"><strong>Breakouts</strong><em>Clearer, calmer skin</em></button>
+          <button class="quiz-option" data-q="concern" data-v="hydration" type="button"><strong>Hydration</strong><em>Plump, dewy comfort</em></button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" data-step="2">
+        <h3 tabindex="-1">How much time do you have?</h3>
+        <p class="quiz-help">Honesty wins &mdash; we&rsquo;ll match accordingly.</p>
+        <div class="quiz-options quiz-options--3">
+          <button class="quiz-option" data-q="time" data-v="quick" type="button"><strong>Quick</strong><em>3 steps &middot; under 2 min</em></button>
+          <button class="quiz-option" data-q="time" data-v="balanced" type="button"><strong>Balanced</strong><em>5 steps &middot; 5 min</em></button>
+          <button class="quiz-option" data-q="time" data-v="ritual" type="button"><strong>Full ritual</strong><em>7+ steps &middot; I love this</em></button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-step quiz-result" data-step="3">
+        <span class="result-tag">Your routine</span>
+        <h3 id="resultTitle" tabindex="-1">The Radiant Reset</h3>
+        <p id="resultDesc" class="result-desc">A balanced ritual designed to bring back your natural glow with gentle, daily-use formulas.</p>
+        <div class="result-products" id="resultProducts"></div>
+        <div class="quiz-actions">
+          <a class="btn btn--primary" href="#routine" data-cta data-cta-campaign="quiz-result" data-cta-content="explore-routine">Build my routine<span class="arrow">&rarr;</span></a>
+          <button class="btn btn--ghost" id="quizRestart" type="button">Retake quiz</button>
+        </div>
+      </div>
+
+      <div class="quiz-nav">
+        <button class="quiz-back" id="quizBack" type="button" disabled>&larr; Back</button>
+        <span class="quiz-counter" id="quizCounter">Step 1 of 3</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section section--sand" id="routine"><div class="container"><div class="stub"><span class="stub__eyebrow">Block 4</span><h2 class="stub__title">Build my routine</h2><p class="stub__hint">Five-step ladder · coming next.</p></div></div></section>
 
