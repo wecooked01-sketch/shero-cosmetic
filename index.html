@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SHERO COSMETIC — Skincare for Every Woman</title>
+<meta name="description" content="SHERO COSMETIC — clean, science-backed skincare designed for radiant, healthy skin." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header__inner">
+    <a href="#hero" class="logo" aria-label="SHERO Cosmetic — Home">
+      <span class="logo__mark">S</span>
+      <span class="logo__word">SHERO<em>COSMETIC</em></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#quiz">Skin Quiz</a>
+      <a href="#routine">Build Routine</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14l-1.5 11a2 2 0 0 1-2 1.7H8.5a2 2 0 0 1-2-1.7L5 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+      </button>
+      <button class="menu-btn" aria-label="Menu" id="menuBtn" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE NAV ============ -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
+  <aside class="mobile-nav__panel" role="dialog" aria-label="Site menu">
+    <div class="mobile-nav__head">
+      <span class="mobile-nav__brand">SHERO <em>COSMETIC</em></span>
+      <button class="mobile-nav__close" id="mobileNavClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Mobile primary">
+      <a href="#about">About</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#quiz">Skin Quiz</a>
+      <a href="#routine">Build Routine</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a href="#routine" class="btn btn--primary btn--full">Shop the Routine<span class="arrow">→</span></a>
+      <div class="mobile-nav__socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.5 2.5 4.5 5 5"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M11 8c-1.5 1-2 3.5-1 6"/></svg></a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- ============ HERO SLIDER ============ -->
+<section class="hero" id="hero">
+  <div class="hero__bg-text" aria-hidden="true">
+    <span>SHERO</span>
+    <span>COSMETIC</span>
+  </div>
+
+  <div class="hero__slider" id="heroSlider">
+
+    <article class="slide is-active" data-index="0">
+      <div class="slide__content">
+        <span class="slide__tag">New · Vitamin C</span>
+        <h1 class="slide__title">Radiance<br/>Serum</h1>
+        <p class="slide__desc">A daily glow elixir powered by 15% stabilized vitamin C and botanical brighteners. Wakes up tired skin in 7 days.</p>
+        <div class="slide__actions">
+          <a class="btn btn--primary" href="#routine">Shop Now</a>
+          <a class="btn btn--ghost" href="#about">Discover<span class="arrow">→</span></a>
+        </div>
+        <div class="slide__meta">
+          <span>50 ml</span><span>·</span><span>Vegan</span><span>·</span><span>Dermo-tested</span>
+        </div>
+      </div>
+
+      <div class="slide__product">
+        <div class="product-glow"></div>
+        <!-- Serum dropper bottle -->
+        <svg class="bottle bottle--serum" viewBox="0 0 220 420" xmlns="http://www.w3.org/2000/svg" aria-label="Radiance Serum bottle">
+          <defs>
+            <linearGradient id="serumGlass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fbe1e0"/>
+              <stop offset="55%" stop-color="#e8b4b8"/>
+              <stop offset="100%" stop-color="#b76e79"/>
+            </linearGradient>
+            <linearGradient id="capGold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e8c39a"/>
+              <stop offset="50%" stop-color="#b88a5f"/>
+              <stop offset="100%" stop-color="#8a5e3a"/>
+            </linearGradient>
+            <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f7c9a4"/>
+              <stop offset="100%" stop-color="#d88c6a"/>
+            </linearGradient>
+          </defs>
+          <!-- dropper bulb -->
+          <rect x="92" y="6" width="36" height="36" rx="8" fill="url(#capGold)"/>
+          <!-- cap -->
+          <rect x="78" y="40" width="64" height="64" rx="10" fill="url(#capGold)"/>
+          <rect x="78" y="58" width="64" height="6" fill="#8a5e3a" opacity=".35"/>
+          <!-- neck -->
+          <rect x="96" y="100" width="28" height="20" fill="#a55f6b" opacity=".8"/>
+          <!-- bottle body -->
+          <path d="M50 130 Q50 118 64 118 H156 Q170 118 170 130 V380 Q170 410 140 410 H80 Q50 410 50 380 Z" fill="url(#serumGlass)"/>
+          <!-- liquid level -->
+          <path d="M62 230 Q62 220 74 220 H146 Q158 220 158 230 V378 Q158 398 138 398 H82 Q62 398 62 378 Z" fill="url(#liquid)" opacity=".75"/>
+          <!-- highlight -->
+          <path d="M68 150 Q66 250 80 360" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".55" fill="none"/>
+          <!-- label -->
+          <rect x="70" y="250" width="80" height="90" fill="#fff" opacity=".92" rx="2"/>
+          <text x="110" y="285" text-anchor="middle" font-family="Playfair Display, serif" font-size="14" fill="#2a1f1d" font-style="italic">SHERO</text>
+          <line x1="80" y1="295" x2="140" y2="295" stroke="#b76e79" stroke-width=".8"/>
+          <text x="110" y="312" text-anchor="middle" font-family="Outfit, sans-serif" font-size="9" letter-spacing="2" fill="#2a1f1d">RADIANCE</text>
+          <text x="110" y="326" text-anchor="middle" font-family="Outfit, sans-serif" font-size="7" letter-spacing="1.5" fill="#8a5e3a">VITAMIN C · 15%</text>
+        </svg>
+      </div>
+    </article>
+
+    <article class="slide" data-index="1">
+      <div class="slide__content">
+        <span class="slide__tag">Bestseller · Hyaluronic</span>
+        <h1 class="slide__title">Hydra<br/>Cream</h1>
+        <p class="slide__desc">A weightless cloud of triple-weight hyaluronic acid and squalane. 72-hour deep hydration that never feels heavy.</p>
+        <div class="slide__actions">
+          <a class="btn btn--primary" href="#routine">Shop Now</a>
+          <a class="btn btn--ghost" href="#about">Discover<span class="arrow">→</span></a>
+        </div>
+        <div class="slide__meta">
+          <span>75 ml</span><span>·</span><span>Fragrance free</span><span>·</span><span>Sensitive-safe</span>
+        </div>
+      </div>
+
+      <div class="slide__product">
+        <div class="product-glow"></div>
+        <!-- Round pump bottle -->
+        <svg class="bottle bottle--pump" viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" aria-label="Hydra Cream bottle">
+          <defs>
+            <linearGradient id="pumpBody" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff6f4"/>
+              <stop offset="55%" stop-color="#f3d8d4"/>
+              <stop offset="100%" stop-color="#d29ea3"/>
+            </linearGradient>
+            <linearGradient id="pumpCap" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e8c39a"/>
+              <stop offset="100%" stop-color="#8a5e3a"/>
+            </linearGradient>
+          </defs>
+          <!-- pump nozzle -->
+          <path d="M134 6 H170 V30 H150 L138 60 H126 Z" fill="url(#pumpCap)"/>
+          <!-- pump collar -->
+          <rect x="86" y="60" width="68" height="40" rx="8" fill="url(#pumpCap)"/>
+          <rect x="86" y="78" width="68" height="4" fill="#8a5e3a" opacity=".35"/>
+          <!-- neck -->
+          <rect x="98" y="100" width="44" height="14" fill="#a55f6b" opacity=".8"/>
+          <!-- body (rounded) -->
+          <path d="M30 160 Q30 120 90 116 H150 Q210 120 210 160 V370 Q210 410 150 410 H90 Q30 410 30 370 Z" fill="url(#pumpBody)"/>
+          <!-- highlight -->
+          <path d="M52 180 Q42 290 70 380" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".6" fill="none"/>
+          <!-- label -->
+          <rect x="55" y="240" width="130" height="110" fill="#fff" opacity=".95" rx="2"/>
+          <text x="120" y="280" text-anchor="middle" font-family="Playfair Display, serif" font-size="16" fill="#2a1f1d" font-style="italic">SHERO</text>
+          <line x1="80" y1="290" x2="160" y2="290" stroke="#b76e79" stroke-width=".8"/>
+          <text x="120" y="312" text-anchor="middle" font-family="Outfit, sans-serif" font-size="11" letter-spacing="2.5" fill="#2a1f1d">HYDRA CREAM</text>
+          <text x="120" y="332" text-anchor="middle" font-family="Outfit, sans-serif" font-size="8" letter-spacing="1.5" fill="#8a5e3a">HYALURONIC · SQUALANE</text>
+        </svg>
+      </div>
+    </article>
+
+    <article class="slide" data-index="2">
+      <div class="slide__content">
+        <span class="slide__tag">Night · Retinol 0.3%</span>
+        <h1 class="slide__title">Glow<br/>Elixir</h1>
+        <p class="slide__desc">An encapsulated retinol oil that smooths, refines and renews while you sleep. Wake to softer, brighter skin.</p>
+        <div class="slide__actions">
+          <a class="btn btn--primary" href="#routine">Shop Now</a>
+          <a class="btn btn--ghost" href="#about">Discover<span class="arrow">→</span></a>
+        </div>
+        <div class="slide__meta">
+          <span>30 ml</span><span>·</span><span>Encapsulated</span><span>·</span><span>Night use</span>
+        </div>
+      </div>
+
+      <div class="slide__product">
+        <div class="product-glow"></div>
+        <!-- Frosted jar -->
+        <svg class="bottle bottle--jar" viewBox="0 0 260 420" xmlns="http://www.w3.org/2000/svg" aria-label="Glow Elixir jar">
+          <defs>
+            <linearGradient id="jarGlass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff0ec"/>
+              <stop offset="60%" stop-color="#eec0b8"/>
+              <stop offset="100%" stop-color="#a25e63"/>
+            </linearGradient>
+            <linearGradient id="jarCap" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f0d6b6"/>
+              <stop offset="60%" stop-color="#b88a5f"/>
+              <stop offset="100%" stop-color="#7a4f30"/>
+            </linearGradient>
+          </defs>
+          <!-- cap -->
+          <ellipse cx="130" cy="80" rx="100" ry="14" fill="#7a4f30" opacity=".4"/>
+          <rect x="30" y="40" width="200" height="50" rx="6" fill="url(#jarCap)"/>
+          <rect x="30" y="78" width="200" height="6" fill="#7a4f30" opacity=".35"/>
+          <!-- jar body -->
+          <path d="M20 110 Q20 100 35 100 H225 Q240 100 240 110 V360 Q240 410 180 410 H80 Q20 410 20 360 Z" fill="url(#jarGlass)"/>
+          <!-- highlight -->
+          <path d="M44 140 Q34 260 60 380" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".55" fill="none"/>
+          <!-- label -->
+          <rect x="55" y="200" width="150" height="140" fill="#fff" opacity=".95" rx="2"/>
+          <text x="130" y="245" text-anchor="middle" font-family="Playfair Display, serif" font-size="18" fill="#2a1f1d" font-style="italic">SHERO</text>
+          <line x1="85" y1="258" x2="175" y2="258" stroke="#b76e79" stroke-width=".8"/>
+          <text x="130" y="284" text-anchor="middle" font-family="Outfit, sans-serif" font-size="12" letter-spacing="3" fill="#2a1f1d">GLOW ELIXIR</text>
+          <text x="130" y="306" text-anchor="middle" font-family="Outfit, sans-serif" font-size="8" letter-spacing="1.5" fill="#8a5e3a">RETINOL · 0.3%</text>
+          <text x="130" y="324" text-anchor="middle" font-family="Outfit, sans-serif" font-size="7" letter-spacing="1.5" fill="#8a5e3a">NIGHT TREATMENT</text>
+        </svg>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Slider controls -->
+  <div class="hero__controls">
+    <button class="slider-arrow" id="prevSlide" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <div class="slider-dots" id="sliderDots">
+      <button class="dot is-active" data-go="0" aria-label="Slide 1"></button>
+      <button class="dot" data-go="1" aria-label="Slide 2"></button>
+      <button class="dot" data-go="2" aria-label="Slide 3"></button>
+    </div>
+    <button class="slider-arrow" id="nextSlide" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="hero__scroll-hint" aria-hidden="true">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============ PRESS BAR ============ -->
+<section class="press" aria-label="Featured in">
+  <div class="container">
+    <span class="press__label">As featured in</span>
+    <div class="press__viewport">
+      <div class="press__track">
+        <span class="press-logo">VOGUE</span>
+        <span class="press-logo press-logo--script">Elle</span>
+        <span class="press-logo">ALLURE</span>
+        <span class="press-logo press-logo--serif">Harper's Bazaar</span>
+        <span class="press-logo">BYRDIE</span>
+        <span class="press-logo press-logo--script">Refinery29</span>
+        <span class="press-logo">COSMOPOLITAN</span>
+        <!-- duplicated for seamless marquee loop -->
+        <span class="press-logo" aria-hidden="true">VOGUE</span>
+        <span class="press-logo press-logo--script" aria-hidden="true">Elle</span>
+        <span class="press-logo" aria-hidden="true">ALLURE</span>
+        <span class="press-logo press-logo--serif" aria-hidden="true">Harper's Bazaar</span>
+        <span class="press-logo" aria-hidden="true">BYRDIE</span>
+        <span class="press-logo press-logo--script" aria-hidden="true">Refinery29</span>
+        <span class="press-logo" aria-hidden="true">COSMOPOLITAN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about section" id="about">
+  <div class="container about__grid">
+    <div class="about__text">
+      <span class="eyebrow">About SHERO</span>
+      <h2 class="section-title">Skincare made for every <em>woman.</em></h2>
+      <p class="lead">SHERO Cosmetic was founded on a quiet belief: that great skin should feel personal, intentional, and never overwhelming. Every formula is built around real ingredients, real research, and real skin types.</p>
+      <p>We blend clinical actives with the gentlest botanicals — no harsh fillers, no empty promises. Every product is dermatologist-reviewed, cruelty-free, and produced in small, traceable batches.</p>
+      <div class="about__stats">
+        <div><strong>96%</strong><span>saw visible glow in 14 days</span></div>
+        <div><strong>0</strong><span>parabens · sulfates · phthalates</span></div>
+        <div><strong>100%</strong><span>cruelty-free &amp; vegan</span></div>
+      </div>
+    </div>
+    <div class="about__visual">
+      <div class="about__circle"></div>
+      <svg class="about__leaf" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 10 C40 80 40 220 100 310 C160 220 160 80 100 10 Z" fill="#e8b4b8" opacity=".55"/>
+        <path d="M100 10 C100 110 100 230 100 310" stroke="#b76e79" stroke-width="1" fill="none"/>
+        <path d="M100 80 C70 90 60 110 60 130" stroke="#b76e79" stroke-width="1" fill="none"/>
+        <path d="M100 80 C130 90 140 110 140 130" stroke="#b76e79" stroke-width="1" fill="none"/>
+        <path d="M100 160 C70 170 60 190 60 210" stroke="#b76e79" stroke-width="1" fill="none"/>
+        <path d="M100 160 C130 170 140 190 140 210" stroke="#b76e79" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INGREDIENTS ============ -->
+<section class="ingredients section section--alt" id="ingredients">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Hero Ingredients</span>
+      <h2 class="section-title">The science, <em>simplified.</em></h2>
+      <p class="lead">Every SHERO formula is built around proven actives at clinically-effective concentrations — no guesswork, no fluff.</p>
+    </div>
+
+    <div class="ingredients__grid">
+      <article class="ingredient">
+        <div class="ingredient__symbol" aria-hidden="true">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="1"/>
+            <path d="M40 18 L45 35 L62 35 L48 46 L54 63 L40 53 L26 63 L32 46 L18 35 L35 35 Z" fill="currentColor" opacity=".18"/>
+            <circle cx="40" cy="40" r="6" fill="currentColor"/>
+          </svg>
+        </div>
+        <span class="ingredient__pct">15%</span>
+        <h3>Vitamin C</h3>
+        <p>Stabilized L-ascorbic acid that brightens, evens tone, and shields against environmental stress.</p>
+        <ul class="ingredient__tags">
+          <li>Brightening</li><li>Anti-oxidant</li><li>Tone-evening</li>
+        </ul>
+      </article>
+
+      <article class="ingredient">
+        <div class="ingredient__symbol" aria-hidden="true">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="1"/>
+            <path d="M25 50 Q40 22 55 50 Q47 60 40 55 Q33 60 25 50 Z" fill="currentColor" opacity=".22"/>
+            <circle cx="34" cy="44" r="2" fill="#fff"/>
+            <circle cx="46" cy="40" r="1.5" fill="#fff"/>
+            <circle cx="42" cy="52" r="1.5" fill="#fff"/>
+          </svg>
+        </div>
+        <span class="ingredient__pct">2%</span>
+        <h3>Hyaluronic Acid</h3>
+        <p>Triple-weight molecules that hydrate at three skin depths — surface, mid-layer, and deep dermis.</p>
+        <ul class="ingredient__tags">
+          <li>Plumping</li><li>72h hydration</li><li>Barrier-safe</li>
+        </ul>
+      </article>
+
+      <article class="ingredient ingredient--feature">
+        <div class="ingredient__symbol" aria-hidden="true">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="1"/>
+            <path d="M40 14 C20 30 22 56 40 66 C58 56 60 30 40 14 Z" fill="currentColor" opacity=".22"/>
+            <path d="M40 18 L40 62" stroke="#fff" stroke-width="1.2"/>
+            <path d="M28 32 Q40 36 52 32" stroke="#fff" stroke-width="1" fill="none"/>
+            <path d="M28 48 Q40 52 52 48" stroke="#fff" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <span class="ingredient__pct">0.3%</span>
+        <h3>Encapsulated Retinol</h3>
+        <p>Time-released vitamin A that smooths fine lines and refines texture — with none of the harshness.</p>
+        <ul class="ingredient__tags">
+          <li>Anti-aging</li><li>Renewing</li><li>Gentle</li>
+        </ul>
+      </article>
+
+      <article class="ingredient">
+        <div class="ingredient__symbol" aria-hidden="true">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="1"/>
+            <path d="M30 30 L50 30 L50 50 L30 50 Z" fill="currentColor" opacity=".18" transform="rotate(45 40 40)"/>
+            <circle cx="40" cy="40" r="4" fill="currentColor"/>
+            <circle cx="40" cy="26" r="2.5" fill="currentColor" opacity=".5"/>
+            <circle cx="40" cy="54" r="2.5" fill="currentColor" opacity=".5"/>
+            <circle cx="26" cy="40" r="2.5" fill="currentColor" opacity=".5"/>
+            <circle cx="54" cy="40" r="2.5" fill="currentColor" opacity=".5"/>
+          </svg>
+        </div>
+        <span class="ingredient__pct">5%</span>
+        <h3>Niacinamide</h3>
+        <p>The all-rounder — minimizes pores, calms redness, balances oil, and strengthens the skin barrier.</p>
+        <ul class="ingredient__tags">
+          <li>Pore-refining</li><li>Calming</li><li>Balancing</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="ingredients__note">
+      <span class="ingredients__note-dot"></span>
+      Every batch is third-party tested. Full ingredient lists, sources and concentrations on every product page.
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKIN QUIZ ============ -->
+<section class="quiz section" id="quiz">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Skin Quiz</span>
+      <h2 class="section-title">Find your routine in <em>60 seconds.</em></h2>
+      <p class="lead">Answer three quick questions. We'll match you with a curated routine — built around your skin type, your concerns, and how much time you actually want to spend.</p>
+    </div>
+
+    <div class="quiz__card" id="quizCard">
+      <!-- progress -->
+      <div class="quiz__progress">
+        <div class="quiz__progress-bar" id="quizProgress"></div>
+        <div class="quiz__steps">
+          <span class="is-active">01</span>
+          <span>02</span>
+          <span>03</span>
+          <span>Result</span>
+        </div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="quiz-step is-active" data-step="0">
+        <h3>What's your skin type?</h3>
+        <p class="quiz-help">Choose the description that feels most true today.</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-q="type" data-v="oily"><span class="o-emoji">✦</span><strong>Oily</strong><em>Shiny by midday, prone to breakouts</em></button>
+          <button class="quiz-option" data-q="type" data-v="dry"><span class="o-emoji">❀</span><strong>Dry</strong><em>Tight, flaky, dull patches</em></button>
+          <button class="quiz-option" data-q="type" data-v="combo"><span class="o-emoji">◐</span><strong>Combination</strong><em>Oily T-zone, dry cheeks</em></button>
+          <button class="quiz-option" data-q="type" data-v="sensitive"><span class="o-emoji">❤</span><strong>Sensitive</strong><em>Reacts easily, redness, stinging</em></button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" data-step="1">
+        <h3>What's your top concern?</h3>
+        <p class="quiz-help">Pick the one you'd most love to see change.</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-q="concern" data-v="dullness"><span class="o-emoji">☀</span><strong>Dullness</strong><em>I want my glow back</em></button>
+          <button class="quiz-option" data-q="concern" data-v="aging"><span class="o-emoji">✶</span><strong>Fine Lines</strong><em>Soften and firm</em></button>
+          <button class="quiz-option" data-q="concern" data-v="acne"><span class="o-emoji">◯</span><strong>Breakouts</strong><em>Clearer, calmer skin</em></button>
+          <button class="quiz-option" data-q="concern" data-v="hydration"><span class="o-emoji">❉</span><strong>Hydration</strong><em>Plump, dewy comfort</em></button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" data-step="2">
+        <h3>How much time do you have?</h3>
+        <p class="quiz-help">Honesty wins — we'll match accordingly.</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-q="time" data-v="quick"><span class="o-emoji">⏱</span><strong>Quick</strong><em>3 steps · under 2 min</em></button>
+          <button class="quiz-option" data-q="time" data-v="balanced"><span class="o-emoji">⌚</span><strong>Balanced</strong><em>5 steps · 5 min</em></button>
+          <button class="quiz-option" data-q="time" data-v="ritual"><span class="o-emoji">♡</span><strong>Full Ritual</strong><em>7+ steps · I love this</em></button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-step quiz-result" data-step="3">
+        <span class="result-tag">Your routine</span>
+        <h3 id="resultTitle">The Radiant Reset</h3>
+        <p id="resultDesc" class="result-desc">A balanced ritual designed to bring back your natural glow with gentle, daily-use formulas.</p>
+        <div class="result-products" id="resultProducts"></div>
+        <div class="quiz-actions">
+          <button class="btn btn--primary" id="quizRestart">Retake quiz</button>
+          <a class="btn btn--ghost" href="#routine">See full routine<span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="quiz-nav">
+        <button class="quiz-back" id="quizBack" disabled>← Back</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILD MY ROUTINE ============ -->
+<section class="routine section section--alt" id="routine">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Build My Routine</span>
+      <h2 class="section-title">Five steps. <em>Endless</em> glow.</h2>
+      <p class="lead">A SHERO routine is built like a sentence — every step earns its place. Hover each card to see the why.</p>
+    </div>
+
+    <div class="routine__steps">
+      <article class="routine-step" data-step="1">
+        <div class="routine-step__num">01</div>
+        <h3>Cleanse</h3>
+        <p>A pH-balanced gel that lifts SPF and pollution without stripping the barrier.</p>
+        <span class="routine-step__product">Velvet Cleanser · 150ml</span>
+      </article>
+
+      <article class="routine-step" data-step="2">
+        <div class="routine-step__num">02</div>
+        <h3>Tone</h3>
+        <p>A featherlight essence prepping skin to absorb everything that follows.</p>
+        <span class="routine-step__product">Bloom Essence · 200ml</span>
+      </article>
+
+      <article class="routine-step routine-step--feature" data-step="3">
+        <div class="routine-step__num">03</div>
+        <h3>Treat</h3>
+        <p>The hero step. Targeted actives — vitamin C by day, retinol by night.</p>
+        <span class="routine-step__product">Radiance Serum · 50ml</span>
+      </article>
+
+      <article class="routine-step" data-step="4">
+        <div class="routine-step__num">04</div>
+        <h3>Moisturize</h3>
+        <p>Triple-weight hyaluronic locks in everything beneath it — 72-hour hydration.</p>
+        <span class="routine-step__product">Hydra Cream · 75ml</span>
+      </article>
+
+      <article class="routine-step" data-step="5">
+        <div class="routine-step__num">05</div>
+        <h3>Protect</h3>
+        <p>Mineral SPF 50 — the single most powerful anti-aging step you'll take.</p>
+        <span class="routine-step__product">Daily Shield · 50ml</span>
+      </article>
+    </div>
+
+    <div class="routine__cta">
+      <p>Build the routine that's already yours — pick your products, save 15% as a set.</p>
+      <a href="#contact" class="btn btn--primary">Build my set<span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials section" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Customer Love</span>
+      <h2 class="section-title">Real skin, <em>real results.</em></h2>
+      <p class="lead">Over 12,000 five-star reviews from women who finally found a routine that delivers.</p>
+    </div>
+
+    <div class="testimonials__rating">
+      <div class="stars" aria-label="4.9 out of 5 stars">★★★★★</div>
+      <div class="rating-text"><strong>4.9</strong> <span>· 12,400+ verified reviews</span></div>
+    </div>
+
+    <div class="testimonials__viewport">
+      <div class="testimonials__track" id="testimonialsTrack">
+
+        <article class="testimonial is-active" data-i="0">
+          <div class="stars">★★★★★</div>
+          <blockquote>"I'd tried every brightening serum on the market — and most made my skin worse. Two weeks with the Radiance Serum and my dark spots are visibly fading. The texture is silky, never sticky. I'm a forever customer."</blockquote>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #f3d8d4, #b76e79);">A</div>
+            <div>
+              <strong>Aylin K.</strong>
+              <span>Combination · Age 34 · Radiance Serum</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial" data-i="1">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Honestly skeptical at first — the price is on the higher end. But after a month with Hydra Cream, my skin doesn't get tight anymore, and the dewy 'I-slept-10-hours' look is real. Worth every lira."</blockquote>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #e8c39a, #b88a5f);">M</div>
+            <div>
+              <strong>Maya T.</strong>
+              <span>Dry · Age 41 · Hydra Cream</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial" data-i="2">
+          <div class="stars">★★★★★</div>
+          <blockquote>"I have sensitive skin and retinol always ruined me. The Glow Elixir is the first one I can actually use — no flaking, no redness, just smoother skin in the morning. Game-changer."</blockquote>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #fbe1e0, #e8b4b8);">S</div>
+            <div>
+              <strong>Selin Y.</strong>
+              <span>Sensitive · Age 29 · Glow Elixir</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial" data-i="3">
+          <div class="stars">★★★★★</div>
+          <blockquote>"The skin quiz pointed me to a 3-step routine I actually stick to. My skin looks healthier than it has in years and I'm not drowning in 12 bottles. The team's recommendations are spot on."</blockquote>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background: linear-gradient(135deg, #eec0b8, #a25e63);">D</div>
+            <div>
+              <strong>Defne A.</strong>
+              <span>Oily · Age 26 · The Quick Ritual</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="testimonials__controls">
+      <button class="slider-arrow slider-arrow--small" id="testPrev" aria-label="Previous review">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <div class="testimonials__dots" id="testimonialsDots">
+        <button class="dot is-active" data-i="0" aria-label="Review 1"></button>
+        <button class="dot" data-i="1" aria-label="Review 2"></button>
+        <button class="dot" data-i="2" aria-label="Review 3"></button>
+        <button class="dot" data-i="3" aria-label="Review 4"></button>
+      </div>
+      <button class="slider-arrow slider-arrow--small" id="testNext" aria-label="Next review">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact section section--alt" id="contact">
+  <div class="container contact__grid">
+    <div class="contact__intro">
+      <span class="eyebrow">Contact Us</span>
+      <h2 class="section-title">Talk to a <em>SHERO</em> esthetician.</h2>
+      <p class="lead">Whether you have a question about ingredients, an order, or want a tailored recommendation — we'd love to hear from you.</p>
+
+      <ul class="contact__info">
+        <li><strong>Email</strong> <a href="mailto:hello@sherocosmetic.com">hello@sherocosmetic.com</a></li>
+        <li><strong>Studio</strong> 14 Rose Atelier, Istanbul</li>
+        <li><strong>Hours</strong> Mon–Fri · 09:00 — 18:00</li>
+      </ul>
+
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.5 2.5 4.5 5 5"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M11 8c-1.5 1-2 3.5-1 6"/><path d="M10 14c0 3-1 5-1 5"/></svg></a>
+      </div>
+    </div>
+
+    <form class="contact__form" id="contactForm" novalidate>
+      <div class="field">
+        <label for="cName">Your name</label>
+        <input id="cName" name="name" type="text" required placeholder="Jane Doe" />
+      </div>
+      <div class="field">
+        <label for="cEmail">Email</label>
+        <input id="cEmail" name="email" type="email" required placeholder="you@email.com" />
+      </div>
+      <div class="field">
+        <label for="cSubject">I need help with</label>
+        <select id="cSubject" name="subject">
+          <option>A product recommendation</option>
+          <option>An existing order</option>
+          <option>Ingredients &amp; safety</option>
+          <option>Wholesale &amp; press</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cMsg">Message</label>
+        <textarea id="cMsg" name="message" rows="5" required placeholder="Tell us a little about your skin or your question…"></textarea>
+      </div>
+      <button class="btn btn--primary btn--full" type="submit">Send message<span class="arrow">→</span></button>
+      <p class="form-note" id="formNote" hidden>Thank you — we'll be in touch within 24 hours.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href="#hero" class="logo logo--light">
+        <span class="logo__mark">S</span>
+        <span class="logo__word">SHERO<em>COSMETIC</em></span>
+      </a>
+      <p>Skincare made for every woman — clean, considered, and quietly luxurious.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#routine">Serums</a></li>
+        <li><a href="#routine">Moisturizers</a></li>
+        <li><a href="#routine">Cleansers</a></li>
+        <li><a href="#routine">SPF</a></li>
+        <li><a href="#routine">Gift Sets</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>SHERO</h4>
+      <ul>
+        <li><a href="#about">Our story</a></li>
+        <li><a href="#quiz">Skin Quiz</a></li>
+        <li><a href="#routine">Build a routine</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col footer__news">
+      <h4>Letters from SHERO</h4>
+      <p>Monthly tips, new launches, and 10% off your first order.</p>
+      <form class="newsletter" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer__bottom container">
+    <span>© 2026 SHERO Cosmetic. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Shipping</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Canonical mirror of data/products.json — keep them in sync. -->
+<script type="application/json" id="shero-products">
+{
+  "products": [
+    { "id": "cleanser", "name": "Velvet Cleanser",   "size": "150ml", "step": "01", "stepLabel": "STEP 01",       "category": "cleanse",     "hero": "pH-balanced gel that lifts SPF and pollution without stripping the barrier." },
+    { "id": "essence",  "name": "Bloom Essence",     "size": "200ml", "step": "02", "stepLabel": "STEP 02",       "category": "tone",        "hero": "A featherlight essence prepping skin to absorb everything that follows." },
+    { "id": "serumC",   "name": "Radiance Serum",    "size": "50ml",  "step": "03", "stepLabel": "STEP 03 · AM",  "category": "treat-am",    "hero": "15% stabilized vitamin C — brightens, evens, shields." },
+    { "id": "retinol",  "name": "Glow Elixir",       "size": "30ml",  "step": "03", "stepLabel": "STEP 03 · PM",  "category": "treat-pm",    "hero": "0.3% encapsulated retinol — smooths, refines, renews overnight." },
+    { "id": "hydra",    "name": "Hydra Cream",       "size": "75ml",  "step": "04", "stepLabel": "STEP 04",       "category": "moisturize",  "hero": "Triple-weight hyaluronic + squalane. 72-hour hydration." },
+    { "id": "spf",      "name": "Daily Shield SPF",  "size": "50ml",  "step": "05", "stepLabel": "STEP 05 · AM",  "category": "protect",     "hero": "Mineral SPF 50 — the single most powerful anti-aging step." }
+  ]
+}
+</script>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+  integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+  integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script src="script.js"></script>
+</body>
+</html>

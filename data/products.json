@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "id": "cleanser",
+      "name": "Velvet Cleanser",
+      "size": "150ml",
+      "step": "01",
+      "stepLabel": "STEP 01",
+      "category": "cleanse",
+      "hero": "pH-balanced gel that lifts SPF and pollution without stripping the barrier."
+    },
+    {
+      "id": "essence",
+      "name": "Bloom Essence",
+      "size": "200ml",
+      "step": "02",
+      "stepLabel": "STEP 02",
+      "category": "tone",
+      "hero": "A featherlight essence prepping skin to absorb everything that follows."
+    },
+    {
+      "id": "serumC",
+      "name": "Radiance Serum",
+      "size": "50ml",
+      "step": "03",
+      "stepLabel": "STEP 03 · AM",
+      "category": "treat-am",
+      "hero": "15% stabilized vitamin C — brightens, evens, shields."
+    },
+    {
+      "id": "retinol",
+      "name": "Glow Elixir",
+      "size": "30ml",
+      "step": "03",
+      "stepLabel": "STEP 03 · PM",
+      "category": "treat-pm",
+      "hero": "0.3% encapsulated retinol — smooths, refines, renews overnight."
+    },
+    {
+      "id": "hydra",
+      "name": "Hydra Cream",
+      "size": "75ml",
+      "step": "04",
+      "stepLabel": "STEP 04",
+      "category": "moisturize",
+      "hero": "Triple-weight hyaluronic + squalane. 72-hour hydration."
+    },
+    {
+      "id": "spf",
+      "name": "Daily Shield SPF",
+      "size": "50ml",
+      "step": "05",
+      "stepLabel": "STEP 05 · AM",
+      "category": "protect",
+      "hero": "Mineral SPF 50 — the single most powerful anti-aging step."
+    }
+  ]
+}

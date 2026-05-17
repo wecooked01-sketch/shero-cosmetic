@@ -1,0 +1,27 @@
+# Architecture Decision Records
+
+Significant architectural decisions for the SHERO COSMETIC landing site,
+recorded in [MADR](https://adr.github.io/madr/) format with Y-Statements.
+
+Read these before making structural changes. If you're about to overturn
+one, supersede it explicitly (new ADR, mark the old one `Superseded by NNNN`).
+
+## Index
+
+| ID | Title | Status | Date |
+|---|---|---|---|
+| [0001](0001-static-brand-landing-no-ecommerce.md) | Static brand landing, no on-page ecommerce | Accepted | 2026-05-17 |
+| [0002](0002-product-data-inline-with-canonical-json.md) | Product data: canonical JSON file + inline embed | Accepted | 2026-05-17 |
+| [0003](0003-cloudflare-pages-hosting.md) | Cloudflare Pages for hosting | Proposed | 2026-05-17 |
+| [0004](0004-klaviyo-for-newsletter.md) | Klaviyo for newsletter capture | Proposed | 2026-05-17 |
+| [0005](0005-cloudflare-web-analytics-privacy-first.md) | Cloudflare Web Analytics (privacy-first) | Proposed | 2026-05-17 |
+| [0006](0006-formspree-for-contact-form.md) | Formspree for the contact form | Proposed | 2026-05-17 |
+| [0007](0007-utm-tagged-outbound-cta-pattern.md) | UTM-tagged outbound CTA pattern | Proposed | 2026-05-17 |
+| [0008](0008-gsap-via-cdn-with-sri.md) | GSAP via CDN with SRI integrity hashes | Accepted | 2026-05-17 |
+
+## Statuses
+
+- **Proposed** — written down, not yet acted on
+- **Accepted** — implemented or in active implementation
+- **Superseded by NNNN** — overturned; the new ADR explains why
+- **Deprecated** — was relevant, no longer applies
