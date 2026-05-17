@@ -19,7 +19,8 @@ one, supersede it explicitly (new ADR, mark the old one `Superseded by NNNN`).
 | [0007](0007-utm-tagged-outbound-cta-pattern.md) | UTM-tagged outbound CTA pattern | Proposed | 2026-05-17 |
 | [0008](0008-gsap-via-cdn-with-sri.md) | GSAP via CDN with SRI integrity hashes | Accepted | 2026-05-17 |
 | [0009](0009-github-pages-staging-then-cloudflare-pages.md) | GitHub Pages for staging; Cloudflare Pages for production | Accepted | 2026-05-17 |
-| [0010](0010-visual-identity-apothecary-bw-manrope.md) | Visual identity pivot: apothecary B&W + Manrope | Accepted | 2026-05-17 |
+| [0010](0010-visual-identity-apothecary-bw-manrope.md) | Visual identity pivot: apothecary B&W + Manrope | Superseded by 0011 | 2026-05-17 |
+| [0011](0011-visual-identity-warm-decorative-photography.md) | Visual identity pivot #2: warm + decorative + photography-led | Accepted | 2026-05-18 |
 
 ## Statuses
 

@@ -1,6 +1,6 @@
 # 0010 — Visual identity pivot: apothecary B&W + Manrope
 
-- **Status:** Accepted (R1 landed; R2/R3/R4 follow as separate batches)
+- **Status:** Superseded by [0011](0011-visual-identity-warm-decorative-photography.md) (2026-05-18 — owner pivoted to a warm + decorative + photography-led aesthetic after reviewing the live R1+R2+R3+R4 build)
 - **Date:** 2026-05-17
 
 ## Y-Statement
