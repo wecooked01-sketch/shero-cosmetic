@@ -29,7 +29,35 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Screen-reader-only utility. Visually hidden, still readable by AT. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* When the user prefers reduced motion, kill all decorative motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .scroll-line::after,
+  .ingredients__note-dot,
+  .press__track {
+    animation: none !important;
+  }
+}
 
 body {
   margin: 0;
@@ -1416,7 +1444,11 @@ button {
   border-radius: 50%;
   display: grid; place-items: center;
   color: var(--ink);
-  transition: all .25s var(--ease);
+  /* Only transition properties the hover state actually animates.
+     `transition: all` would include `visibility`, which makes the button
+     computed-visibility:hidden for 250ms after the panel opens — breaking
+     keyboard focus into the menu. */
+  transition: background .25s var(--ease), color .25s var(--ease);
 }
 .mobile-nav__close svg { width: 20px; height: 20px; }
 .mobile-nav__close:hover { background: var(--cream-deep); color: var(--rose-gold); }

@@ -72,6 +72,10 @@
 </head>
 <body>
 
+<!-- Screen-reader announcer: live region for dynamic content changes
+     (slider, quiz step transitions). Empty by default; populated by script.js. -->
+<div class="sr-only" aria-live="polite" aria-atomic="true" id="a11y-announcer"></div>
+
 <!-- ============ HEADER ============ -->
 <header class="site-header" id="siteHeader">
   <div class="container header__inner">
@@ -139,7 +143,7 @@
     <span>COSMETIC</span>
   </div>
 
-  <div class="hero__slider" id="heroSlider">
+  <div class="hero__slider" id="heroSlider" aria-roledescription="carousel" aria-label="Hero product slider">
 
     <article class="slide is-active" data-index="0">
       <div class="slide__content">
@@ -487,7 +491,7 @@
 
       <!-- Step 1 -->
       <div class="quiz-step is-active" data-step="0">
-        <h3>What's your skin type?</h3>
+        <h3 tabindex="-1">What's your skin type?</h3>
         <p class="quiz-help">Choose the description that feels most true today.</p>
         <div class="quiz-options">
           <button class="quiz-option" data-q="type" data-v="oily"><span class="o-emoji">✦</span><strong>Oily</strong><em>Shiny by midday, prone to breakouts</em></button>
@@ -499,7 +503,7 @@
 
       <!-- Step 2 -->
       <div class="quiz-step" data-step="1">
-        <h3>What's your top concern?</h3>
+        <h3 tabindex="-1">What's your top concern?</h3>
         <p class="quiz-help">Pick the one you'd most love to see change.</p>
         <div class="quiz-options">
           <button class="quiz-option" data-q="concern" data-v="dullness"><span class="o-emoji">☀</span><strong>Dullness</strong><em>I want my glow back</em></button>
@@ -511,7 +515,7 @@
 
       <!-- Step 3 -->
       <div class="quiz-step" data-step="2">
-        <h3>How much time do you have?</h3>
+        <h3 tabindex="-1">How much time do you have?</h3>
         <p class="quiz-help">Honesty wins — we'll match accordingly.</p>
         <div class="quiz-options">
           <button class="quiz-option" data-q="time" data-v="quick"><span class="o-emoji">⏱</span><strong>Quick</strong><em>3 steps · under 2 min</em></button>
@@ -523,7 +527,7 @@
       <!-- Result -->
       <div class="quiz-step quiz-result" data-step="3">
         <span class="result-tag">Your routine</span>
-        <h3 id="resultTitle">The Radiant Reset</h3>
+        <h3 id="resultTitle" tabindex="-1">The Radiant Reset</h3>
         <p id="resultDesc" class="result-desc">A balanced ritual designed to bring back your natural glow with gentle, daily-use formulas.</p>
         <div class="result-products" id="resultProducts"></div>
         <div class="quiz-actions">
@@ -722,7 +726,7 @@
         <textarea id="cMsg" name="message" rows="5" required placeholder="Tell us a little about your skin or your question…"></textarea>
       </div>
       <button class="btn btn--primary btn--full" type="submit">Send message<span class="arrow">→</span></button>
-      <p class="form-note" id="formNote" hidden>Thank you — we'll be in touch within 24 hours.</p>
+      <p class="form-note" id="formNote" role="status" hidden>Thank you — we'll be in touch within 24 hours.</p>
     </form>
   </div>
 </section>

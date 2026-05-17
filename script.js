@@ -7,6 +7,20 @@
 gsap.registerPlugin(ScrollTrigger);
 
 /* ---------- 0. Shared helpers ---------- */
+// Respect the OS-level reduced-motion preference. When true, decorative
+// animations are skipped entirely (we still place elements at their final
+// state). This is WCAG 2.3.3 territory and required for EU EAA compliance.
+const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Polite live-region announcer for dynamic UI changes (slider, quiz steps).
+const a11yAnnouncer = document.getElementById('a11y-announcer');
+function announce(message) {
+  if (!a11yAnnouncer) return;
+  // Toggle textContent to ensure assistive tech picks up consecutive identical strings.
+  a11yAnnouncer.textContent = '';
+  setTimeout(() => { a11yAnnouncer.textContent = message; }, 30);
+}
+
 // Read the inline product data block emitted by index.html. The block is the
 // runtime mirror of data/products.json; if it's missing or malformed we fail
 // soft (quiz result will be empty) rather than killing the whole module.
@@ -49,8 +63,6 @@ let autoTimer  = null;
 const AUTO_MS  = 7000;
 
 function animateSlideIn(slide) {
-  const content = slide.querySelector('.slide__content');
-  const product = slide.querySelector('.slide__product');
   const tag     = slide.querySelector('.slide__tag');
   const title   = slide.querySelector('.slide__title');
   const desc    = slide.querySelector('.slide__desc');
@@ -58,6 +70,13 @@ function animateSlideIn(slide) {
   const meta    = slide.querySelector('.slide__meta');
   const bottle  = slide.querySelector('.bottle');
   const glow    = slide.querySelector('.product-glow');
+
+  // Reduced-motion path: snap everything to the final state, no transition.
+  if (REDUCE_MOTION) {
+    gsap.set([tag, title, desc, actions, meta, bottle, glow],
+             { autoAlpha: 1, y: 0, scale: 1, rotate: 0 });
+    return;
+  }
 
   // Reset positions so the same animation can re-run for each slide
   gsap.set([tag, title, desc, actions, meta], { autoAlpha: 0, y: 40 });
@@ -86,8 +105,18 @@ function goToSlide(idx, { auto = false } = {}) {
   dots[next].classList.add('is-active');
 
   animateSlideIn(slides[next]);
-  current = next;
 
+  // Announce slide change to screen readers (only on manual nav, not auto —
+  // auto-rotation announcements would be noisy). We read innerHTML and convert
+  // <br> to a space; textContent would collapse "Hydra<br>Cream" to "HydraCream"
+  // and innerText returns "" because animateSlideIn just reset opacity to 0.
+  if (!auto) {
+    const titleHtml = slides[next].querySelector('.slide__title')?.innerHTML || '';
+    const title = titleHtml.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').trim().replace(/\s+/g, ' ');
+    if (title) announce(`Showing ${title}. Slide ${next + 1} of ${total}.`);
+  }
+
+  current = next;
   resetAutoplay();
 }
 
@@ -124,64 +153,72 @@ window.addEventListener('load', () => {
   resetAutoplay();
 });
 
-/* ---------- 3. Hero scroll-up: product + big text rise smoothly ---------- */
-gsap.utils.toArray('.slide').forEach((slide) => {
-  const product = slide.querySelector('.slide__product');
-  const content = slide.querySelector('.slide__content');
+/* ---------- 3. Hero scroll-up: product + big text rise smoothly ----------
+   Scroll-driven parallax is the kind of motion that can trigger vestibular
+   discomfort. Skip the whole block when reduced motion is requested. */
+if (!REDUCE_MOTION) {
+  gsap.utils.toArray('.slide').forEach((slide) => {
+    const product = slide.querySelector('.slide__product');
+    const content = slide.querySelector('.slide__content');
 
-  gsap.to(product, {
-    yPercent: -45,
-    scale: .85,
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: hero,
-      start:   'top top',
-      end:     'bottom top',
-      scrub:   true,
-    },
+    gsap.to(product, {
+      yPercent: -45,
+      scale: .85,
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: hero,
+        start:   'top top',
+        end:     'bottom top',
+        scrub:   true,
+      },
+    });
+
+    gsap.to(content, {
+      yPercent: -25,
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: hero,
+        start:   'top top',
+        end:     'bottom top',
+        scrub:   true,
+      },
+    });
   });
 
-  gsap.to(content, {
-    yPercent: -25,
+  // Big "SHERO COSMETIC" wordmark — slow parallax, drifts up & fades as hero leaves
+  gsap.to('.hero__bg-text span:first-child', {
+    yPercent: -60,
+    letterSpacing: '.04em',
     opacity: 0,
     ease: 'none',
-    scrollTrigger: {
-      trigger: hero,
-      start:   'top top',
-      end:     'bottom top',
-      scrub:   true,
-    },
+    scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
   });
-});
+  gsap.to('.hero__bg-text span:last-child', {
+    yPercent: -30,
+    letterSpacing: '.06em',
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
+  });
 
-// Big "SHERO COSMETIC" wordmark — slow parallax, drifts up & fades as hero leaves
-gsap.to('.hero__bg-text span:first-child', {
-  yPercent: -60,
-  letterSpacing: '.04em',
-  opacity: 0,
-  ease: 'none',
-  scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
-});
-gsap.to('.hero__bg-text span:last-child', {
-  yPercent: -30,
-  letterSpacing: '.06em',
-  opacity: 0,
-  ease: 'none',
-  scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
-});
-
-// Fade out scroll hint quickly
-gsap.to('.hero__scroll-hint', {
-  opacity: 0,
-  y: 40,
-  ease: 'none',
-  scrollTrigger: { trigger: hero, start: 'top top', end: '20% top', scrub: true },
-});
+  // Fade out scroll hint quickly
+  gsap.to('.hero__scroll-hint', {
+    opacity: 0,
+    y: 40,
+    ease: 'none',
+    scrollTrigger: { trigger: hero, start: 'top top', end: '20% top', scrub: true },
+  });
+}
 
 /* ---------- 4. Section reveal animations (bulletproof pattern) ---------- */
-// Helper: fromTo + immediateRender:false + once:true survives ScrollTrigger.refresh()
+// Helper: fromTo + immediateRender:false + once:true survives ScrollTrigger.refresh().
+// Reduced-motion path: just set the final state immediately, skip the transition.
 function reveal(target, fromVars, toVars, st) {
+  if (REDUCE_MOTION) {
+    return gsap.set(target, toVars);
+  }
   return gsap.fromTo(target, fromVars, {
     ...toVars,
     immediateRender: false,
@@ -207,10 +244,12 @@ reveal('.about__leaf',
 );
 
 // Floating leaf parallax (scrub — separate concern, no reveal pattern needed)
-gsap.to('.about__leaf', {
-  y: -50, rotation: 4, ease: 'none',
-  scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true },
-});
+if (!REDUCE_MOTION) {
+  gsap.to('.about__leaf', {
+    y: -50, rotation: 4, ease: 'none',
+    scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true },
+  });
+}
 
 // Quiz card
 reveal('.quiz .section-head > *',
@@ -283,12 +322,25 @@ function showQuizStep(idx) {
   if (quizBack) quizBack.disabled = idx === 0;
   quizIdx = idx;
 
-  // Animate step in
+  // Animate step in (or just show if reduced motion)
   const active = quizSteps[idx];
-  gsap.fromTo(active,
-    { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: .5, ease: 'power3.out' }
-  );
+  if (REDUCE_MOTION) {
+    gsap.set(active, { opacity: 1, y: 0 });
+  } else {
+    gsap.fromTo(active,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: .5, ease: 'power3.out' }
+    );
+  }
+
+  // Move focus into the new step's heading so screen-reader and keyboard users
+  // land on the new content. Announce the change politely as a backstop.
+  const heading = active?.querySelector('h3');
+  if (heading) {
+    heading.focus({ preventScroll: true });
+    const label = idx === 3 ? 'Quiz result' : `Quiz step ${idx + 1} of 3`;
+    announce(`${label}: ${heading.textContent.trim()}`);
+  }
 }
 
 document.querySelectorAll('.quiz-option').forEach((opt) => {
@@ -385,7 +437,7 @@ contactForm?.addEventListener('submit', (e) => {
   contactForm.reset();
 });
 
-/* ---------- 7. Smooth scroll for in-page anchors (covers reduced-motion fallback) ---------- */
+/* ---------- 7. Smooth scroll for in-page anchors (respects reduced-motion) ---------- */
 document.querySelectorAll('a[href^="#"]').forEach((a) => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');
@@ -393,7 +445,10 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    target.scrollIntoView({
+      behavior: REDUCE_MOTION ? 'auto' : 'smooth',
+      block: 'start',
+    });
   });
 });
 
@@ -403,18 +458,45 @@ const menuBtn        = document.getElementById('menuBtn');
 const mobileNavClose = document.getElementById('mobileNavClose');
 const mobileOverlay  = document.getElementById('mobileNavOverlay');
 
+// Remember the element that opened the menu so we can return focus on close.
+let lastFocusBeforeNav = null;
+
+// Tabbable elements inside the open mobile nav, used by the focus trap.
+// Excludes anything still transitioning to visibility:visible (otherwise
+// the first focus call lands on an element the browser refuses to focus).
+function mobileNavFocusables() {
+  if (!mobileNav) return [];
+  return Array.from(mobileNav.querySelectorAll(
+    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter((el) => {
+    if (el.hasAttribute('hidden')) return false;
+    const cs = getComputedStyle(el);
+    return cs.visibility !== 'hidden' && cs.display !== 'none';
+  });
+}
+
 function openMobileNav() {
+  if (!mobileNav) return;
+  lastFocusBeforeNav = document.activeElement;
   mobileNav.classList.add('is-open');
   mobileNav.setAttribute('aria-hidden', 'false');
-  menuBtn.setAttribute('aria-expanded', 'true');
+  menuBtn?.setAttribute('aria-expanded', 'true');
   document.body.classList.add('is-locked');
+  // Move focus into the panel so keyboard users can actually use the menu.
+  const first = mobileNavFocusables()[0];
+  setTimeout(() => first?.focus(), 50);
 }
+
 function closeMobileNav() {
+  if (!mobileNav) return;
   mobileNav.classList.remove('is-open');
   mobileNav.setAttribute('aria-hidden', 'true');
-  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn?.setAttribute('aria-expanded', 'false');
   document.body.classList.remove('is-locked');
+  // Return focus to whatever triggered the open, or the menu button as fallback.
+  (lastFocusBeforeNav instanceof HTMLElement ? lastFocusBeforeNav : menuBtn)?.focus();
 }
+
 menuBtn?.addEventListener('click', () => {
   if (!mobileNav) return;
   mobileNav.classList.contains('is-open') ? closeMobileNav() : openMobileNav();
@@ -425,9 +507,25 @@ mobileOverlay?.addEventListener('click', closeMobileNav);
 mobileNav?.querySelectorAll('.mobile-nav__links a, .mobile-nav__cta a').forEach((a) => {
   a.addEventListener('click', () => setTimeout(closeMobileNav, 50));
 });
-// Escape to close
+
+// Keyboard handling while the mobile nav is open: Escape closes, Tab wraps.
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && mobileNav?.classList.contains('is-open')) closeMobileNav();
+  if (!mobileNav?.classList.contains('is-open')) return;
+  if (e.key === 'Escape') { closeMobileNav(); return; }
+  if (e.key !== 'Tab') return;
+
+  const items = mobileNavFocusables();
+  if (items.length === 0) return;
+  const first = items[0];
+  const last  = items[items.length - 1];
+
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 });
 
 /* ---------- 9. Testimonials carousel ---------- */
