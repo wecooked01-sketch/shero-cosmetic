@@ -260,15 +260,36 @@ function reveal(target, fromVars, toVars, st) {
   });
 }
 
+// Mask-style reveal: text/element rises in from below a horizontal line.
+// inset(100% 0 0 0) clips from the top (so only the bottom edge is visible to
+// start); animating top from 100% to 0 reveals upward — text appears to rise.
+// Pair with a small upward y for the lift. Reduced-motion path snaps to final.
+function revealMask(target, st, opts = {}) {
+  const duration = opts.duration ?? 1.0;
+  const stagger  = opts.stagger  ?? 0.08;
+  const y        = opts.y        ?? 14;
+  if (REDUCE_MOTION) {
+    return gsap.set(target, { clipPath: 'inset(0 0 0 0)', y: 0, opacity: 1 });
+  }
+  return gsap.fromTo(target,
+    { clipPath: 'inset(100% 0 0 0)', y, opacity: 1 },
+    {
+      clipPath: 'inset(0 0 0 0)',
+      y: 0,
+      duration,
+      ease: 'power3.out',
+      stagger,
+      immediateRender: false,
+      scrollTrigger: { once: true, toggleActions: 'play none none none', ...st },
+    }
+  );
+}
+
 // About
-reveal('.about__text > *',
-  { y: 50, opacity: 0 },
-  { y: 0, opacity: 1, duration: .9, ease: 'power3.out', stagger: .12 },
-  { trigger: '.about', start: 'top 75%' }
-);
+revealMask('.about__text > *', { trigger: '.about', start: 'top 75%' }, { stagger: .12 });
 reveal('.about__visual',
-  { scale: .85, opacity: 0 },
-  { scale: 1, opacity: 1, duration: 1.2, ease: 'power3.out' },
+  { clipPath: 'inset(0 100% 0 0)', opacity: 1 },
+  { clipPath: 'inset(0 0 0 0)', duration: 1.2, ease: 'power3.out' },
   { trigger: '.about', start: 'top 75%' }
 );
 reveal('.about__leaf',
@@ -286,28 +307,15 @@ if (!REDUCE_MOTION) {
 }
 
 // Quiz card
-reveal('.quiz .section-head > *',
-  { y: 40, opacity: 0 },
-  { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .1 },
-  { trigger: '.quiz', start: 'top 75%' }
-);
+revealMask('.quiz .section-head > *', { trigger: '.quiz', start: 'top 75%' }, { stagger: .1 });
 reveal('.quiz__card',
   { y: 60, opacity: 0 },
   { y: 0, opacity: 1, duration: 1, ease: 'power3.out' },
   { trigger: '.quiz__card', start: 'top 80%' }
 );
 
-// Routine
-reveal('.routine .section-head > *',
-  { y: 40, opacity: 0 },
-  { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .1 },
-  { trigger: '.routine', start: 'top 75%' }
-);
-reveal('.routine-step',
-  { y: 80, opacity: 0 },
-  { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .1 },
-  { trigger: '.routine__steps', start: 'top 80%' }
-);
+// Routine (the routine-step entries are handled by the sticky-scrub block below)
+revealMask('.routine .section-head > *', { trigger: '.routine', start: 'top 75%' }, { stagger: .1 });
 reveal('.routine__cta',
   { y: 50, opacity: 0 },
   { y: 0, opacity: 1, duration: .9, ease: 'power3.out' },
@@ -315,11 +323,7 @@ reveal('.routine__cta',
 );
 
 // Contact
-reveal('.contact__intro > *',
-  { y: 40, opacity: 0 },
-  { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .1 },
-  { trigger: '.contact', start: 'top 75%' }
-);
+revealMask('.contact__intro > *', { trigger: '.contact', start: 'top 75%' }, { stagger: .1 });
 reveal('.contact__form',
   { y: 60, opacity: 0 },
   { y: 0, opacity: 1, duration: 1, ease: 'power3.out' },
@@ -612,14 +616,10 @@ reveal('.press',
 );
 
 // Ingredients
-reveal('.ingredients .section-head > *',
-  { y: 40, opacity: 0 },
-  { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .1 },
-  { trigger: '.ingredients', start: 'top 75%' }
-);
+revealMask('.ingredients .section-head > *', { trigger: '.ingredients', start: 'top 75%' }, { stagger: .1 });
 reveal('.ingredient',
-  { y: 60, opacity: 0 },
-  { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .1 },
+  { clipPath: 'inset(100% 0 0 0)', y: 30, opacity: 1 },
+  { clipPath: 'inset(0 0 0 0)', y: 0, duration: 1, ease: 'power3.out', stagger: .12 },
   { trigger: '.ingredients__grid', start: 'top 85%' }
 );
 reveal('.ingredients__note',
@@ -629,11 +629,7 @@ reveal('.ingredients__note',
 );
 
 // Testimonials
-reveal('.testimonials .section-head > *',
-  { y: 40, opacity: 0 },
-  { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .1 },
-  { trigger: '.testimonials', start: 'top 75%' }
-);
+revealMask('.testimonials .section-head > *', { trigger: '.testimonials', start: 'top 75%' }, { stagger: .1 });
 reveal('.testimonials__rating',
   { y: 20, opacity: 0 },
   { y: 0, opacity: 1, duration: .7, ease: 'power3.out' },
@@ -645,7 +641,127 @@ reveal('.testimonials__viewport',
   { trigger: '.testimonials__viewport', start: 'top 85%' }
 );
 
-/* ---------- 11. Refresh once after fonts load so trigger positions are accurate ---------- */
+/* ---------- 11. Magnetic CTAs ----------
+   Buttons subtly drift toward the cursor. Strength tuned to ~6px max drift —
+   enough to feel alive, not so much that it pulls attention from the label.
+   Skipped on touch devices (no mouse cursor) and when reduced-motion is set. */
+const SUPPORTS_HOVER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if (!REDUCE_MOTION && SUPPORTS_HOVER) {
+  const magneticTargets = document.querySelectorAll(
+    '.btn--primary, .btn--ghost, .slider-arrow, .arrow-btn'
+  );
+  magneticTargets.forEach((el) => {
+    const STRENGTH = 0.22; // ~6px drift at typical hover distance
+    let raf = null;
+    let pending = null;
+
+    function onMove(e) {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      pending = { x: x * STRENGTH, y: y * STRENGTH };
+      if (!raf) {
+        raf = requestAnimationFrame(() => {
+          gsap.to(el, { x: pending.x, y: pending.y, duration: .5, ease: 'power3.out' });
+          raf = null;
+        });
+      }
+    }
+    function onLeave() {
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      gsap.to(el, { x: 0, y: 0, duration: .8, ease: 'elastic.out(1, .4)' });
+    }
+
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('mouseleave', onLeave);
+  });
+}
+
+/* ---------- 12. Hero cursor-follow parallax (desktop only) ----------
+   As the cursor moves across the hero, the bottle drifts opposite (background
+   parallax) and the content drifts with the cursor by a smaller amount. The
+   effect is subtle — depth, not motion sickness. Skipped on touch + reduced. */
+if (!REDUCE_MOTION && SUPPORTS_HOVER) {
+  const heroEl = document.getElementById('hero');
+  if (heroEl) {
+    let raf = null;
+    let pending = null;
+
+    function applyParallax() {
+      if (!pending) { raf = null; return; }
+      const activeSlide = heroEl.querySelector('.slide.is-active');
+      const bottle = activeSlide?.querySelector('.bottle');
+      const bgText = heroEl.querySelector('.hero__bg-text');
+      if (bottle) gsap.to(bottle, { x: pending.x * -16, y: pending.y * -8, duration: 1, ease: 'power3.out', overwrite: 'auto' });
+      if (bgText) gsap.to(bgText, { x: pending.x * 24, y: pending.y * 12, duration: 1.2, ease: 'power3.out', overwrite: 'auto' });
+      raf = null;
+    }
+
+    heroEl.addEventListener('mousemove', (e) => {
+      const rect = heroEl.getBoundingClientRect();
+      pending = {
+        x: (e.clientX - rect.left - rect.width / 2) / rect.width,
+        y: (e.clientY - rect.top - rect.height / 2) / rect.height,
+      };
+      if (!raf) raf = requestAnimationFrame(applyParallax);
+    });
+
+    heroEl.addEventListener('mouseleave', () => {
+      pending = null;
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      const activeSlide = heroEl.querySelector('.slide.is-active');
+      gsap.to([activeSlide?.querySelector('.bottle'), heroEl.querySelector('.hero__bg-text')].filter(Boolean),
+              { x: 0, y: 0, duration: 1.2, ease: 'power3.out' });
+    });
+  }
+}
+
+/* ---------- 13. Routine 5-step sticky scrub (desktop only) ----------
+   The routine section pins for the length of the reveal, then scrubs the five
+   step cards in one by one as the user scrolls. Mobile and reduced-motion fall
+   back to the regular reveal (no pin, no scrub). gsap.matchMedia is reactive:
+   resizing across the breakpoint cleans up the previous setup and rebuilds. */
+gsap.matchMedia().add({
+  desktop:        '(min-width: 900px) and (prefers-reduced-motion: no-preference)',
+  mobileOrReduce: '(max-width: 899px), (prefers-reduced-motion: reduce)',
+}, (ctx) => {
+  const routineSteps = gsap.utils.toArray('.routine-step');
+  if (!routineSteps.length) return;
+
+  if (ctx.conditions.desktop) {
+    // Sticky scrub. Steps start hidden via clipPath; timeline scrubs them in.
+    gsap.set(routineSteps, { clipPath: 'inset(100% 0 0 0)', y: 30, opacity: 1 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.routine',
+        start: 'top top',
+        end: '+=140%',
+        pin: true,
+        scrub: 0.6,
+        anticipatePin: 1,
+      },
+    });
+    routineSteps.forEach((step, i) => {
+      const isFeature = step.classList.contains('routine-step--feature');
+      tl.to(step, {
+        clipPath: 'inset(0 0 0 0)',
+        y: 0,
+        duration: isFeature ? 1.4 : 1,
+        ease: 'power3.out',
+      }, i * 0.8);
+    });
+  } else {
+    // Fallback: classic stagger-up mask reveal, no pinning.
+    reveal('.routine-step',
+      { clipPath: 'inset(100% 0 0 0)', y: 30, opacity: 1 },
+      { clipPath: 'inset(0 0 0 0)', y: 0, duration: .9, ease: 'power3.out', stagger: .1 },
+      { trigger: '.routine__steps', start: 'top 80%' }
+    );
+  }
+});
+
+/* ---------- 14. Refresh once after fonts load so trigger positions are accurate ---------- */
 // (once:true on reveals ensures completed tweens stay completed across refreshes)
 if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(() => ScrollTrigger.refresh());

@@ -168,11 +168,26 @@ Triggered by owner's "redesign the UI UX" + B&W + Manrope + dark mode
   treatment, theme-adaptive
 - ✅ .about__circle gradient swapped to neutral bg-alt → line
 
-### R3 — Animation rework ⏳
-- Replace opacity+y entries with mask reveals
-- Magnetic CTAs (~6px drift toward cursor)
-- Cursor-follow on hero (desktop only)
-- Sticky scrub on the routine 5-step section
+### R3 — Animation rework ✅ (done 2026-05-18)
+- ✅ `revealMask()` helper added — clip-path `inset(100% 0 0 0)` → `inset(0 0 0 0)`
+  + small upward y for the "rise from baseline" mask reveal pattern.
+  Honors REDUCE_MOTION (snaps to final state, no tween).
+- ✅ All section-head titles, eyebrows, leads use the mask reveal:
+  about, quiz, routine, contact, ingredients, testimonials.
+- ✅ `.about__visual` and `.ingredient` cards converted from opacity+y
+  to clip-path reveals (wipe-in patterns).
+- ✅ Magnetic CTAs — `.btn--primary`, `.btn--ghost`, `.slider-arrow` drift
+  toward cursor (~6px max via 0.22 strength). Uses rAF throttling + GSAP
+  with elastic.out release on mouseleave. Skipped on touch (no
+  `hover: hover` / `pointer: fine`) and on REDUCE_MOTION.
+- ✅ Hero cursor-follow parallax — bottle drifts opposite to cursor
+  (background-layer parallax), bg-text wordmark drifts WITH cursor
+  (foreground-layer). Desktop only; subtle (under 20px max).
+- ✅ Routine 5-step sticky scrub — uses `gsap.matchMedia` so it's
+  reactive: pin + scrub on `(min-width: 900px)`, falls back to
+  stagger-up mask reveal on mobile or with reduced motion. Pin
+  duration `+=140%` of viewport height. Feature step (03 Treat)
+  gets a slightly longer reveal duration for emphasis.
 
 ### R4 — Section-level UI/UX polish ✅ (done 2026-05-18)
 - ✅ Press marquee: dropped `.press-logo--script` and `.press-logo--serif`

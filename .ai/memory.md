@@ -47,20 +47,21 @@ Bugs found during onboarding:
    is missing. All IDs currently exist; added optional-chaining for safety.
 3. GSAP CDN scripts had no SRI integrity hashes. Fixed in Phase 0.
 
-## Current status — 2026-05-18 (R4 complete, R3 queued)
+## Current status — 2026-05-18 (R1+R2+R3+R4 all live)
 
-Owner picked R4 — Section-level polish — over R3 — Animation rework.
-R4 is now committed locally; ready to push when the owner is ready.
-The next decision is whether to start R3 next or pause and review
-R1+R2+R4 on staging first.
+Phase R — the full visual identity redesign — is complete. R3 lands
+the animation rework; R4 landed the section-level polish; both went
+live on staging in the same session. The whole apothecary pass is
+now in production-ready state pending the upstream blockers (store
+URL + DNS) tracked below.
 
 ### What's done
 - Phases 0, 1, 3 (UI/UX pass — Batches 1–4), 5 (staging), redesign
   R1 (B&W tokens + dark mode + Manrope), R2 (bottle + leaf SVGs
-  to line-art), and now R4 (section-level apothecary polish —
-  press marquee uniformity, quiz card, footer/newsletter, hero
-  composition).
-- Pre-R4 commit: `8064ea3` (R2). R4 commit lands this session.
+  to line-art), R4 (section-level apothecary polish), and R3
+  (mask reveals + magnetic CTAs + hero cursor-follow + routine
+  sticky scrub) — all committed.
+- Pre-R3 commit: `54ee871` (R4). R3 commit lands this session.
 
 ### Live URLs
 - **Staging (with R1 + R2 redesign):**
@@ -70,13 +71,14 @@ R1+R2+R4 on staging first.
 
 ### Pending question (owner to answer next session)
 
-"R3 next, or pause to review R1+R2+R4 live first?"
+"What's next now that Phase R is done?"
 
 | Option | Status | Estimate |
 |---|---|---|
-| R3 — Animation rework (mask reveals, magnetic CTAs, cursor-follow on hero, sticky scrub on routine 5-step) | Queued | 3–6 hr |
-| Pause to push R4 to staging and review the whole apothecary pass | | — |
-| Phase 4 — Legal pages (privacy/terms/KVKK/cookie) | Can run in parallel | 2–4 hr |
+| Phase 4 — Legal pages (privacy/terms/KVKK/cookie) | Unblocked | 2–4 hr |
+| Phase 2 — Real integrations (Klaviyo / Formspree / CF Analytics / UTM-tagged outbound) | Blocked on store URL + accounts | 2–4 hr |
+| Production migration (Cloudflare Pages + custom domain) | Blocked on DNS + account | 30 min once unblocked |
+| Backlog cleanup — token renaming (`--rose-gold` → neutrals), favicons, Lighthouse run | Source-readability + polish | 1–3 hr |
 
 ### Known state to watch for
 - R1+R2+R4 visuals coherent in both light and dark mode. Verified
@@ -110,6 +112,16 @@ R1+R2+R4 on staging first.
   verification, snap manually first:
   `document.querySelectorAll('.slide *').forEach(el => { el.style.opacity = '1'; el.style.visibility = 'visible'; el.style.transform = 'none'; })`
   This is a preview-tooling quirk, NOT a regression in the site.
+- R3 sticky scrub uses `gsap.matchMedia` so it's reactive on
+  resize. ScrollTrigger pin uses `+=140%` of viewport — section
+  pins for ~1.4× viewport-height of scroll. The `pin-spacer`
+  div ScrollTrigger inserts is what makes the page taller. Don't
+  worry if the page's total scroll height jumps after R3 — that's
+  the pin spacer doing its job.
+- Magnetic CTAs use raw GSAP `x`/`y` translates. Don't combine
+  with CSS `transform: translateY(...)` on the same buttons —
+  GSAP would clobber it. Use `gsap.set` if you need to add a
+  baseline transform.
 
 ### Two upstream blockers from earlier (still pending)
 1. **External store URL** for Phase 2 integrations + CTA UTM hooks.
