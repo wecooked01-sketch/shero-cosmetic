@@ -174,11 +174,34 @@ Triggered by owner's "redesign the UI UX" + B&W + Manrope + dark mode
 - Cursor-follow on hero (desktop only)
 - Sticky scrub on the routine 5-step section
 
-### R4 — Section-level UI/UX polish ⏳
-- Hero composition rethink (current grid was tuned for warm-luxe)
-- Quiz card visual treatment under apothecary
-- Footer / newsletter polish
-- Press marquee — drop the script/serif font variants (Manrope-only now)
+### R4 — Section-level UI/UX polish ✅ (done 2026-05-18)
+- ✅ Press marquee: dropped `.press-logo--script` and `.press-logo--serif`
+  variants. All seven logos now uniform uppercase Manrope 600 / 15px /
+  4px tracking — reads as an editorial credits row. Bg switched from
+  `--cream` to `--bg-alt` for subtle layering against the hero. Mobile
+  sizing tightened (12px / 3px tracking).
+- ✅ Quiz card: tightened from `--radius-lg` (24px) → `--radius` (14px)
+  with a hairline border and `--shadow-soft`. Progress bar gradient
+  (blush→rose-gold) replaced with solid `--ink` fill. Steps row tightened
+  to 10px / 3px tracking, active-state bolds + ink instead of color shift.
+  Option cards: background to `--bg-alt`, transparent → `--line` borders,
+  hover swaps to `--surface` + `--ink-mute` border (no heavy translate
+  + box-shadow lift). Result tag is now an underlined eyebrow.
+- ✅ Footer + newsletter: padding rebalanced. Removed the `padding-left:
+  4px` slide-on-hover (jittery). Newsletter switched from rounded-pill
+  with filled button to apothecary underline-only form (matches the
+  `.field` pattern used in the contact form). Submit button is text-link
+  with letter-spacing micro-animation on hover.
+- ✅ Hero composition: dropped the two radial gradients (`--blush-soft` +
+  `--cream-deep` wash) in favor of flat `--bg`. Background "SHERO
+  COSMETIC" wordmark now uses `currentColor` + `opacity: .08/.055` so
+  it reads correctly in both light and dark (was hardcoded rgba, near-
+  invisible in dark). Slide tag demoted from blur-pill to leading-dash
+  + caps editorial label. Slide title second word wrapped in `<span>`
+  (the old `br + *` selector was a no-op — no element siblings of
+  `<br>`) so the italic + `--ink-soft` rule actually applies. Result:
+  "Radiance / Serum" reads with proper typographic contrast instead
+  of identical-weight ink wall.
 
 ## Phase 6 — Content / product expansion (optional) ⏳
 

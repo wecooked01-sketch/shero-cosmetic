@@ -1,6 +1,6 @@
 # SHERO COSMETIC — Project Memory
 
-**Last updated:** 2026-05-17
+**Last updated:** 2026-05-18
 **Owner:** wickedbro (wecooked01@gmail.com)
 **Location:** `/Users/wickedbro/Desktop/Tasarım/SHERO COSMETIC/Website`
 
@@ -47,18 +47,20 @@ Bugs found during onboarding:
    is missing. All IDs currently exist; added optional-chaining for safety.
 3. GSAP CDN scripts had no SRI integrity hashes. Fixed in Phase 0.
 
-## Current status — 2026-05-17 (paused awaiting owner, NEW CHAT incoming)
+## Current status — 2026-05-18 (R4 complete, R3 queued)
 
-The owner is starting a fresh chat to continue. R1 + R2 of the
-visual-identity redesign are **both live on staging**; R3 and R4
-are still queued. The next session resumes from the R3-vs-R4-vs-pause
-decision.
+Owner picked R4 — Section-level polish — over R3 — Animation rework.
+R4 is now committed locally; ready to push when the owner is ready.
+The next decision is whether to start R3 next or pause and review
+R1+R2+R4 on staging first.
 
 ### What's done
 - Phases 0, 1, 3 (UI/UX pass — Batches 1–4), 5 (staging), redesign
-  R1 (B&W tokens + dark mode + Manrope), and redesign R2 (bottle
-  + leaf SVGs to line-art) — all committed and pushed.
-- Latest commit on `main` is the R2 commit `8064ea3`.
+  R1 (B&W tokens + dark mode + Manrope), R2 (bottle + leaf SVGs
+  to line-art), and now R4 (section-level apothecary polish —
+  press marquee uniformity, quiz card, footer/newsletter, hero
+  composition).
+- Pre-R4 commit: `8064ea3` (R2). R4 commit lands this session.
 
 ### Live URLs
 - **Staging (with R1 + R2 redesign):**
@@ -68,22 +70,18 @@ decision.
 
 ### Pending question (owner to answer next session)
 
-"Which redesign batch next?"
+"R3 next, or pause to review R1+R2+R4 live first?"
 
 | Option | Status | Estimate |
 |---|---|---|
-| R3 — Animation rework (mask reveals, magnetic CTAs, cursor-follow on hero, sticky scrub on routine 5-step) | Bigger, more dramatic | 3–6 hr |
-| R4 — Section-level polish (hero composition rethink, quiz card treatment, press marquee variant cleanup, footer/newsletter) | Smaller, more bounded | 2–4 hr |
-| Pause to review R1+R2 live first | | — |
-
-The owner asked us to wait (literal words: "wait here remember where
-we left. I will start a new chat to continue this project"). Re-ask
-the R3-vs-R4 question politely on next session unless they bring up
-something different.
+| R3 — Animation rework (mask reveals, magnetic CTAs, cursor-follow on hero, sticky scrub on routine 5-step) | Queued | 3–6 hr |
+| Pause to push R4 to staging and review the whole apothecary pass | | — |
+| Phase 4 — Legal pages (privacy/terms/KVKK/cookie) | Can run in parallel | 2–4 hr |
 
 ### Known state to watch for
-- R1 + R2 visuals coherent in both light and dark mode. Verified
-  in preview at desktop and mobile (375×812 and ~360 narrow).
+- R1+R2+R4 visuals coherent in both light and dark mode. Verified
+  in preview at desktop (1440×900) and mobile (375×812). Dark mode
+  hero verified end-to-end via screenshot.
 - The `--rose-gold`, `--blush`, `--cream` etc. tokens are now
   backward-compat aliases pointing at the neutral tokens. Existing
   selectors keep working. Cleanup pass to rename properly is in
@@ -93,16 +91,25 @@ something different.
 - The `.product-glow` div is in DOM (animateSlideIn still targets
   it) but visibility:hidden + 0×0 so it has no paint. Don't
   remove from HTML — would break the GSAP animation timeline.
-- The hero's big bg-text "SHERO COSMETIC" wordmark uses rgba(22,
-  22, 20, low-alpha) — visible in light, very subtle in dark.
-  Owner hasn't complained but if they want it more visible in
-  dark, use a theme-aware token instead.
+- R4 swapped the hero bg-text from hardcoded rgba gradient to
+  `color: var(--ink)` + `opacity: .08 / .055` so it theme-adapts.
 - Hardcoded `rgba(0,0,0,.12)` on `.bottle` drop-shadow is
   intentional — in dark mode it's near-invisible, which matches
   the apothecary-flat aesthetic. Don't "fix" without confirming.
 - Search icon hidden on mobile (`<= 820px`) because it's
   non-functional and the new theme toggle needed the row space.
   Re-show when search is wired up.
+- The `.slide__title br + *` selector was a silent no-op for
+  months (a `<br>` is followed by a text node, not an element).
+  R4 wrapped each slide title's second word in a `<span>` so the
+  italic + ink-soft typographic contrast actually applies. If
+  you add new slides, keep that pattern: `Title<br/><span>Word</span>`.
+- The headless preview server has a quirk: GSAP's RAF loop does
+  not tick reliably, so slide entry animations stall at
+  `autoAlpha: 0`. Real browsers are fine. To screenshot for
+  verification, snap manually first:
+  `document.querySelectorAll('.slide *').forEach(el => { el.style.opacity = '1'; el.style.visibility = 'visible'; el.style.transform = 'none'; })`
+  This is a preview-tooling quirk, NOT a regression in the site.
 
 ### Two upstream blockers from earlier (still pending)
 1. **External store URL** for Phase 2 integrations + CTA UTM hooks.
