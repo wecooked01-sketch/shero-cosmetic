@@ -997,6 +997,190 @@ input, textarea, select { font-family: inherit; font-size: inherit; color: inher
 
 body.is-locked { overflow: hidden; }
 
+/* ====================== Legal pages (privacy / terms / cookies / shipping / accessibility) ====================== */
+
+.legal-page {
+  padding: 64px 0 96px;
+}
+.legal-page__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.legal-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.legal-page__back:hover { color: var(--accent); }
+
+.legal-page__header {
+  margin-bottom: 40px;
+}
+.legal-page__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.legal-page__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+.legal-page__meta {
+  font-size: 13px;
+  color: var(--ink-mute);
+  letter-spacing: 0.5px;
+}
+.legal-page__meta strong { color: var(--ink-soft); font-weight: 600; }
+
+.legal-draft {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  margin-bottom: 36px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--accent-deep);
+}
+.legal-draft strong { font-weight: 700; }
+.legal-draft__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+}
+
+.legal-toc {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin: 0 0 48px;
+  box-shadow: var(--shadow-soft);
+}
+.legal-toc h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0 0 14px;
+}
+.legal-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: toc;
+}
+.legal-toc li {
+  counter-increment: toc;
+  padding: 6px 0;
+}
+.legal-toc li::before {
+  content: counter(toc, decimal-leading-zero) " · ";
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-right: 4px;
+}
+.legal-toc a {
+  font-size: .95rem;
+  color: var(--ink);
+}
+.legal-toc a:hover { color: var(--accent); }
+
+.legal-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.legal-body h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 56px 0 16px;
+  scroll-margin-top: 100px;
+}
+.legal-body h2:first-child { margin-top: 0; }
+.legal-body h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin: 32px 0 10px;
+}
+.legal-body p { margin: 0 0 16px; }
+.legal-body ul,
+.legal-body ol {
+  margin: 0 0 20px;
+  padding-left: 22px;
+}
+.legal-body li { margin-bottom: 8px; }
+.legal-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal-body a:hover { color: var(--accent-deep); }
+.legal-body strong { color: var(--ink); font-weight: 700; }
+
+.legal-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: .92rem;
+}
+.legal-body th,
+.legal-body td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.legal-body th {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.legal-body__contact {
+  margin-top: 56px;
+  padding: 28px 32px;
+  background: var(--bg-sand);
+  border-radius: var(--radius-lg);
+}
+.legal-body__contact p { margin: 0; color: var(--ink); }
+
+@media (max-width: 820px) {
+  .legal-page { padding: 48px 0 64px; }
+  .legal-toc { padding: 20px 22px; margin-bottom: 36px; }
+  .legal-body__contact { padding: 22px 24px; }
+}
+
 /* ====================== Stub sections (foundation only) ======================
    While each section is still in queue, render a soft-card placeholder so the
    page reads as a roadmap, not as broken. These rules are removed as each

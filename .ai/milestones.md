@@ -104,13 +104,25 @@
 - Full keyboard-traversal manual audit (preview can't reliably
   simulate Tab key)
 
-## Phase 4 — Legal + compliance ⏳
+## Phase 4 — Legal + compliance ✅ (drafts shipped 2026-05-18, pending legal review)
 
-- Privacy policy (KVKK + GDPR)
-- Terms of use
-- Cookie policy + (only if needed) consent banner
-- Accessibility statement
-- Imprint (depends on jurisdictions targeted)
+Five legal pages created at the root, all marked noindex with a
+prominent draft banner. See [ADR-0012](../docs/decisions/0012-legal-pages-as-noindex-drafts.md)
+for the pre-launch review gate.
+
+- ✅ `privacy.html` — KVKK + GDPR-compatible
+- ✅ `terms.html` — governing law = Turkey
+- ✅ `cookies.html` — honest about the privacy-first stack (no
+  tracking cookies, only `shero-theme` in localStorage)
+- ✅ `shipping.html` — defers to retailer (no on-site checkout)
+- ✅ `accessibility.html` — WCAG 2.1 AA target + known limitations
+- ✅ Footer in `index.html` wired to the five pages
+- ✅ Each legal page has cross-page footer navigation
+- ✅ ADR-0012 records the noindex-draft strategy + review checklist
+- ⏳ Legal counsel review (owner-blocked)
+- ⏳ Flip noindex → index when counsel signs off
+- ⏳ Add legal pages to `sitemap.xml` at production launch
+- ⏳ Imprint page (depends on jurisdictions targeted — not yet added)
 
 ## Phase 5 — Deploy 🔄 (staging done, production migration pending)
 

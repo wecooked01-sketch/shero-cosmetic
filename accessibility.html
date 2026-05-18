@@ -1,0 +1,160 @@
+<!--
+  DRAFT TEMPLATE — must be reviewed before the site goes index/follow.
+  Targets WCAG 2.1 AA. The list of "known issues" should be honestly
+  updated as a real accessibility audit is run.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F4F0E8" />
+<title>Accessibility Statement · SHERO COSMETIC</title>
+<meta name="description" content="Our commitment to making sherocosmetic.com usable by everyone — WCAG 2.1 AA target." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://sherocosmetic.com/accessibility.html" />
+
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('shero-theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="SHERO Cosmetic — Home">
+      <span class="logo__dot" aria-hidden="true"></span>SHERO
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#products">Shop</a>
+      <a href="index.html#routine">Routine</a>
+      <a href="index.html#about">Story</a>
+      <a href="index.html#quiz">Quiz</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+      <a class="icon-btn icon-btn--cart" href="index.html#products" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M6 7h12l-1.5 12.5a2 2 0 0 1-2 1.5h-5a2 2 0 0 1-2-1.5L6 7z"/>
+          <path d="M9 7V5a3 3 0 0 1 6 0v2"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="legal-page">
+  <div class="legal-page__inner">
+    <a href="index.html" class="legal-page__back">&larr; Back to home</a>
+
+    <header class="legal-page__header">
+      <span class="legal-page__eyebrow">Inclusive design</span>
+      <h1 class="legal-page__title">Accessibility Statement</h1>
+      <p class="legal-page__meta"><strong>Last updated:</strong> 18 May 2026 &middot; <strong>Target:</strong> WCAG 2.1 Level AA</p>
+    </header>
+
+    <aside class="legal-draft" role="note">
+      <svg class="legal-draft__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 8v5M12 16.5v.5" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <strong>Draft template.</strong> Conformance claims and the list
+        of known issues below should reflect the results of a real
+        accessibility audit before launch (e.g. Lighthouse, axe, or a
+        human review). The current text describes the design intent,
+        not a verified state.
+      </div>
+    </aside>
+
+    <nav class="legal-toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#commitment">Our commitment</a></li>
+        <li><a href="#standards">Standards we follow</a></li>
+        <li><a href="#features">Built-in accessibility features</a></li>
+        <li><a href="#known">Known limitations</a></li>
+        <li><a href="#feedback">Feedback &amp; help</a></li>
+        <li><a href="#enforcement">Enforcement procedure</a></li>
+      </ol>
+    </nav>
+
+    <article class="legal-body">
+      <h2 id="commitment">1 &middot; Our commitment</h2>
+      <p>SHERO Cosmetic is committed to making <a href="https://sherocosmetic.com">sherocosmetic.com</a> usable by as many people as possible, including those who rely on assistive technology. We treat accessibility as a design constraint, not a checkbox.</p>
+
+      <h2 id="standards">2 &middot; Standards we follow</h2>
+      <p>The site aims to conform to <strong>WCAG 2.1 Level AA</strong> &mdash; the same level required by the EU Web Accessibility Directive and the European Accessibility Act (EAA, in force from 28 June 2025). Where we exceed AA, we say so; where we fall short, we list the gap below.</p>
+
+      <h2 id="features">3 &middot; Built-in accessibility features</h2>
+      <ul>
+        <li><strong>Keyboard-first navigation:</strong> every interactive element is reachable via Tab. The mobile nav drawer traps focus while open and returns focus to its trigger on close.</li>
+        <li><strong>Visible focus rings</strong> on all interactive elements (<code>:focus-visible</code>), tuned for both light and dark mode.</li>
+        <li><strong>Reduced-motion respect:</strong> if your OS is set to <em>prefers-reduced-motion: reduce</em>, all decorative animation is disabled and entry transitions snap to their final state.</li>
+        <li><strong>Color contrast:</strong> body text meets at least 4.5:1 against background in both light and dark theme. Large display headings meet 3:1.</li>
+        <li><strong>Theme toggle:</strong> a manual light/dark control persists across visits and works independently of OS-level preferences.</li>
+        <li><strong>Semantic HTML:</strong> landmarks (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;footer&gt;</code>), descriptive headings, and labelled form fields throughout.</li>
+        <li><strong>Live regions:</strong> the skin quiz announces step transitions through an <code>aria-live</code> region for screen-reader users.</li>
+        <li><strong>Touch targets:</strong> all interactive icon-only controls are at least 44&times;44 px.</li>
+      </ul>
+
+      <h2 id="known">4 &middot; Known limitations</h2>
+      <p>The following issues are tracked and being worked on:</p>
+      <ul>
+        <li><strong>Press marquee:</strong> the magazine credit row scrolls continuously. It respects <code>prefers-reduced-motion</code>, but the perpetual motion may still distract some users. A click-to-pause affordance is on the backlog.</li>
+        <li><strong>Decorative imagery:</strong> the inline SVG bloom in the hero is marked <code>aria-hidden</code>. Owner-supplied PNG decorations will get equivalent treatment when they ship.</li>
+        <li><strong>Long-form legal pages:</strong> these pages haven&rsquo;t yet had a manual screen-reader pass &mdash; they will before public launch.</li>
+      </ul>
+
+      <h2 id="feedback">5 &middot; Feedback &amp; help</h2>
+      <p>If you hit an accessibility barrier or have an idea for how we can do better, please tell us. We aim to respond within five business days.</p>
+      <div class="legal-body__contact">
+        <p><strong>Accessibility feedback</strong><br/>
+        Email: <a href="mailto:accessibility@sherocosmetic.com">accessibility@sherocosmetic.com</a><br/>
+        General: <a href="mailto:hello@sherocosmetic.com">hello@sherocosmetic.com</a></p>
+      </div>
+
+      <h2 id="enforcement">6 &middot; Enforcement procedure</h2>
+      <p>If you contact us about an accessibility issue and aren&rsquo;t satisfied with our response, you can escalate to your local enforcement body:</p>
+      <ul>
+        <li><strong>Turkey:</strong> KVKK Kurumu and/or the Ministry of Trade Consumer Protection Directorate (T&uuml;ketici Hakem Heyeti).</li>
+        <li><strong>EU/EEA:</strong> the national enforcement body designated under your country&rsquo;s implementation of the European Accessibility Act.</li>
+      </ul>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <span>&copy; 2026 SHERO Cosmetic. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

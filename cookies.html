@@ -1,0 +1,167 @@
+<!--
+  DRAFT TEMPLATE — must be reviewed by qualified legal counsel before
+  the site goes index/follow. See ADR-0012.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F4F0E8" />
+<title>Cookie Policy · SHERO COSMETIC</title>
+<meta name="description" content="What SHERO COSMETIC stores in your browser — and what we don't." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://sherocosmetic.com/cookies.html" />
+
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('shero-theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="SHERO Cosmetic — Home">
+      <span class="logo__dot" aria-hidden="true"></span>SHERO
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#products">Shop</a>
+      <a href="index.html#routine">Routine</a>
+      <a href="index.html#about">Story</a>
+      <a href="index.html#quiz">Quiz</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+      <a class="icon-btn icon-btn--cart" href="index.html#products" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M6 7h12l-1.5 12.5a2 2 0 0 1-2 1.5h-5a2 2 0 0 1-2-1.5L6 7z"/>
+          <path d="M9 7V5a3 3 0 0 1 6 0v2"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="legal-page">
+  <div class="legal-page__inner">
+    <a href="index.html" class="legal-page__back">&larr; Back to home</a>
+
+    <header class="legal-page__header">
+      <span class="legal-page__eyebrow">Legal</span>
+      <h1 class="legal-page__title">Cookie Policy</h1>
+      <p class="legal-page__meta"><strong>Last updated:</strong> 18 May 2026</p>
+    </header>
+
+    <aside class="legal-draft" role="note">
+      <svg class="legal-draft__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 8v5M12 16.5v.5" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <strong>Draft template.</strong> This page reflects the
+        privacy-first stack documented in ADR-0005 (Cloudflare Web
+        Analytics, no tracking cookies). If you later add an integration
+        that <em>does</em> set tracking cookies (e.g. Meta Pixel,
+        Google Analytics), this page and the lawful-basis story need to
+        be revisited before launch.
+      </div>
+    </aside>
+
+    <nav class="legal-toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#what">What cookies are</a></li>
+        <li><a href="#what-we-use">What SHERO stores in your browser</a></li>
+        <li><a href="#third-party">Third-party services</a></li>
+        <li><a href="#consent">Consent &amp; opt-out</a></li>
+        <li><a href="#disable">How to disable cookies</a></li>
+        <li><a href="#updates">Changes to this policy</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </nav>
+
+    <article class="legal-body">
+      <h2 id="what">1 &middot; What cookies are</h2>
+      <p>Cookies are small text files a website can store in your browser. They&rsquo;re used to remember preferences (like your chosen theme), keep you signed in, or &mdash; in many cases &mdash; to track behavior across sites. Browser <code>localStorage</code> is similar but stays only on your device. SHERO uses <code>localStorage</code> for a single preference and uses <strong>no tracking cookies</strong>.</p>
+
+      <h2 id="what-we-use">2 &middot; What SHERO stores in your browser</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Expires</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>shero-theme</code></td>
+            <td><code>localStorage</code></td>
+            <td>Remembers your light/dark mode preference</td>
+            <td>Until you clear browser data</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>That&rsquo;s it. No advertising cookies, no analytics cookies, no session-tracking cookies.</p>
+
+      <h2 id="third-party">3 &middot; Third-party services</h2>
+      <p>SHERO uses <strong>Cloudflare Web Analytics</strong> for aggregated traffic data. Cloudflare Web Analytics is specifically built to be privacy-first: it does <em>not</em> set cookies, does <em>not</em> store IP addresses, and does <em>not</em> profile users. It collects only aggregated page-view counts. See <a href="https://www.cloudflare.com/web-analytics/" rel="noopener">Cloudflare&rsquo;s privacy notes</a>.</p>
+      <p>Outbound links to retailers (Shopify, Amazon, partner stores) leave our site and are governed by those sites&rsquo; cookie policies.</p>
+
+      <h2 id="consent">4 &middot; Consent &amp; opt-out</h2>
+      <p>Because we use no tracking cookies and our analytics provider is cookie-free, EU/UK GDPR-ePrivacy and KVKK rules do not require us to display a consent banner. If we later add a service that <em>does</em> require consent (e.g. Meta Pixel), we&rsquo;ll add a granular consent banner before that service runs.</p>
+
+      <h2 id="disable">5 &middot; How to disable cookies</h2>
+      <p>You can clear or block <code>localStorage</code> and cookies in your browser:</p>
+      <ul>
+        <li><strong>Chrome:</strong> Settings &rarr; Privacy and security &rarr; Site settings &rarr; Data stored</li>
+        <li><strong>Firefox:</strong> Settings &rarr; Privacy &amp; Security &rarr; Cookies and Site Data</li>
+        <li><strong>Safari:</strong> Settings &rarr; Privacy &rarr; Manage Website Data</li>
+        <li><strong>Edge:</strong> Settings &rarr; Cookies and site permissions</li>
+      </ul>
+      <p>Clearing <code>shero-theme</code> just resets the theme to your OS preference next time you visit. Nothing breaks.</p>
+
+      <h2 id="updates">6 &middot; Changes to this policy</h2>
+      <p>If we add a service that changes what&rsquo;s stored in your browser, this page is updated and the &ldquo;Last updated&rdquo; date at the top is bumped before that service goes live.</p>
+
+      <h2 id="contact">7 &middot; Contact us</h2>
+      <div class="legal-body__contact">
+        <p><strong>SHERO Cosmetic</strong><br/>
+        Karak&ouml;y, Istanbul, Turkey<br/>
+        Privacy enquiries: <a href="mailto:privacy@sherocosmetic.com">privacy@sherocosmetic.com</a><br/>
+        See also: <a href="privacy.html">Privacy Policy</a></p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <span>&copy; 2026 SHERO Cosmetic. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

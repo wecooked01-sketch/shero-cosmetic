@@ -1,0 +1,149 @@
+<!--
+  DRAFT TEMPLATE — must be reviewed before the site goes index/follow.
+  Because SHERO doesn't run an on-site checkout (see ADR-0001), this
+  page mainly defers to the retailer fulfilling the order.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F4F0E8" />
+<title>Shipping & Returns · SHERO COSMETIC</title>
+<meta name="description" content="How SHERO products get to you — shipping is handled by the retailer where you place your order." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://sherocosmetic.com/shipping.html" />
+
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('shero-theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="SHERO Cosmetic — Home">
+      <span class="logo__dot" aria-hidden="true"></span>SHERO
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#products">Shop</a>
+      <a href="index.html#routine">Routine</a>
+      <a href="index.html#about">Story</a>
+      <a href="index.html#quiz">Quiz</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+      <a class="icon-btn icon-btn--cart" href="index.html#products" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M6 7h12l-1.5 12.5a2 2 0 0 1-2 1.5h-5a2 2 0 0 1-2-1.5L6 7z"/>
+          <path d="M9 7V5a3 3 0 0 1 6 0v2"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="legal-page">
+  <div class="legal-page__inner">
+    <a href="index.html" class="legal-page__back">&larr; Back to home</a>
+
+    <header class="legal-page__header">
+      <span class="legal-page__eyebrow">Customer care</span>
+      <h1 class="legal-page__title">Shipping &amp; Returns</h1>
+      <p class="legal-page__meta"><strong>Last updated:</strong> 18 May 2026</p>
+    </header>
+
+    <aside class="legal-draft" role="note">
+      <svg class="legal-draft__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 8v5M12 16.5v.5" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <strong>Draft template.</strong> Specific shipping windows and
+        return policies depend on which retailer fulfills the order.
+        Update this page once the external store URL(s) are confirmed.
+      </div>
+    </aside>
+
+    <nav class="legal-toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#how-it-works">How buying SHERO works</a></li>
+        <li><a href="#shipping">Shipping</a></li>
+        <li><a href="#returns">Returns &amp; exchanges</a></li>
+        <li><a href="#damage">Damaged or missing items</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </nav>
+
+    <article class="legal-body">
+      <h2 id="how-it-works">1 &middot; How buying SHERO works</h2>
+      <p>SHERO Cosmetic is a brand site, not a checkout. Every &ldquo;Shop now&rdquo; CTA on this site links out to one of our retail channels &mdash; primarily our partner Shopify store and selected marketplaces. Your order, payment, shipping, and returns are handled by that retailer under their own terms and conditions.</p>
+      <p>If you ever&rsquo;re not sure who fulfilled your order, the seller name appears on the receipt email and on the shipping label.</p>
+
+      <h2 id="shipping">2 &middot; Shipping</h2>
+      <p>Each retailer publishes their own shipping windows, cut-off times, and rates on their site. As a general guide:</p>
+      <ul>
+        <li><strong>Turkey:</strong> typically 1&ndash;3 business days after dispatch (varies by carrier)</li>
+        <li><strong>EU:</strong> typically 3&ndash;7 business days</li>
+        <li><strong>Rest of world:</strong> typically 7&ndash;14 business days, customs may apply</li>
+      </ul>
+      <p>Free shipping thresholds, duties, and tracking are determined by the retailer at checkout. The retailer&rsquo;s own shipping policy is the authoritative source.</p>
+
+      <h2 id="returns">3 &middot; Returns &amp; exchanges</h2>
+      <p>Returns and refunds are handled by the retailer where you purchased. Under EU and Turkish consumer-protection law you generally have a 14-day right of withdrawal from the day the goods arrive, with full refund of the purchase price, subject to the product being unopened (cosmetics hygiene rule).</p>
+      <p>For specific return windows, restocking fees, or to start a return, contact the retailer&rsquo;s customer service team. They have the order details we don&rsquo;t.</p>
+
+      <h2 id="damage">4 &middot; Damaged or missing items</h2>
+      <p>If a SHERO product arrives damaged, leaking, or missing from the order, please:</p>
+      <ol>
+        <li>Photograph the box and the affected items</li>
+        <li>Contact the retailer that fulfilled the order &mdash; their support team can issue a replacement or refund</li>
+        <li>If you can&rsquo;t reach the retailer, email us at <a href="mailto:hello@sherocosmetic.com">hello@sherocosmetic.com</a> and we&rsquo;ll help connect you</li>
+      </ol>
+
+      <h2 id="contact">5 &middot; Contact us</h2>
+      <div class="legal-body__contact">
+        <p><strong>SHERO Cosmetic</strong><br/>
+        Karak&ouml;y, Istanbul, Turkey<br/>
+        Customer care: <a href="mailto:hello@sherocosmetic.com">hello@sherocosmetic.com</a><br/>
+        We answer within one business day.</p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <span>&copy; 2026 SHERO Cosmetic. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -84,12 +84,12 @@ supersedes ADR-0010 with the rationale.
 
 ### Pending question (owner to answer next session)
 
-"What's next now that the rewrite is shipped?"
+"What's next now that legal drafts are shipped?"
 
 | Option | Status | Estimate |
 |---|---|---|
+| Legal counsel review of the five draft pages (privacy/terms/cookies/shipping/accessibility) — see ADR-0012 review gate | Owner-blocked | external |
 | Drop in real photography + decoration PNGs the owner is producing | Owner-blocked | swap into `data-asset` slots, ~30 min once received |
-| Phase 4 — Legal pages (privacy/terms/KVKK/cookie) | Unblocked | 2–4 hr |
 | Phase 2 — Real integrations (Klaviyo / Formspree / CF Analytics / UTM-tagged outbound) | Blocked on store URL + accounts | 2–4 hr |
 | Production migration (Cloudflare Pages + custom domain) | Blocked on DNS + account | 30 min once unblocked |
 
