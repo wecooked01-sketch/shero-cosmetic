@@ -12,6 +12,11 @@
 <meta name="robots" content="noindex, nofollow" />
 <link rel="canonical" href="https://sherocosmetic.com/" />
 
+<!-- Language alternates (ADR-0014) -->
+<link rel="alternate" hreflang="tr"        href="https://sherocosmetic.com/" />
+<link rel="alternate" hreflang="en"        href="https://sherocosmetic.com/en/" />
+<link rel="alternate" hreflang="x-default" href="https://sherocosmetic.com/" />
+
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="SHERO Cosmetic" />
@@ -23,6 +28,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="SHERO Cosmetic — Cilt bakım koleksiyonu" />
 <meta property="og:locale" content="tr_TR" />
+<meta property="og:locale:alternate" content="en_US" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -111,6 +117,10 @@
     </nav>
 
     <div class="header__actions">
+      <div class="lang-switch" role="group" aria-label="Dil seçimi">
+        <a href="./" class="lang-switch__opt is-active" hreflang="tr" aria-current="true">TR</a>
+        <a href="en/" class="lang-switch__opt" hreflang="en">EN</a>
+      </div>
       <button class="icon-btn" id="themeToggle" aria-label="Temayı değiştir">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
           <circle cx="12" cy="12" r="4"/>
@@ -923,6 +933,10 @@
     <div class="mobile-nav__cta">
       <a href="#products" class="btn btn--primary">Koleksiyonu keşfet <span class="arrow">&rarr;</span></a>
     </div>
+    <div class="mobile-nav__lang lang-switch" role="group" aria-label="Dil seçimi">
+      <a href="./" class="lang-switch__opt is-active" hreflang="tr" aria-current="true">TR</a>
+      <a href="en/" class="lang-switch__opt" hreflang="en">EN</a>
+    </div>
   </aside>
 </div>
 
@@ -940,6 +954,37 @@
 }
 </script>
 
+<!-- Per-page i18n for the quiz strings (ADR-0014). Must run before script.js. -->
+<script>
+window.QUIZ_I18N = {
+  result: 'Sonuç',
+  step: 'adım',
+  resultAnnounce: 'Test sonucu',
+  stepAnnouncePrefix: 'Cilt testi ',
+  stepAnnounceSuffix: '. adım',
+  titleByConcern: {
+    dullness:  'Parlaklık Ritüeli',
+    aging:     'Yumuşat & Yenile Ritüeli',
+    acne:      'Temiz Cilt Ritüeli',
+    hydration: 'Derin Nem Ritüeli',
+  },
+  fallbackTitle: 'Size özel ritüel',
+  concernLabels: {
+    dullness:  'matlık',
+    aging:     'ince çizgiler',
+    acne:      'sivilceler',
+    hydration: 'nem',
+  },
+  typeLabels: {
+    oily:      'yağlı',
+    dry:       'kuru',
+    combo:     'karma',
+    sensitive: 'hassas',
+  },
+  cadence: { ritual: 'tam', quick: 'sade', balanced: 'dengeli' },
+  descriptionTemplate: '{type} cilde özel, {concern} odaklı {cadence} bir bakım rutini.',
+};
+</script>
 <script src="script.js"></script>
 </body>
 </html>

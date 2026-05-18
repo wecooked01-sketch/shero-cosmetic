@@ -23,6 +23,7 @@ one, supersede it explicitly (new ADR, mark the old one `Superseded by NNNN`).
 | [0011](0011-visual-identity-warm-decorative-photography.md) | Visual identity pivot #2: warm + decorative + photography-led | Accepted | 2026-05-18 |
 | [0012](0012-legal-pages-as-noindex-drafts.md) | Legal pages ship as noindex draft templates | Accepted | 2026-05-18 |
 | [0013](0013-typography-fraunces-manrope.md) | Typography rewrite: Fraunces + Manrope, one family per headline | Accepted | 2026-05-18 |
+| [0014](0014-bilingual-tr-default-en-static-duplication.md) | Bilingual site: static page duplication, TR-default, `/en/` for English | Accepted | 2026-05-18 |
 
 ## Statuses
 

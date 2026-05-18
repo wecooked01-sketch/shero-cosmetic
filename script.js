@@ -197,9 +197,42 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
 })();
 
 /* ---------- Skin quiz ---------- */
+// All user-visible strings are read from `window.QUIZ_I18N`, defined inline
+// per page (TR on index.html, EN on en/index.html). The default below is the
+// Turkish copy — kept as a fallback so the quiz still works if a page forgets
+// to define the override.
 (function setupQuiz() {
   const card = document.getElementById('quizCard');
   if (!card) return;
+
+  const I18N = window.QUIZ_I18N || {
+    result: 'Sonuç',
+    step: 'adım',
+    resultAnnounce: 'Test sonucu',
+    stepAnnouncePrefix: 'Cilt testi ',
+    stepAnnounceSuffix: '. adım',
+    titleByConcern: {
+      dullness:  'Parlaklık Ritüeli',
+      aging:     'Yumuşat & Yenile Ritüeli',
+      acne:      'Temiz Cilt Ritüeli',
+      hydration: 'Derin Nem Ritüeli',
+    },
+    fallbackTitle: 'Size özel ritüel',
+    concernLabels: {
+      dullness:  'matlık',
+      aging:     'ince çizgiler',
+      acne:      'sivilceler',
+      hydration: 'nem',
+    },
+    typeLabels: {
+      oily:      'yağlı',
+      dry:       'kuru',
+      combo:     'karma',
+      sensitive: 'hassas',
+    },
+    cadence: { ritual: 'tam', quick: 'sade', balanced: 'dengeli' },
+    descriptionTemplate: '{type} cilde özel, {concern} odaklı {cadence} bir bakım rutini.',
+  };
 
   const steps        = Array.from(card.querySelectorAll('.quiz-step'));
   const stepLabels   = Array.from(card.querySelectorAll('.quiz__steps li'));
@@ -221,7 +254,7 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
     if (progressFill) progressFill.style.width = progressPct + '%';
 
     if (counter) {
-      counter.textContent = idx === 3 ? 'Sonuç' : `${idx + 1}/3 adım`;
+      counter.textContent = idx === 3 ? I18N.result : `${idx + 1}/3 ${I18N.step}`;
     }
     if (backBtn) backBtn.disabled = idx === 0;
 
@@ -231,7 +264,9 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
     const heading = steps[idx]?.querySelector('h3');
     if (heading) {
       heading.focus({ preventScroll: true });
-      const label = idx === 3 ? 'Test sonucu' : `Cilt testi ${idx + 1}. adım`;
+      const label = idx === 3
+        ? I18N.resultAnnounce
+        : `${I18N.stepAnnouncePrefix}${idx + 1}${I18N.stepAnnounceSuffix}`;
       announce(`${label}: ${heading.textContent.trim()}`);
     }
   }
@@ -270,13 +305,6 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
   function renderResult() {
     const { type, concern, time } = state;
 
-    const titleByConcern = {
-      dullness:  'Parlaklık Ritüeli',
-      aging:     'Yumuşat & Yenile Ritüeli',
-      acne:      'Temiz Cilt Ritüeli',
-      hydration: 'Derin Nem Ritüeli',
-    };
-
     const concernToProductIds = {
       dullness:  ['vitamin-bomb', 'gunduz-serum', 'foundation'],
       aging:     ['gece-serum-maske', 'vitamin-bomb', 'foundation'],
@@ -293,29 +321,19 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
 
     const picks = pickIds.map((id) => PRODUCTS[id]).filter(Boolean);
 
-    const concernLabels = {
-      dullness:  'matlık',
-      aging:     'ince çizgiler',
-      acne:      'sivilceler',
-      hydration: 'nem',
-    };
-    const typeLabels = {
-      oily:      'yağlı',
-      dry:       'kuru',
-      combo:     'karma',
-      sensitive: 'hassas',
-    };
-
     const titleEl = document.getElementById('resultTitle');
     const descEl  = document.getElementById('resultDesc');
     const wrap    = document.getElementById('resultProducts');
 
-    if (titleEl) titleEl.textContent = titleByConcern[concern] || 'Size özel ritüel';
+    if (titleEl) titleEl.textContent = I18N.titleByConcern[concern] || I18N.fallbackTitle;
     if (descEl) {
-      const cadence = time === 'ritual' ? 'tam' : time === 'quick' ? 'sade' : 'dengeli';
-      const typeT    = typeLabels[type] || type;
-      const concernT = concernLabels[concern] || concern;
-      descEl.textContent = `${typeT} cilde özel, ${concernT} odaklı ${cadence} bir bakım rutini.`;
+      const cadenceWord = I18N.cadence[time === 'ritual' ? 'ritual' : time === 'quick' ? 'quick' : 'balanced'];
+      const typeT    = I18N.typeLabels[type] || type;
+      const concernT = I18N.concernLabels[concern] || concern;
+      descEl.textContent = I18N.descriptionTemplate
+        .replace('{type}', typeT)
+        .replace('{concern}', concernT)
+        .replace('{cadence}', cadenceWord);
     }
     if (wrap) {
       wrap.innerHTML = picks.map((p) => `

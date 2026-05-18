@@ -116,6 +116,33 @@ ADR-0011 supersedes ADR-0010 with the rationale.
   is already visible). First half of the lead stands on its own. The
   `.routine-step:hover` lift stays — editorial polish, not a
   content-revealing affordance.
+- **Bilingual TR/EN landing** — site is now bilingual. TR stays at `/`
+  (default), full English translation lives at `/en/index.html`.
+  Static page duplication (no JS i18n, no build step) per ADR-0014.
+  Header + mobile-nav have a JS-free `.lang-switch` (TR / EN anchor
+  pair). Hreflang + `og:locale:alternate` on both pages, sitemap.xml
+  lists both with reciprocal xhtml:link alternates. `x-default`
+  points to TR — primary market is Turkey.
+  Implementation notes:
+  - `script.js` quiz block reads all user-facing strings from
+    `window.QUIZ_I18N` defined inline per page. TR fallback baked in
+    so the quiz works even if a page forgets to define it. EN page
+    overrides with English strings + a different sentence order in
+    `descriptionTemplate` ("A {cadence} routine focused on {concern},
+    tailored for {type} skin." vs TR's "{type} cilde özel...").
+  - `en/index.html` uses `../`-prefixed relative asset paths so it
+    works on local dev (project root), GitHub Pages staging
+    (subpath), and Cloudflare Pages production (root) without edits.
+  - Inline products `<script type="application/json" id="shero-products">`
+    is duplicated in EN with English `name` + `stepLabel` fields.
+    Product `id`s stay as TR-derived slugs (internal keys).
+  - Legal pages (`privacy.html`, `terms.html`, etc.) are still
+    TR-only. EN footer legal links go to the TR pages with
+    `hreflang="tr"` annotations. Translation is deferred until
+    counsel signs off on the TR drafts (ADR-0012 gate).
+  - Lang switch is hidden in the desktop header at `<= 820px`;
+    mobile users access it from the bottom utility row of the
+    mobile nav drawer.
 
 ### Live URLs
 - **Staging (with R1 + R2 redesign):**
@@ -144,9 +171,22 @@ ADR-0011 supersedes ADR-0010 with the rationale.
   `.section-title` resolve to Fraunces; everything else (h3 cards,
   eyebrows, body, micro UI) is Manrope. Don't reintroduce Bagel Fat
   One — superseded.
-- Site is **Turkish-first** since `77055c4`. `<html lang="tr">`, all
-  copy in Turkish, JSON-LD address in Karaköy/Istanbul. Don't accidentally
-  drop English copy back in. A future EN/TR toggle is in the backlog.
+- Site is **bilingual TR/EN** since the EN/TR toggle work landed
+  (ADR-0014). TR is the default at `/`; EN lives at `/en/index.html`.
+  Copy changes to one page MUST be mirrored in the other — there's
+  no build automation, only discipline. The inline products JSON is
+  the same shape in both pages but with locale-appropriate `name`
+  and `stepLabel` fields. JSON-LD address stays in Karaköy/Istanbul
+  (the brand is Istanbul-based; the description gets translated but
+  the postal address doesn't change).
+- **Quiz JS i18n contract:** `script.js` reads all user-facing quiz
+  strings from `window.QUIZ_I18N` defined inline per page (TR
+  fallback baked into the IIFE). If you add a new user-facing string
+  to the quiz block, add the key to BOTH page-level QUIZ_I18N
+  objects and to the fallback constant inside `script.js`. The
+  `descriptionTemplate` uses `{type}`/`{concern}`/`{cadence}`
+  placeholders, not `${...}` interpolation, because TR and EN
+  arrange the modifiers differently.
 - The `data-asset` slots are now mostly **filled with real `<img>` tags**
   pointing at `assets/photos/*.jpg` (hero-collection, hero-product-gunduz,
   about-atelier, product-{gece-serum-maske, asit-maske, vitamin-bomb,

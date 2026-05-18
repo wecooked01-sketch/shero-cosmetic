@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F4F0E8" />
+<title>SHERO Cosmetic — A skincare ritual for every skin</title>
+<meta name="description" content="SHERO Cosmetic — clean, science-led skincare developed in Istanbul. Botanical actives, dermatologist-tested formulas." />
+
+<!-- Indexing — staging deploy is noindex. Flip to "index, follow, max-image-preview:large"
+     when DNS for sherocosmetic.com points at a real deploy. -->
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://sherocosmetic.com/en/" />
+
+<!-- Language alternates (ADR-0014) -->
+<link rel="alternate" hreflang="tr"        href="https://sherocosmetic.com/" />
+<link rel="alternate" hreflang="en"        href="https://sherocosmetic.com/en/" />
+<link rel="alternate" hreflang="x-default" href="https://sherocosmetic.com/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="SHERO Cosmetic" />
+<meta property="og:title" content="SHERO Cosmetic — A skincare ritual for every skin" />
+<meta property="og:description" content="Clean, science-led skincare developed in Istanbul. Botanical actives, dermatologist-tested formulas." />
+<meta property="og:url" content="https://sherocosmetic.com/en/" />
+<meta property="og:image" content="https://sherocosmetic.com/1200x630.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="SHERO Cosmetic — Skincare collection" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="tr_TR" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SHERO Cosmetic — A skincare ritual for every skin" />
+<meta name="twitter:description" content="Clean, science-led skincare developed in Istanbul. Botanical actives, dermatologist-tested formulas." />
+<meta name="twitter:image" content="https://sherocosmetic.com/1200x630.png" />
+<meta name="twitter:image:alt" content="SHERO Cosmetic — Skincare collection" />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://sherocosmetic.com/#organization",
+      "name": "SHERO COSMETIC",
+      "url": "https://sherocosmetic.com/",
+      "logo": "https://sherocosmetic.com/1200x630.png",
+      "image": "https://sherocosmetic.com/1200x630.png",
+      "description": "Clean, science-led skincare developed in Istanbul. Botanical actives, dermatologist-tested formulas.",
+      "email": "hello@sherocosmetic.com",
+      "telephone": "+90-850-220-2088",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Karaköy",
+        "addressLocality": "Istanbul",
+        "addressCountry": "TR"
+      },
+      "sameAs": [
+        "https://www.facebook.com/sherocosmetic",
+        "https://twitter.com/sherocosmetic",
+        "https://www.linkedin.com/company/sherocosmetic/",
+        "https://www.instagram.com/sherocosmetic/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sherocosmetic.com/en/#website",
+      "url": "https://sherocosmetic.com/en/",
+      "name": "SHERO Cosmetic",
+      "description": "Clean, science-led skincare developed in Istanbul.",
+      "publisher": { "@id": "https://sherocosmetic.com/#organization" },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
+<!-- Apply persisted theme BEFORE the stylesheet so there's no flash. -->
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('shero-theme');
+    if (t === 'dark' || t === 'light') {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<!-- Screen-reader announcer -->
+<div class="sr-only" aria-live="polite" aria-atomic="true" id="a11y-announcer"></div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a href="./" class="logo" aria-label="SHERO Cosmetic — Home">
+      <img src="../shero-black.png" alt="SHERO" class="logo__img" width="800" height="156" />
+    </a>
+
+    <nav class="nav" aria-label="Main menu">
+      <a href="#products">Products</a>
+      <a href="#routine">Routine</a>
+      <a href="#about">Story</a>
+      <a href="#quiz">Skin Quiz</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <a href="../" class="lang-switch__opt" hreflang="tr">TR</a>
+        <a href="./" class="lang-switch__opt is-active" hreflang="en" aria-current="true">EN</a>
+      </div>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+      <button class="icon-btn icon-btn--cart" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M6 7h12l-1.5 12.5a2 2 0 0 1-2 1.5h-5a2 2 0 0 1-2-1.5L6 7z"/>
+          <path d="M9 7V5a3 3 0 0 1 6 0v2"/>
+        </svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-controls="mobileNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <span class="hero__eyebrow">Made in Istanbul</span>
+        <h1 class="hero__title">
+          A skincare <em>ritual</em><br/>
+          for every <em>skin.</em>
+        </h1>
+        <p class="hero__lead">
+          Clean, science-led skincare developed in Istanbul. Botanical
+          actives, dermatologist-tested formulas, and routines your
+          skin actually needs.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#products" data-cta data-cta-campaign="hero" data-cta-content="shop-the-collection">
+            Shop the collection <span class="arrow">→</span>
+          </a>
+          <button class="btn-play" type="button" aria-label="Watch reviews">
+            <span class="btn-play__circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </span>
+            <span>Watch reviews</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <!-- Featured-product overlay card. Real photo of Day Serum on sand. -->
+        <div class="hero__product">
+          <div class="hero__product__badge" aria-hidden="true">New<br/>Drop</div>
+          <div class="hero__product__image" data-asset="hero-product-cutout">
+            <img src="../assets/photos/hero-product-gunduz.jpg" alt="Day Serum bottle on sand with seashells" />
+          </div>
+          <div class="hero__product__caption">Day Serum · 30ml</div>
+        </div>
+
+        <!-- Main hero image — 5 product collection on mirror with eucalyptus. -->
+        <div class="hero__image" data-asset="hero-main">
+          <img src="../assets/photos/hero-collection.jpg" alt="SHERO skincare collection on a mirror with eucalyptus branches" />
+        </div>
+      </div>
+
+      <!-- Decoration slot — replace inline SVG with actual PNG cutout when ready. -->
+      <div class="decor decor--bloom-right" aria-hidden="true" data-asset="decor-bloom">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(60 60)">
+            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="10" fill="var(--bloom)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ROW ============ -->
+<section class="trust-section">
+  <div class="container">
+    <div class="trust-row" aria-label="Our certifications">
+      <div class="trust-item trust-item--badge">
+        <img src="../badges/PETAlogo.png" alt="PETA cruelty-free emblem" class="trust-item__badge" />
+        <span class="trust-item__label">PETA Certified</span>
+        <span class="trust-item__hint">Cruelty-free commitment</span>
+      </div>
+      <div class="trust-item trust-item--badge">
+        <img src="../badges/buavlogo.png" alt="BUAV Approved Leaping Bunny emblem" class="trust-item__badge" />
+        <span class="trust-item__label">BUAV Certified</span>
+        <span class="trust-item__hint">Leaping Bunny standard</span>
+      </div>
+      <div class="trust-item trust-item--badge">
+        <img src="../badges/noanimaltest.png" alt="No animal testing emblem" class="trust-item__badge" />
+        <span class="trust-item__label">No animal testing</span>
+        <span class="trust-item__hint">Every formula, end to end</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRESS MARQUEE ============ -->
+<section class="press" id="press" aria-label="Featured in">
+  <span class="press__label">Featured in</span>
+  <div class="press__viewport">
+    <div class="press__track">
+      <span class="press-logo">VOGUE</span>
+      <span class="press-logo">ELLE</span>
+      <span class="press-logo">ALLURE</span>
+      <span class="press-logo">HARPER&rsquo;S BAZAAR</span>
+      <span class="press-logo">BYRDIE</span>
+      <span class="press-logo">REFINERY29</span>
+      <span class="press-logo">COSMOPOLITAN</span>
+      <!-- duplicate for seamless marquee loop -->
+      <span class="press-logo" aria-hidden="true">VOGUE</span>
+      <span class="press-logo" aria-hidden="true">ELLE</span>
+      <span class="press-logo" aria-hidden="true">ALLURE</span>
+      <span class="press-logo" aria-hidden="true">HARPER&rsquo;S BAZAAR</span>
+      <span class="press-logo" aria-hidden="true">BYRDIE</span>
+      <span class="press-logo" aria-hidden="true">REFINERY29</span>
+      <span class="press-logo" aria-hidden="true">COSMOPOLITAN</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / BRAND STORY ============ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-head about__head" data-reveal>
+      <span class="eyebrow">Discover our story</span>
+      <h2 class="section-title">
+        Every woman is <em>her own</em><br/>
+        <em>hero.</em>
+      </h2>
+      <img src="../beyourownhero.png" alt="Be your own hero" class="about__signature" />
+    </div>
+
+    <div class="about__grid">
+      <div class="about__copy" data-reveal>
+        <p class="lead">
+          SHERO Cosmetic stepped into the beauty world with the
+          confidence and drive of a woman-led venture, and in doing so
+          delivered a first for Turkey. Alongside technologies built
+          for a new world order, the brand earned its place quickly
+          through the value it places on human and animal life.
+        </p>
+        <p>
+          What began with single-use capsule foundation has grown into
+          a full skincare range for every skin type. With vegan
+          formulations and an environmentally conscious approach,
+          SHERO has gone far past its original goals. Founded in 2022,
+          the brand now sits on the shelves of global retailers like
+          <strong>Miniso</strong>.
+        </p>
+        <a href="#products" class="btn btn--ghost">Explore the collection <span class="arrow">→</span></a>
+      </div>
+
+      <div class="about__visual" data-reveal>
+        <div class="about__image" data-asset="about-atelier">
+          <img src="../assets/photos/about-atelier.jpg" alt="SHERO Foundation capsules on a wooden disc with dried flowers" />
+        </div>
+        <div class="about__quote">
+          <p>&ldquo;Foundation in a capsule &mdash; a first for Turkey, and a rarity in the world.&rdquo;</p>
+          <span class="about__quote__cite">Founder &middot; SHERO</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__stats">
+      <div class="about__stat">
+        <strong>2022</strong>
+        <span>The adventure begins<br/>Istanbul</span>
+      </div>
+      <div class="about__stat">
+        <strong>1st</strong>
+        <span>Capsule foundation<br/>maker in Turkey</span>
+      </div>
+      <div class="about__stat">
+        <strong>100%</strong>
+        <span>Vegan formulas,<br/>planet-friendly</span>
+      </div>
+      <div class="about__stat">
+        <strong>0</strong>
+        <span>Animal testing,<br/>end to end</span>
+      </div>
+    </div>
+
+    <div class="about__values" data-reveal>
+      <article class="value-card">
+        <span class="eyebrow">Our vision</span>
+        <h3>Beside women, on the path to becoming their own heroes.</h3>
+        <p>To serve by creating products that go beyond customer expectations &mdash; to keep building on our successes in beauty and become a trusted, life-friendly first-place global brand.</p>
+      </article>
+      <article class="value-card value-card--accent">
+        <span class="eyebrow">Our mission</span>
+        <h3>Innovation, quality, and ethics &mdash; in the same bottle.</h3>
+        <p>To pioneer a Turkish first by launching capsule colour cosmetics and personal-care products; to deliver consistently high-quality, dependable service through modern, forward-looking technology; and to make customer satisfaction real, not aspirational.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INGREDIENTS GRID ============ -->
+<section class="section section--sand ingredients" id="ingredients">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What's inside</span>
+      <h2 class="section-title">Four actives, <em>doing their job.</em></h2>
+      <p class="lead">Every formula is built around one proven dermatological hero. No filler. No marketing jargon.</p>
+    </div>
+
+    <div class="ingredients__grid">
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="24" r="14"/>
+            <path d="M24 10v28M10 24h28M14 14l20 20M34 14L14 34"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Brightens</span>
+        <h3>Vitamin complex</h3>
+        <p>Vitamins C, B3, and B5 &mdash; evens tone, boosts radiance, and supports the skin barrier.</p>
+        <span class="ingredient__where">Found in: Vitamin Bomb</span>
+      </article>
+
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M24 8 Q12 20 12 30 a12 12 0 0 0 24 0 Q36 20 24 8 Z"/>
+            <path d="M18 28 Q20 31 24 31 Q28 31 30 28" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Hydrates</span>
+        <h3>8D Hyaluronic acid</h3>
+        <p>Multi-molecular-weight hyaluron &mdash; deep, all-day and all-night hydration without heaviness.</p>
+        <span class="ingredient__where">Found in: Day Serum, Night Serum Mask</span>
+      </article>
+
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="24" r="9"/>
+            <path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4.5 4.5M32.5 32.5l4.5 4.5M37 11l-4.5 4.5M15.5 32.5L11 37"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Renews</span>
+        <h3>10% AHA + 2% BHA</h3>
+        <p>Glycolic, lactic, and salicylic acid &mdash; gentle surface peel for smoother, brighter-looking skin.</p>
+        <span class="ingredient__where">Found in: Acid Mask</span>
+      </article>
+
+      <article class="ingredient" data-reveal>
+        <div class="ingredient__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M14 16 L24 6 L34 16 L34 32 Q34 38 28 40 L20 40 Q14 38 14 32 Z"/>
+            <path d="M20 24 H28 M20 30 H28"/>
+          </svg>
+        </div>
+        <span class="ingredient__chip">Repairs</span>
+        <h3>Peptide + Beta-glucan</h3>
+        <p>Peptide and beta-glucan combined with an amino-acid complex &mdash; repairs skin overnight.</p>
+        <span class="ingredient__where">Found in: Night Serum Mask</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL PRODUCT GRID ============ -->
+<section class="section products" id="products">
+  <div class="container">
+    <div class="section-head section-head--split">
+      <div>
+        <span class="eyebrow">The full collection</span>
+        <h2 class="section-title">Skincare <em>ritual.</em></h2>
+      </div>
+      <p class="lead">Six formulas, one ritual. Each built around a proven active, dermatologist-tested, and a quiet kind of luxury.</p>
+    </div>
+
+    <div class="products__filters" role="tablist" aria-label="Product categories">
+      <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="chip" data-filter="serum" role="tab" aria-selected="false">Serum</button>
+      <button class="chip" data-filter="maske" role="tab" aria-selected="false">Mask</button>
+      <button class="chip" data-filter="nemlendirici" role="tab" aria-selected="false">Moisturizer</button>
+      <button class="chip" data-filter="koruma" role="tab" aria-selected="false">Protection</button>
+    </div>
+
+    <div class="products__grid">
+      <article class="product-card" data-category="serum" data-reveal>
+        <div class="product-card__image" data-asset="product-gece-serum-maske">
+          <span class="product-card__step">PM</span>
+          <img src="../assets/photos/product-gece-serum-maske.jpg" alt="Night Serum Mask bottle and box" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Night Serum Mask</h3>
+            <span class="product-card__size">30ml</span>
+          </div>
+          <p>Peptide, 8D hyaluron, beta-glucan, and an amino-acid complex &mdash; overnight hydration.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Night · Treatment</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="gece-serum-maske" aria-label="Shop Night Serum Mask">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="maske" data-reveal>
+        <div class="product-card__image" data-asset="product-asit-maske">
+          <span class="product-card__step">Bonus</span>
+          <img src="../assets/photos/product-asit-maske.jpg" alt="Acid Mask bottle and box" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Acid Mask</h3>
+            <span class="product-card__size">30ml</span>
+          </div>
+          <p>10% AHA + 2% BHA. Glycolic, lactic, and salicylic acid for renewed, smoother-looking skin.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Exfoliation · Mask</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="asit-maske" aria-label="Shop Acid Mask">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card product-card--feature" data-category="nemlendirici" data-reveal>
+        <div class="product-card__image" data-asset="product-vitamin-bomb">
+          <span class="product-card__badge">Bestseller</span>
+          <span class="product-card__step">2x</span>
+          <img src="../assets/photos/product-vitamin-bomb.jpg" alt="Vitamin Bomb moisturizer bottle on a mirror with eucalyptus" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Vitamin Bomb</h3>
+            <span class="product-card__size">30ml</span>
+          </div>
+          <p>Vitamins C, B3, and B5 &mdash; the vitamin bomb that brings skin back to radiance and health.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Hydration</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="vitamin-bomb" aria-label="Shop Vitamin Bomb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="serum" data-reveal>
+        <div class="product-card__image" data-asset="product-gunduz-serum">
+          <span class="product-card__step">AM</span>
+          <img src="../assets/photos/product-gunduz-serum.jpg" alt="Day Serum bottle on sand with seashells" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Day Serum</h3>
+            <span class="product-card__size">30ml</span>
+          </div>
+          <p>8D hyaluron + SPF 15. All-day hydration and sun protection, and a perfect makeup base.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Day · Protection</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="gunduz-serum" aria-label="Shop Day Serum">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="maske" data-reveal>
+        <div class="product-card__image" data-asset="product-siyah-karbon-maske">
+          <span class="product-card__step">Bonus</span>
+          <img src="../assets/photos/product-siyah-karbon-maske.jpg" alt="Black Carbon Mask bottle on sand with seashells" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Black Carbon Mask</h3>
+            <span class="product-card__size">30ml</span>
+          </div>
+          <p>Botanical AHA, BHA, and enzymes &mdash; micro-exfoliation for brighter, smoother skin.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Detox · Mask</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="siyah-karbon-maske" aria-label="Shop Black Carbon Mask">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="koruma" data-reveal>
+        <div class="product-card__image" data-asset="product-foundation">
+          <span class="product-card__step">SPF</span>
+          <img src="../assets/photos/product-foundation.jpg" alt="SHERO Foundation 30 SPF capsule bottle with cork stopper" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Foundation 30 SPF</h3>
+            <span class="product-card__size">Capsule</span>
+          </div>
+          <p>Capsule foundation with hyaluronic acid, vitamin E, and SPF 30 &mdash; protection, care, and colour in one.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Foundation · SPF</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="foundation" aria-label="Shop Foundation 30 SPF">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAB / CLINICAL RESULTS ============ -->
+<section class="section section--sand lab" id="lab">
+  <div class="container">
+    <div class="lab__grid">
+      <div class="lab__copy" data-reveal>
+        <span class="eyebrow">In the lab</span>
+        <h2 class="section-title">
+          Tested with volunteers.<br/>
+          <em>Never on animals.</em>
+        </h2>
+        <p class="lead">
+          Every SHERO formula is tested for stability, irritation, and
+          efficacy at independent third-party laboratories &mdash;
+          then trialled for 28 days with a 40&ndash;120-person panel
+          of different skin types and tones before it goes on sale.
+        </p>
+        <div class="lab__certs">
+          <span class="pill">Dermatologist-tested</span>
+          <span class="pill">Cruelty-free</span>
+          <span class="pill">Vegan</span>
+          <span class="pill">Made in Turkey</span>
+        </div>
+      </div>
+
+      <div class="lab__results" data-reveal>
+        <article class="lab__result">
+          <strong>+44%</strong>
+          <span class="lab__metric">Moisture retention</span>
+          <span class="lab__note">28 days · Day Serum + Vitamin Bomb</span>
+        </article>
+        <article class="lab__result lab__result--accent">
+          <strong>97%</strong>
+          <span class="lab__metric">Visible radiance in 7 days</span>
+          <span class="lab__note">Self-reported · 120-person panel</span>
+        </article>
+        <article class="lab__result">
+          <strong>&minus;32%</strong>
+          <span class="lab__metric">Fine-line depth</span>
+          <span class="lab__note">12 weeks · Night Serum Mask, every night</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKIN QUIZ ============ -->
+<section class="section quiz" id="quiz">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Skin quiz · 60 seconds</span>
+      <h2 class="section-title">Find your perfect <em>ritual.</em></h2>
+      <p class="lead">Three quick questions. Based on your skin type, your biggest concern, and how much time you actually want to spend, we'll suggest a routine.</p>
+    </div>
+
+    <div class="quiz__card" id="quizCard">
+      <header class="quiz__head">
+        <div class="quiz__progress" aria-hidden="true">
+          <span class="quiz__progress-fill" id="quizProgress" style="width: 25%"></span>
+        </div>
+        <ol class="quiz__steps">
+          <li class="is-active">01 &middot; Type</li>
+          <li>02 &middot; Concern</li>
+          <li>03 &middot; Time</li>
+          <li>Result</li>
+        </ol>
+      </header>
+
+      <!-- Step 1 -->
+      <div class="quiz-step is-active" data-step="0">
+        <h3 tabindex="-1">What's your skin type?</h3>
+        <p class="quiz-help">Pick the description that feels truest right now.</p>
+        <div class="quiz-options quiz-options--4">
+          <button class="quiz-option" data-q="type" data-v="oily" type="button"><strong>Oily</strong><em>Shines by afternoon, breakout-prone</em></button>
+          <button class="quiz-option" data-q="type" data-v="dry" type="button"><strong>Dry</strong><em>Tight, flaky, looks matte</em></button>
+          <button class="quiz-option" data-q="type" data-v="combo" type="button"><strong>Combination</strong><em>Oily T-zone, dry cheeks</em></button>
+          <button class="quiz-option" data-q="type" data-v="sensitive" type="button"><strong>Sensitive</strong><em>Easily irritated, red, stings</em></button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" data-step="1">
+        <h3 tabindex="-1">What's your biggest concern?</h3>
+        <p class="quiz-help">Pick the change you want to see.</p>
+        <div class="quiz-options quiz-options--4">
+          <button class="quiz-option" data-q="concern" data-v="dullness" type="button"><strong>Dullness</strong><em>I want my glow back</em></button>
+          <button class="quiz-option" data-q="concern" data-v="aging" type="button"><strong>Fine lines</strong><em>Soften and firm</em></button>
+          <button class="quiz-option" data-q="concern" data-v="acne" type="button"><strong>Breakouts</strong><em>Clearer, calmer skin</em></button>
+          <button class="quiz-option" data-q="concern" data-v="hydration" type="button"><strong>Hydration</strong><em>Plump, fresh, and comfortable</em></button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" data-step="2">
+        <h3 tabindex="-1">How much time do you have?</h3>
+        <p class="quiz-help">Be honest &mdash; we'll recommend accordingly.</p>
+        <div class="quiz-options quiz-options--3">
+          <button class="quiz-option" data-q="time" data-v="quick" type="button"><strong>Quick</strong><em>3 steps &middot; under 2 minutes</em></button>
+          <button class="quiz-option" data-q="time" data-v="balanced" type="button"><strong>Balanced</strong><em>5 steps &middot; 5 minutes</em></button>
+          <button class="quiz-option" data-q="time" data-v="ritual" type="button"><strong>Full ritual</strong><em>7+ steps &middot; I love this</em></button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-step quiz-result" data-step="3">
+        <span class="result-tag">Your routine</span>
+        <h3 id="resultTitle" tabindex="-1">Radiance Ritual</h3>
+        <p id="resultDesc" class="result-desc">A gentle, balanced ritual designed to bring back your natural glow &mdash; built for everyday use.</p>
+        <div class="result-products" id="resultProducts"></div>
+        <div class="quiz-actions">
+          <a class="btn btn--primary" href="#routine" data-cta data-cta-campaign="quiz-result" data-cta-content="build-my-routine">Build my routine<span class="arrow">&rarr;</span></a>
+          <button class="btn btn--ghost" id="quizRestart" type="button">Restart the quiz</button>
+        </div>
+      </div>
+
+      <div class="quiz-nav">
+        <button class="quiz-back" id="quizBack" type="button" disabled>&larr; Back</button>
+        <span class="quiz-counter" id="quizCounter">1/3 step</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILD MY ROUTINE ============ -->
+<section class="section section--sand routine" id="routine">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Build your routine</span>
+      <h2 class="section-title">Five steps. Endless <em>glow.</em></h2>
+      <p class="lead">A SHERO routine reads like a sentence &mdash; each step lands where it belongs.</p>
+    </div>
+
+    <div class="routine__steps">
+      <article class="routine-step" data-reveal>
+        <div class="routine-step__num">01</div>
+        <h3>Cleanse</h3>
+        <p>Anti-acne cleansing gel &mdash; pH-balanced, gently purifies skin without damaging the protective barrier.</p>
+        <span class="routine-step__product">Anti-Acne Cleansing Gel &middot; 200ml</span>
+      </article>
+
+      <article class="routine-step" data-reveal>
+        <div class="routine-step__num">02</div>
+        <h3>Tone</h3>
+        <p>Niacinamide + tea tree oil &mdash; tightens pores, preps skin for the next step.</p>
+        <span class="routine-step__product">Anti-Acne Toner &middot; 200ml</span>
+      </article>
+
+      <article class="routine-step routine-step--feature" data-reveal>
+        <div class="routine-step__num">03</div>
+        <h3>Treat</h3>
+        <p>The hero step. Targeted actives &mdash; hyaluron + SPF by day, peptide + beta-glucan by night.</p>
+        <span class="routine-step__product">Day Serum &middot; Night Serum Mask</span>
+      </article>
+
+      <article class="routine-step" data-reveal>
+        <div class="routine-step__num">04</div>
+        <h3>Hydrate</h3>
+        <p>Triple-vitamin moisture bomb &mdash; C, B3, and B5 feed skin all day.</p>
+        <span class="routine-step__product">Vitamin Bomb &middot; 30ml</span>
+      </article>
+
+      <article class="routine-step" data-reveal>
+        <div class="routine-step__num">05</div>
+        <h3>Protect</h3>
+        <p>Capsule foundation with SPF 30 &mdash; the strongest anti-aging step, comfortable coverage all day.</p>
+        <span class="routine-step__product">Foundation 30 SPF</span>
+      </article>
+    </div>
+
+    <div class="routine__cta">
+      <p>Not sure where to start? Match in 60 seconds.</p>
+      <a href="#quiz" class="btn btn--primary" data-cta data-cta-campaign="routine" data-cta-content="find-my-set">Find my set <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">In their words</span>
+      <h2 class="section-title">Real <em>routines.</em> Real reviews.</h2>
+      <p class="lead">Thousands of different skin types, one common thread &mdash; SHERO routines stick because they're genuinely sustainable.</p>
+    </div>
+
+    <div class="testimonials__rating">
+      <span class="testimonials__stars" aria-label="4.9 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span><strong>4.9</strong> &middot; <strong>2,400+</strong> verified reviews</span>
+    </div>
+
+    <div class="testimonials__grid">
+      <article class="testimonial" data-reveal>
+        <p>&ldquo;The skin quiz actually pointed me at a 3-step routine I can stick with. My skin looks healthier than it has in years and I'm not drowning in 12 bottles.&rdquo;</p>
+        <footer>
+          <span class="testimonial__avatar" aria-hidden="true">A</span>
+          <div>
+            <strong>Ay&scedil;e K.</strong>
+            <span>Istanbul &middot; combination skin</span>
+          </div>
+        </footer>
+      </article>
+
+      <article class="testimonial testimonial--feature" data-reveal>
+        <p>&ldquo;The Night Serum Mask is the only peptide serum I've actually been able to stick with. No irritation, no purging weeks. Just better skin every morning.&rdquo;</p>
+        <footer>
+          <span class="testimonial__avatar" aria-hidden="true">M</span>
+          <div>
+            <strong>Mira S.</strong>
+            <span>Berlin &middot; sensitive skin</span>
+          </div>
+        </footer>
+      </article>
+
+      <article class="testimonial" data-reveal>
+        <p>&ldquo;The bottles look beautiful on my shelf, but the formulas are the real story. I've never seen a serum absorb this fast and stay this hydrating.&rdquo;</p>
+        <footer>
+          <span class="testimonial__avatar" aria-hidden="true">L</span>
+          <div>
+            <strong>Leyla T.</strong>
+            <span>İzmir &middot; dry skin</span>
+          </div>
+        </footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section--sand contact" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+      <div class="contact__intro" data-reveal>
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="section-title">Say <em>hello.</em></h2>
+        <p class="lead">Ingredient questions, routine advice, wholesale enquiries, or just to say hi &mdash; we reply to every message within one business day.</p>
+
+        <ul class="contact__info">
+          <li>
+            <span class="contact__info__label">Phone</span>
+            <a href="tel:+908502202088">+90 850 220 20 88</a>
+          </li>
+          <li>
+            <span class="contact__info__label">WhatsApp</span>
+            <a href="https://api.whatsapp.com/send?phone=905452731530&amp;text=Hello,%20I%27d%20like%20to%20learn%20more%20about%20your%20products." target="_blank" rel="noopener">Message us instantly &rarr;</a>
+          </li>
+          <li>
+            <span class="contact__info__label">Email</span>
+            <a href="mailto:hello@sherocosmetic.com">hello@sherocosmetic.com</a>
+          </li>
+          <li>
+            <span class="contact__info__label">Studio</span>
+            <span>Karak&ouml;y, Istanbul &middot; by appointment</span>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact__form" id="contactForm" novalidate data-reveal>
+        <div class="field">
+          <label for="cName">Your name</label>
+          <input type="text" id="cName" name="name" required placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label for="cEmail">Email</label>
+          <input type="email" id="cEmail" name="email" required placeholder="you@email.com" />
+        </div>
+        <div class="field">
+          <label for="cTopic">Topic</label>
+          <select id="cTopic" name="topic">
+            <option>Skincare question</option>
+            <option>Order help</option>
+            <option>Wholesale &amp; press</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cMsg">Your message</label>
+          <textarea id="cMsg" name="message" rows="5" required placeholder="Tell us a little about your skin or your question&hellip;"></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit">Send message <span class="arrow">&rarr;</span></button>
+        <p class="form-note" id="formNote" role="status" hidden>Thanks &mdash; we'll reply within 24 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="./" class="logo logo--footer" aria-label="SHERO Cosmetic — Home">
+          <img src="../shero-black.png" alt="SHERO" class="logo__img" width="800" height="156" />
+        </a>
+        <img src="../beyourownhero.png" alt="Be your own hero" class="footer__signature" />
+        <p>Made in a small Istanbul studio &mdash; clean, considered, a quiet kind of luxury.</p>
+        <ul class="footer__social" aria-label="Social media">
+          <li><a href="https://www.instagram.com/sherocosmetic/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a></li>
+          <li><a href="https://www.facebook.com/sherocosmetic" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M15 8h2.5V5H15a3 3 0 0 0-3 3v2H9.5v3H12v8h3v-8h2.2l.3-3H15V8z"/>
+            </svg>
+          </a></li>
+          <li><a href="https://twitter.com/sherocosmetic" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M5 5l6.5 8.5L5 20h2.5L13 14l4 6h4l-7-9.5L20 5h-2.5L13 10 9 5H5z" fill="currentColor" stroke="none"/>
+            </svg>
+          </a></li>
+          <li><a href="https://www.linkedin.com/company/sherocosmetic/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M8 10v7M8 7.5v.01M12 17v-4a2 2 0 0 1 4 0v4M12 17v-7"/>
+            </svg>
+          </a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=905452731530&amp;text=Hello,%20I%27d%20like%20to%20learn%20more%20about%20your%20products." target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M4 20l1.6-4.4A8 8 0 1 1 9 19.6L4 20z"/>
+              <path d="M9 10c0 3 2 5 5 5l1.5-1 1.5.5.5 1.5L17 17c-4 0-8-4-8-8L9.5 8 11 8.5l.5 1.5L10.5 11l-1.5-.5L9 10z"/>
+            </svg>
+          </a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#products">Serum</a></li>
+          <li><a href="#products">Masks</a></li>
+          <li><a href="#products">Moisturizers</a></li>
+          <li><a href="#products">Protection</a></li>
+          <li><a href="#products">All products</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>SHERO</h4>
+        <ul>
+          <li><a href="#about">Our story</a></li>
+          <li><a href="#lab">In the lab</a></li>
+          <li><a href="#quiz">Skin quiz</a></li>
+          <li><a href="#routine">Build a routine</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__news">
+        <h4>Letters from SHERO</h4>
+        <p>Monthly tips, new launches, and 10% off your first order.</p>
+        <form class="newsletter" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed';">
+          <input type="email" placeholder="you@email.com" required aria-label="Email" />
+          <button type="submit">Subscribe <span class="arrow">&rarr;</span></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; 2026 SHERO Cosmetic. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="../privacy.html" hreflang="tr">Privacy</a>
+        <a href="../terms.html" hreflang="tr">Terms</a>
+        <a href="../cookies.html" hreflang="tr">Cookies</a>
+        <a href="../shipping.html" hreflang="tr">Shipping</a>
+        <a href="../accessibility.html" hreflang="tr">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE NAV DRAWER ============ -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
+  <aside class="mobile-nav__panel" aria-label="Mobile menu">
+    <div class="mobile-nav__head">
+      <a href="./" class="logo" aria-label="SHERO Cosmetic — Home">
+        <img src="../shero-black.png" alt="SHERO" class="logo__img" width="800" height="156" />
+      </a>
+      <button class="mobile-nav__close" id="mobileNavClose" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M6 6l12 12M6 18L18 6"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Main menu">
+      <a href="#products">Products</a>
+      <a href="#routine">Routine</a>
+      <a href="#about">Story</a>
+      <a href="#quiz">Skin Quiz</a>
+      <a href="#lab">Lab</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a href="#products" class="btn btn--primary">Explore the collection <span class="arrow">&rarr;</span></a>
+    </div>
+    <div class="mobile-nav__lang lang-switch" role="group" aria-label="Language">
+      <a href="../" class="lang-switch__opt" hreflang="tr">TR</a>
+      <a href="./" class="lang-switch__opt is-active" hreflang="en" aria-current="true">EN</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Canonical mirror of data/products.json (English display labels for the EN locale). -->
+<script type="application/json" id="shero-products">
+{
+  "products": [
+    { "id": "gece-serum-maske",   "name": "Night Serum Mask",   "size": "30ml",    "step": "PM",    "stepLabel": "NIGHT · TREATMENT",   "category": "serum",        "hero": "Peptide, 8D hyaluron, beta-glucan, and an amino-acid complex — overnight hydration." },
+    { "id": "asit-maske",         "name": "Acid Mask",          "size": "30ml",    "step": "Bonus", "stepLabel": "EXFOLIATION · MASK",  "category": "maske",        "hero": "10% AHA + 2% BHA. Renewed, smoother skin from glycolic, lactic, and salicylic acid." },
+    { "id": "vitamin-bomb",       "name": "Vitamin Bomb",       "size": "30ml",    "step": "2x",    "stepLabel": "HYDRATION",            "category": "nemlendirici", "hero": "Vitamins C, B3, and B5 — the vitamin bomb that brings skin back to radiance." },
+    { "id": "gunduz-serum",       "name": "Day Serum",          "size": "30ml",    "step": "AM",    "stepLabel": "DAY · PROTECTION",     "category": "serum",        "hero": "8D hyaluron + SPF 15. All-day hydration and sun protection." },
+    { "id": "siyah-karbon-maske", "name": "Black Carbon Mask",  "size": "30ml",    "step": "Bonus", "stepLabel": "DETOX · MASK",         "category": "maske",        "hero": "Botanical AHA, BHA, and enzymes for micro-exfoliation; brighter, smoother skin." },
+    { "id": "foundation",         "name": "Foundation 30 SPF",  "size": "Capsule", "step": "SPF",   "stepLabel": "FOUNDATION · SPF",     "category": "koruma",       "hero": "Capsule foundation with hyaluronic acid, vitamin E, and SPF 30." }
+  ]
+}
+</script>
+
+<!-- Per-page i18n for the quiz strings (ADR-0014). Must run before script.js. -->
+<script>
+window.QUIZ_I18N = {
+  result: 'Result',
+  step: 'step',
+  resultAnnounce: 'Quiz result',
+  stepAnnouncePrefix: 'Skin quiz step ',
+  stepAnnounceSuffix: '',
+  titleByConcern: {
+    dullness:  'Radiance Ritual',
+    aging:     'Smooth & Renew Ritual',
+    acne:      'Clear Skin Ritual',
+    hydration: 'Deep Hydration Ritual',
+  },
+  fallbackTitle: 'Your custom ritual',
+  concernLabels: {
+    dullness:  'dullness',
+    aging:     'fine lines',
+    acne:      'breakouts',
+    hydration: 'hydration',
+  },
+  typeLabels: {
+    oily:      'oily',
+    dry:       'dry',
+    combo:     'combination',
+    sensitive: 'sensitive',
+  },
+  cadence: { ritual: 'full', quick: 'streamlined', balanced: 'balanced' },
+  descriptionTemplate: 'A {cadence} routine focused on {concern}, tailored for {type} skin.',
+};
+</script>
+<script src="../script.js"></script>
+</body>
+</html>

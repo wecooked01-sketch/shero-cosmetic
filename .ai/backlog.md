@@ -31,9 +31,18 @@ Items deferred from the current phase, ordered roughly by value.
 - **Multi-page architecture** — split per-product pages out of `index.html`
   if SEO needs individual product URLs. Only useful once there's product
   copy worth ranking.
-- **Localization (Turkish / English toggle)** — brand is Istanbul-based.
-  Decide whether to ship English-only, Turkish-only, or bilingual. Affects
-  SEO and content strategy.
+- **Translate the 5 legal pages to EN** — bilingual landing shipped (ADR-0014)
+  but `privacy.html` / `terms.html` / `cookies.html` / `shipping.html` /
+  `accessibility.html` are still TR-only. Blocked on counsel sign-off of the
+  TR drafts (ADR-0012 review gate) so we don't translate copy that's about
+  to change. When counsel approves, create `en/privacy.html` etc. with EN
+  copy and update each TR page's `hreflang` block to point at the
+  alternates.
+- **EN copy review** — first-pass EN translation in `en/index.html` was
+  AI-authored from the TR source matching the warmly-editorial brand voice.
+  Walk through it once before flipping noindex → index, with attention to
+  the founder-story paragraphs, the lab-results phrasing, and the testimonial
+  voices (real customers, want their quotes to sound natural in EN).
 - **Cookie consent banner** — only required if Phase 2 swaps in tools that
   set non-essential cookies (e.g., GA4 instead of CF Web Analytics, or any
   Meta/TikTok pixel).

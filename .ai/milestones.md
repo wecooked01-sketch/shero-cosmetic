@@ -164,6 +164,35 @@ Asset gap: every photograph/decoration spot is marked with
 `data-asset="..."` for drop-in replacement once the owner supplies the
 imagery.
 
+## Phase B — Bilingual landing (TR + EN) ✅ (done 2026-05-18)
+
+Site is now bilingual. TR stays at `/` (default for the Istanbul-based
+brand's primary market); English ships at `/en/index.html`. Static page
+duplication, JS-free switcher, `hreflang` + `og:locale:alternate` on both,
+reciprocal `xhtml:link` alternates in `sitemap.xml`. See
+[ADR-0014](../docs/decisions/0014-bilingual-tr-default-en-static-duplication.md).
+
+- ✅ ADR-0014 documents the approach (static duplication, TR-default,
+  scope = `index.html` only, legal pages deferred).
+- ✅ `script.js` quiz block refactored to read user-facing strings from
+  `window.QUIZ_I18N` (TR fallback baked in). Same script drives both
+  locales.
+- ✅ TR `index.html` adds hreflang block, `og:locale:alternate`, header
+  + mobile-nav `.lang-switch` (TR active), inline `QUIZ_I18N` override.
+- ✅ EN `en/index.html` created: full translation, `<html lang="en">`,
+  `../`-prefixed asset paths, EN meta + JSON-LD `inLanguage: "en"`, EN
+  inline products data, EN `QUIZ_I18N` (different sentence template for
+  the result description).
+- ✅ `styles.css` adds `.lang-switch` editorial toggle; desktop switch
+  hidden at `<= 820px` (mobile users get the drawer copy).
+- ✅ `sitemap.xml` lists both URLs with reciprocal `xhtml:link`
+  alternates. `x-default` points to TR.
+- ✅ `CLAUDE.md`, `.ai/memory.md`, `.ai/backlog.md` updated.
+
+Deferred (in backlog): translate the 5 legal pages to EN (blocked on
+counsel sign-off per ADR-0012); owner pass over the AI-authored EN copy
+before flipping noindex → index.
+
 ## Phase R — Apothecary B&W redesign ✅ (done 2026-05-18, RETIRED)
 
 Superseded by Phase W. Kept here for git-history orientation.

@@ -8,9 +8,9 @@ channel the brand uses (Shopify, Amazon, retail partners, etc.).
 
 | Layer | Tech |
 |---|---|
-| Markup | Single static `index.html` |
+| Markup | Static page per locale: `index.html` (TR, default) + `en/index.html` (EN). See [ADR-0014](docs/decisions/0014-bilingual-tr-default-en-static-duplication.md). |
 | Styles | Plain CSS with custom properties (`styles.css`) |
-| Behavior | Vanilla JS (`script.js`). GSAP is dropped; IntersectionObserver handles reveals. |
+| Behavior | Vanilla JS (`script.js`). GSAP is dropped; IntersectionObserver handles reveals. Quiz strings are read from `window.QUIZ_I18N` (defined inline per page) so the same script.js drives both locales. |
 | Fonts | Fraunces (variable serif, opsz + italic, display only) + Manrope 400-800 (UI/body, 800 for h3 cards + stat numbers) — Google Fonts. See [ADR-0013](docs/decisions/0013-typography-fraunces-manrope.md). |
 | Hosting | GitHub Pages (staging, live) → Cloudflare Pages (production, planned). See [ADR-0009](docs/decisions/0009-github-pages-staging-then-cloudflare-pages.md). |
 | Dev server | `python3 -m http.server 5173` (see `.claude/launch.json`) |
@@ -21,12 +21,18 @@ concrete reason to change.
 ## Project files
 
 ```
-index.html       — single-page markup
+index.html       — TR landing (default locale, /, `<html lang="tr">`)
+en/index.html    — EN landing (/en/, `<html lang="en">`). Uses ../ asset paths.
+                   Both pages must stay structurally in sync; copy changes
+                   land in both. See ADR-0014.
 styles.css       — all styling, palette as CSS custom properties
-script.js        — theme toggle, smooth scroll, IO-based reveals, section logic
+script.js        — theme toggle, smooth scroll, IO-based reveals, quiz logic.
+                   Reads quiz strings from `window.QUIZ_I18N` (defined inline
+                   per page). TR is hard-coded as a fallback.
 data/
-  products.json  — canonical product list (also embedded in index.html for
-                   runtime use — keep both in sync until a build step is added)
+  products.json  — canonical product list (TR display labels; also embedded
+                   inline in both index.html and en/index.html for runtime
+                   use — keep all three in sync until a build step is added)
 .ai/             — session memory (memory.md is the entry point)
 docs/decisions/  — architecture decision records (start with README.md)
 ```
@@ -34,7 +40,7 @@ docs/decisions/  — architecture decision records (start with README.md)
 ## Brand context
 
 - Based in Istanbul (Turkey)
-- Target market: Turkish + general European audiences
+- Target market: Turkish + general European audiences. Site is bilingual: TR at `/` (default), EN at `/en/`. Header + mobile-nav have a JS-free TR/EN switcher. See [ADR-0014](docs/decisions/0014-bilingual-tr-default-en-static-duplication.md). The five legal pages stay TR-only until counsel signs off on the drafts ([ADR-0012](docs/decisions/0012-legal-pages-as-noindex-drafts.md)).
 - Tone: clean, science-backed, warmly editorial — never gimmicky
 - Positioning: warm + decorative + photography-led (current). See [ADR-0011](docs/decisions/0011-visual-identity-warm-decorative-photography.md). The earlier apothecary B&W direction is documented in [ADR-0010](docs/decisions/0010-visual-identity-apothecary-bw-manrope.md) (superseded).
 - Visual palette: warm cream (#F4F0E8) / warm sand alt (#ECE3D2) / near-black ink (#1A1814) / orange accent (#E2592A). Dark mode is a warm charcoal variant, not pure black.
