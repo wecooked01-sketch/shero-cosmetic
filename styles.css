@@ -1414,7 +1414,34 @@ body.is-locked { overflow: hidden; }
 /* ====================== Trust row (sits below hero) ====================== */
 .trust-section {
   position: relative;
-  padding: 32px 0 80px;
+  padding: 64px 0 80px;
+}
+.trust-section__head {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 540px;
+  margin-inline: auto;
+}
+.trust-section__tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  font-variation-settings: 'opsz' 96;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.trust-section__tagline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+.trust-section__sub {
+  font-size: .92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
 }
 
 /* ====================== Press marquee ====================== */
@@ -1487,7 +1514,15 @@ body.is-locked { overflow: hidden; }
 }
 .about__copy { max-width: 500px; }
 .about__copy .section-title { margin-bottom: 24px; }
-.about__copy .lead { margin-bottom: 32px; }
+.about__copy .lead { margin-bottom: 24px; }
+.about__copy .about__note {
+  font-size: .82rem;
+  line-height: 1.55;
+  color: var(--ink-mute);
+  margin: 24px 0 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
 
 .about__visual {
   position: relative;
