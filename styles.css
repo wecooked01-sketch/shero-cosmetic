@@ -1376,7 +1376,7 @@ body.is-locked { overflow: hidden; }
 .hero__title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(2.8rem, 6.4vw, 5.4rem);
+  font-size: clamp(2.8rem, 7.2vw, 5.4rem);
   line-height: 1.05;
   letter-spacing: -0.015em;
   font-variation-settings: 'opsz' 144;
@@ -1425,7 +1425,7 @@ body.is-locked { overflow: hidden; }
 .trust-section__tagline {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  font-size: clamp(1.75rem, 3vw, 2.1rem);
   line-height: 1.2;
   letter-spacing: -0.005em;
   font-variation-settings: 'opsz' 96;
