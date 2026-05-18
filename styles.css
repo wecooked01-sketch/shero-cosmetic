@@ -472,23 +472,22 @@ input, textarea, select { font-family: inherit; font-size: inherit; color: inher
 
 .logo {
   display: inline-flex;
-  align-items: baseline;
-  gap: 4px;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.75rem;
-  letter-spacing: 0;
+  align-items: center;
   color: var(--ink);
   line-height: 1;
 }
-.logo__dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  margin-right: 4px;
-  transform: translateY(-2px);
+.logo__img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+:root[data-theme="dark"] .logo__img {
+  content: url("shero-white.png");
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo__img {
+    content: url("shero-white.png");
+  }
 }
 
 .nav {
@@ -846,7 +845,7 @@ input, textarea, select { font-family: inherit; font-size: inherit; color: inher
   max-width: 30ch;
   color: var(--ink-soft);
 }
-.logo--footer { font-size: 1.6rem; }
+.logo--footer .logo__img { height: 36px; }
 .footer__social {
   list-style: none;
   padding: 0;
