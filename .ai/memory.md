@@ -95,10 +95,14 @@ ADR-0011 supersedes ADR-0010 with the rationale.
   Serum, Siyah Karbon Maske, Foundation). PETA / BUAV / no-animal-test
   badges added under `badges/`. `script.js` quiz output rewritten for
   the new product set.
-- **Real contacts + brand story** (`2def5b5`) — real email, phone, and
-  Karaköy address wired through markup + JSON-LD. Real social handles
-  (Instagram, Twitter, LinkedIn, Facebook) replace placeholders. Brand
-  story copy rewritten with the founder voice the owner provided.
+- **Real contacts + brand story** (`2def5b5`, address later updated) —
+  real email, phone, and physical address wired through markup +
+  JSON-LD. Real social handles (Instagram, Twitter, LinkedIn,
+  Facebook) replace placeholders. Brand story copy rewritten with
+  the founder voice the owner provided. The originally-recorded
+  Karaköy address was superseded by the owner with the actual
+  studio address (Ekinoba Mah. No:5, Büyükçekmece/İstanbul) plus
+  working hours (Mon–Sat 08:30–18:30).
 - **Wordmark PNG** (`870c0d3`) — `shero-black.png` + `shero-white.png`
   wired into header, footer, and mobile nav as the brand wordmark.
   Bagel Fat One text wordmark replaced where it appeared at logo scale.
@@ -176,9 +180,9 @@ ADR-0011 supersedes ADR-0010 with the rationale.
   Copy changes to one page MUST be mirrored in the other — there's
   no build automation, only discipline. The inline products JSON is
   the same shape in both pages but with locale-appropriate `name`
-  and `stepLabel` fields. JSON-LD address stays in Karaköy/Istanbul
-  (the brand is Istanbul-based; the description gets translated but
-  the postal address doesn't change).
+  and `stepLabel` fields. JSON-LD postal address is the same in both
+  locales (the brand is Istanbul-based; the description gets translated
+  but the postal address doesn't change).
 - **Quiz JS i18n contract:** `script.js` reads all user-facing quiz
   strings from `window.QUIZ_I18N` defined inline per page (TR
   fallback baked into the IIFE). If you add a new user-facing string
@@ -197,10 +201,20 @@ ADR-0011 supersedes ADR-0010 with the rationale.
 - The bloom decoration (`decor--bloom-right`) is still an inline SVG
   with `<ellipse>` petals — owner hasn't supplied a PNG cutout for it.
   Acceptable as-is; only swap if a real asset arrives.
-- Real contacts in markup + JSON-LD: `hello@sherocosmetic.com`,
-  `+90-850-220-2088`, Karaköy/Istanbul. If these change, update both
-  `index.html` Organization JSON-LD (`@id` block) AND the visible
-  contact section AND the footer. Three sources of truth — keep synced.
+- Real contacts in markup + JSON-LD:
+  - Email: `hello@sherocosmetic.com`
+  - Phone: `+90-850-220-2088` (displayed as `0850 220 20 88`)
+  - WhatsApp: `+90 545 273 1530` (separate line, deep-linked in two
+    places per page — the contact info row and the footer social row)
+  - Address: `Ekinoba Mah. No:5, Büyükçekmece/İstanbul`. In JSON-LD
+    this is structured as streetAddress + addressLocality
+    (Büyükçekmece) + addressRegion (İstanbul) + addressCountry (TR).
+  - Hours: `Pzt – Cmt · 08:30 – 18:30` (Mon–Sat in EN). In JSON-LD
+    this is an `openingHoursSpecification` with `dayOfWeek` array
+    + `opens`/`closes`.
+  If any of these change, sync FIVE places: TR JSON-LD + TR visible
+  contact section, EN JSON-LD + EN visible contact section, and this
+  memory note. (No address in the footer at present.)
 - Real socials are wired: instagram.com/sherocosmetic, twitter.com,
   facebook.com, linkedin.com/company/sherocosmetic. Update `sameAs[]`
   in JSON-LD if any change.
