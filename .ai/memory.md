@@ -102,14 +102,20 @@ ADR-0011 supersedes ADR-0010 with the rationale.
 - **Wordmark PNG** (`870c0d3`) — `shero-black.png` + `shero-white.png`
   wired into header, footer, and mobile nav as the brand wordmark.
   Bagel Fat One text wordmark replaced where it appeared at logo scale.
-- **Typography rewrite — Fraunces + Manrope** (uncommitted at session
-  resume) — Bagel Fat One fully removed (index.html + all 5 legal
-  pages). Display tier is now Fraunces variable serif (opsz axis, 144
-  for hero, 96 for sections, weight 500). All five `<span class="display">`
-  swapped to `<em>` (italic, same family, ink-soft color) — one family
-  per headline rule. `.display` class deleted from CSS. Manrope retains
-  weight 800 for h3 card titles + stat numbers + eyebrows (18 rules).
-  ADR-0013 records the decision; CLAUDE.md updated.
+- **Typography rewrite — Fraunces + Manrope** (`fcf0258`) — Bagel Fat
+  One fully removed (index.html + all 5 legal pages). Display tier is
+  now Fraunces variable serif (opsz axis, 144 for hero, 96 for sections,
+  weight 500). All five `<span class="display">` swapped to `<em>`
+  (italic, same family, ink-soft color) — one family per headline rule.
+  `.display` class deleted from CSS. Manrope retains weight 800 for h3
+  card titles + stat numbers + eyebrows (18 rules). ADR-0013 records
+  the decision; CLAUDE.md updated.
+- **Routine lead copy fix** (`c239e0f`) — dropped "Her adıma dokunup
+  nedenini öğren" from the routine section lead. The promise of
+  tap-to-reveal didn't match the markup (every step's "why" paragraph
+  is already visible). First half of the lead stands on its own. The
+  `.routine-step:hover` lift stays — editorial polish, not a
+  content-revealing affordance.
 
 ### Live URLs
 - **Staging (with R1 + R2 redesign):**
@@ -127,7 +133,6 @@ ADR-0011 supersedes ADR-0010 with the rationale.
 | Phase 2 — Real integrations (Klaviyo / Formspree / CF Analytics / UTM-tagged outbound) | Blocked on store URL + accounts | 2–4 hr |
 | Production migration (Cloudflare Pages + custom domain) | Blocked on DNS + account | 30 min once unblocked |
 | Bloom decoration PNG (only remaining `data-asset` not filled — currently inline SVG petals) | Optional / owner call | 5 min swap |
-| Backlog polish — fix misleading "Hover each card" routine copy on touch | Unblocked | 10 min |
 
 ### Known state to watch for
 - The current visual system is the warm + decorative one from ADR-0011.

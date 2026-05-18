@@ -11,9 +11,6 @@ Items deferred from the current phase, ordered roughly by value.
   a tiny `script.js` helper will rewrite the `href` on every `[data-cta]`
   anchor to the UTM-tagged destination. Until then, CTAs anchor to in-page
   sections.
-- **Routine card "Hover each card to see the why" copy** — misleading on
-  touch devices (no hover). Either change copy to "Tap each card…" plus a
-  tap-to-expand affordance, or drop the help line entirely.
 - **Lighthouse measurement** — needs a deployed URL (Phase 5). Target ≥95
   across all four metrics.
 - **Manual keyboard-traversal audit** — preview tooling can't reliably
