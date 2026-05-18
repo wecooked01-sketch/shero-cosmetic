@@ -147,8 +147,10 @@
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO (magazine cover) ============ -->
 <section class="hero" id="hero">
+  <img class="hero__photo" src="assets/photos/hero-collection.jpg" alt="SHERO cilt bakım koleksiyonu — ayna üzerinde okaliptus dallarıyla" />
+  <div class="hero__overlay" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__inner">
       <div class="hero__copy">
@@ -166,45 +168,7 @@
           <a class="btn btn--primary" href="#products" data-cta data-cta-campaign="hero" data-cta-content="alisverise-basla">
             Alışverişe başla <span class="arrow">→</span>
           </a>
-          <button class="btn-play" type="button" aria-label="Yorumları izle">
-            <span class="btn-play__circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </span>
-            <span>Yorumları izle</span>
-          </button>
         </div>
-      </div>
-
-      <div class="hero__visual">
-        <!-- Featured-product overlay card. Real photo of Gündüz Serum on sand. -->
-        <div class="hero__product">
-          <div class="hero__product__badge" aria-hidden="true">Yeni<br/>Ürün</div>
-          <div class="hero__product__image" data-asset="hero-product-cutout">
-            <img src="assets/photos/hero-product-gunduz.jpg" alt="Gündüz Serum şişesi kum ve deniz kabukları üzerinde" />
-          </div>
-          <div class="hero__product__caption">Gündüz Serum · 30ml</div>
-        </div>
-
-        <!-- Main hero image — 5 product collection on mirror with eucalyptus. -->
-        <div class="hero__image" data-asset="hero-main">
-          <img src="assets/photos/hero-collection.jpg" alt="SHERO cilt bakım koleksiyonu — ayna üzerinde okaliptus dallarıyla" />
-        </div>
-      </div>
-
-      <!-- Decoration slot — replace inline SVG with actual PNG cutout when ready. -->
-      <div class="decor decor--bloom-right" aria-hidden="true" data-asset="decor-bloom">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(60 60)">
-            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(0)"/>
-            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(72)"/>
-            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(144)"/>
-            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(216)"/>
-            <ellipse cx="0" cy="-30" rx="14" ry="22" fill="var(--petal)" opacity="0.85" transform="rotate(288)"/>
-            <circle cx="0" cy="0" r="10" fill="var(--bloom)"/>
-          </g>
-        </svg>
       </div>
     </div>
   </div>
@@ -293,10 +257,10 @@
         <div class="about__image" data-asset="about-atelier">
           <img src="assets/photos/about-atelier.jpg" alt="SHERO Foundation kapsüller — ahşap disk üzerinde, kuru çiçeklerle" />
         </div>
-        <div class="about__quote">
+        <blockquote class="about__quote">
           <p>&ldquo;Kapsül içinde fondöten &mdash; Türkiye'de bir ilk, dünyada bir azınlık.&rdquo;</p>
-          <span class="about__quote__cite">Kurucu &middot; SHERO</span>
-        </div>
+          <cite class="about__quote__cite">Kurucu &middot; SHERO</cite>
+        </blockquote>
       </div>
     </div>
 

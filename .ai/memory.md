@@ -191,16 +191,14 @@ ADR-0011 supersedes ADR-0010 with the rationale.
   `descriptionTemplate` uses `{type}`/`{concern}`/`{cadence}`
   placeholders, not `${...}` interpolation, because TR and EN
   arrange the modifiers differently.
-- The `data-asset` slots are now mostly **filled with real `<img>` tags**
-  pointing at `assets/photos/*.jpg` (hero-collection, hero-product-gunduz,
-  about-atelier, product-{gece-serum-maske, asit-maske, vitamin-bomb,
-  gunduz-serum, siyah-karbon-maske, foundation}). The slot wrappers
-  and `data-asset` attributes are still on the parent `<div>`s — keep
-  them; they're useful selectors and the bloom decoration still needs
-  a PNG drop-in. Don't strip them as "dead" markup.
-- The bloom decoration (`decor--bloom-right`) is still an inline SVG
-  with `<ellipse>` petals — owner hasn't supplied a PNG cutout for it.
-  Acceptable as-is; only swap if a real asset arrives.
+- The `data-asset` slots are filled with real `<img>` tags pointing at
+  `assets/photos/*.jpg`. After the hero redesign (magazine-cover), the
+  hero photo is a direct `<img class="hero__photo">` element (not a
+  `data-asset`-wrapped div anymore). The about + product cards still
+  use the `data-asset` slot pattern. `hero-product-gunduz.jpg` is
+  currently unused on the page (the hero overlay product card was
+  removed in the magazine-cover rewrite) but the file is kept under
+  `assets/photos/` in case a future design wants it back.
 - Real contacts in markup + JSON-LD:
   - Email: `hello@sherocosmetic.com`
   - Phone: `+90-850-220-2088` (displayed as `0850 220 20 88`)
@@ -222,9 +220,15 @@ ADR-0011 supersedes ADR-0010 with the rationale.
   (dark theme) — see header, footer, mobile nav. If editing the
   wordmark display, swap the PNGs rather than re-introducing Bagel Fat
   One text-as-logo.
-- The leaf decoration was explicitly REMOVED from the hero per owner
-  request. Don't re-add unless asked. The bloom (flower) decoration
-  remains in the hero bottom-right.
+- Hero is now a **magazine-cover layout** (full-bleed
+  `hero-collection.jpg` photo + soft darken-from-bottom gradient
+  overlay + cream-on-dark headline/lead/single CTA, bottom-left).
+  Theme-independent: the cover always reads cinematic regardless of
+  light/dark mode. The previous 2-col grid + product overlay card +
+  bloom + leaf + secondary play-button CTA are all gone — don't try
+  to "restore" them as if they're missing. About section is
+  asymmetric (copy 1fr / visual 1.35fr) with a Fraunces italic
+  pull-quote (`<blockquote>` + `<cite>`) as the visual anchor.
 - `--rose-gold-text` resolves to `--ink` since contrast in B&W is
   automatic. Variable still exists for compat.
 - The `.product-glow` div is in DOM (animateSlideIn still targets
