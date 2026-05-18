@@ -221,7 +221,7 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
     if (progressFill) progressFill.style.width = progressPct + '%';
 
     if (counter) {
-      counter.textContent = idx === 3 ? 'Your result' : `Step ${idx + 1} of 3`;
+      counter.textContent = idx === 3 ? 'Sonuç' : `${idx + 1}/3 adım`;
     }
     if (backBtn) backBtn.disabled = idx === 0;
 
@@ -231,7 +231,7 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
     const heading = steps[idx]?.querySelector('h3');
     if (heading) {
       heading.focus({ preventScroll: true });
-      const label = idx === 3 ? 'Quiz result' : `Quiz step ${idx + 1} of 3`;
+      const label = idx === 3 ? 'Test sonucu' : `Cilt testi ${idx + 1}. adım`;
       announce(`${label}: ${heading.textContent.trim()}`);
     }
   }
@@ -271,36 +271,51 @@ if (!REDUCE_MOTION && 'IntersectionObserver' in window) {
     const { type, concern, time } = state;
 
     const titleByConcern = {
-      dullness:  'The Radiant Reset',
-      aging:     'The Smooth & Renew',
-      acne:      'The Clear Calm',
-      hydration: 'The Hydration Deep-Dive',
+      dullness:  'Parlaklık Ritüeli',
+      aging:     'Yumuşat & Yenile Ritüeli',
+      acne:      'Temiz Cilt Ritüeli',
+      hydration: 'Derin Nem Ritüeli',
     };
 
     const concernToProductIds = {
-      dullness:  ['cleanser', 'serumC', 'spf'],
-      aging:     ['retinol', 'hydra', 'spf'],
-      acne:      ['cleanser', 'essence', 'hydra'],
-      hydration: ['essence', 'hydra', 'spf'],
+      dullness:  ['vitamin-bomb', 'gunduz-serum', 'foundation'],
+      aging:     ['gece-serum-maske', 'vitamin-bomb', 'foundation'],
+      acne:      ['asit-maske', 'siyah-karbon-maske', 'vitamin-bomb'],
+      hydration: ['gunduz-serum', 'vitamin-bomb', 'gece-serum-maske'],
     };
 
     let pickIds = concernToProductIds[concern] || [];
     if (time === 'ritual' && pickIds.length < 5) {
-      pickIds = ['cleanser', 'essence', 'serumC', 'hydra', 'spf'];
+      pickIds = ['asit-maske', 'gece-serum-maske', 'vitamin-bomb', 'gunduz-serum', 'foundation'];
     } else if (time === 'quick') {
       pickIds = pickIds.slice(0, 3);
     }
 
     const picks = pickIds.map((id) => PRODUCTS[id]).filter(Boolean);
 
+    const concernLabels = {
+      dullness:  'matlık',
+      aging:     'ince çizgiler',
+      acne:      'sivilceler',
+      hydration: 'nem',
+    };
+    const typeLabels = {
+      oily:      'yağlı',
+      dry:       'kuru',
+      combo:     'karma',
+      sensitive: 'hassas',
+    };
+
     const titleEl = document.getElementById('resultTitle');
     const descEl  = document.getElementById('resultDesc');
     const wrap    = document.getElementById('resultProducts');
 
-    if (titleEl) titleEl.textContent = titleByConcern[concern] || 'Your custom ritual';
+    if (titleEl) titleEl.textContent = titleByConcern[concern] || 'Size özel ritüel';
     if (descEl) {
-      const cadence = time === 'ritual' ? 'full' : time === 'quick' ? 'streamlined' : 'balanced';
-      descEl.textContent = `A ${cadence} routine tailored to ${type} skin, focused on ${concern}.`;
+      const cadence = time === 'ritual' ? 'tam' : time === 'quick' ? 'sade' : 'dengeli';
+      const typeT    = typeLabels[type] || type;
+      const concernT = concernLabels[concern] || concern;
+      descEl.textContent = `${typeT} cilde özel, ${concernT} odaklı ${cadence} bir bakım rutini.`;
     }
     if (wrap) {
       wrap.innerHTML = picks.map((p) => `

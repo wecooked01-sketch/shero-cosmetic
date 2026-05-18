@@ -1,58 +1,58 @@
 {
   "products": [
     {
-      "id": "cleanser",
-      "name": "Velvet Cleanser",
-      "size": "150ml",
-      "step": "01",
-      "stepLabel": "STEP 01",
-      "category": "cleanse",
-      "hero": "pH-balanced gel that lifts SPF and pollution without stripping the barrier."
-    },
-    {
-      "id": "essence",
-      "name": "Bloom Essence",
-      "size": "200ml",
-      "step": "02",
-      "stepLabel": "STEP 02",
-      "category": "tone",
-      "hero": "A featherlight essence prepping skin to absorb everything that follows."
-    },
-    {
-      "id": "serumC",
-      "name": "Radiance Serum",
-      "size": "50ml",
-      "step": "03",
-      "stepLabel": "STEP 03 · AM",
-      "category": "treat-am",
-      "hero": "15% stabilized vitamin C — brightens, evens, shields."
-    },
-    {
-      "id": "retinol",
-      "name": "Glow Elixir",
+      "id": "gece-serum-maske",
+      "name": "Gece Serum Maske",
       "size": "30ml",
-      "step": "03",
-      "stepLabel": "STEP 03 · PM",
-      "category": "treat-pm",
-      "hero": "0.3% encapsulated retinol — smooths, refines, renews overnight."
+      "step": "PM",
+      "stepLabel": "GECE · BAKIM",
+      "category": "serum",
+      "hero": "Peptit, 8D hialuron, beta-glukan ve amino-asit kompleksiyle tüm gece nemlendirme."
     },
     {
-      "id": "hydra",
-      "name": "Hydra Cream",
-      "size": "75ml",
-      "step": "04",
-      "stepLabel": "STEP 04",
-      "category": "moisturize",
-      "hero": "Triple-weight hyaluronic + squalane. 72-hour hydration."
+      "id": "asit-maske",
+      "name": "Asit Maske",
+      "size": "30ml",
+      "step": "Bonus",
+      "stepLabel": "PEELING · MASKE",
+      "category": "maske",
+      "hero": "AHA %10 + BHA %2. Yenilenmiş ve pürüzsüz cilt için glikolik, laktik ve salisilik asit."
     },
     {
-      "id": "spf",
-      "name": "Daily Shield SPF",
-      "size": "50ml",
-      "step": "05",
-      "stepLabel": "STEP 05 · AM",
-      "category": "protect",
-      "hero": "Mineral SPF 50 — the single most powerful anti-aging step."
+      "id": "vitamin-bomb",
+      "name": "Vitamin Bomb",
+      "size": "30ml",
+      "step": "2x",
+      "stepLabel": "NEMLENDIRME",
+      "category": "nemlendirici",
+      "hero": "C, B3 ve B5 vitaminleri — cildi parlaklığa kavuşturan vitamin bombası."
+    },
+    {
+      "id": "gunduz-serum",
+      "name": "Gündüz Serum",
+      "size": "30ml",
+      "step": "AM",
+      "stepLabel": "GÜNDÜZ · KORUMA",
+      "category": "serum",
+      "hero": "8D hialuron + 15 SPF. Tüm gün nemlendirme ve güneş koruması."
+    },
+    {
+      "id": "siyah-karbon-maske",
+      "name": "Siyah Karbon Maske",
+      "size": "30ml",
+      "step": "Bonus",
+      "stepLabel": "DETOKS · MASKE",
+      "category": "maske",
+      "hero": "Botanik AHA, BHA ve enzimle mikro-soyturucu etki, aydınlık ve pürüzsüz cilt."
+    },
+    {
+      "id": "foundation",
+      "name": "Foundation 30 SPF",
+      "size": "Kapsül",
+      "step": "SPF",
+      "stepLabel": "FONDÖTEN · SPF",
+      "category": "koruma",
+      "hero": "Hialuronik asit ve E vitaminiyle 30 SPF kapsül fondöten."
     }
   ]
 }
