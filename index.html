@@ -376,6 +376,8 @@
 
     <div class="products__filters" role="tablist" aria-label="Ürün kategorileri">
       <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">Tümü</button>
+      <button class="chip" data-filter="temizleme" role="tab" aria-selected="false">Temizleme</button>
+      <button class="chip" data-filter="tonik" role="tab" aria-selected="false">Tonik</button>
       <button class="chip" data-filter="serum" role="tab" aria-selected="false">Serum</button>
       <button class="chip" data-filter="maske" role="tab" aria-selected="false">Maske</button>
       <button class="chip" data-filter="nemlendirici" role="tab" aria-selected="false">Nemlendirici</button>
@@ -383,10 +385,90 @@
     </div>
 
     <div class="products__grid">
+      <article class="product-card" data-category="temizleme" data-reveal>
+        <div class="product-card__image" data-asset="product-anti-akne-temizleme">
+          <span class="product-card__step">01</span>
+          <img src="assets/photos/product-anti-akne-temizleme.jpg" alt="Anti Akne Temizleme Jeli — Beyaz Serisi şişeleri okaliptus yapraklarıyla" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Anti Akne Temizleme Jeli</h3>
+            <span class="product-card__size">200ml</span>
+          </div>
+          <p>Lavanta, çay ağacı yağı ve niasinamid &mdash; pH dengeli, akneye eğilimli cildi yumuşakça arındırır.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Temizleme &middot; Günlük</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="anti-akne-temizleme" aria-label="Anti Akne Temizleme Jeli al">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tonik" data-reveal>
+        <div class="product-card__image" data-asset="product-anti-akne-tonik">
+          <span class="product-card__step">02</span>
+          <img src="assets/photos/product-anti-akne-tonik.jpg" alt="Anti Akne Tonik ve Temizleme Jeli ikilisi, mermer üzerinde lavanta ile" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Anti Akne Tonik</h3>
+            <span class="product-card__size">200ml</span>
+          </div>
+          <p>Niasinamid ve çay ağacı yağıyla gözenekleri sıkılaştıran, akne eğilimini yatıştıran tonik.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Tonik &middot; Günlük</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="anti-akne-tonik" aria-label="Anti Akne Tonik al">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="temizleme" data-reveal>
+        <div class="product-card__image" data-asset="product-anti-gozenek-temizleme">
+          <span class="product-card__step">01</span>
+          <img src="assets/photos/product-anti-gozenek-temizleme.jpg" alt="Anti Gözenek Temizleme Jeli ve Tonik ikilisi, kum üzerinde erik çiçekleriyle" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Anti Gözenek Temizleme Jeli</h3>
+            <span class="product-card__size">200ml</span>
+          </div>
+          <p>Papatya, cadı fındığı ve keten tohumuyla gözenek odaklı, sakinleştirici günlük temizlik.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Temizleme &middot; Papatya</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="anti-gozenek-temizleme" aria-label="Anti Gözenek Temizleme Jeli al">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tonik" data-reveal>
+        <div class="product-card__image" data-asset="product-anti-gozenek-tonik">
+          <span class="product-card__step">02</span>
+          <img src="assets/photos/product-anti-gozenek-tonik.jpg" alt="Anti Gözenek Tonik şişesi suyun üzerinde, kumlu sahilde" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__head">
+            <h3>Anti Gözenek Tonik</h3>
+            <span class="product-card__size">200ml</span>
+          </div>
+          <p>Papatya, niasinamid ve cadı fındığıyla gözenek sıkılaştırıcı ve aydınlatıcı tonik.</p>
+          <div class="product-card__foot">
+            <span class="product-card__price">Tonik &middot; Papatya</span>
+            <a href="#" class="product-card__cta" data-cta data-cta-campaign="products" data-cta-content="anti-gozenek-tonik" aria-label="Anti Gözenek Tonik al">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
       <article class="product-card" data-category="serum" data-reveal>
         <div class="product-card__image" data-asset="product-gece-serum-maske">
           <span class="product-card__step">PM</span>
-          <img src="assets/photos/product-gece-serum-maske.jpg" alt="Gece Serum Maske şişesi ve kutusu" />
+          <img src="assets/photos/product-gece-serum-maske.jpg" alt="Gece Serum Maske şişesi beyaz taşlar ve kurutulmuş çiçeklerle" />
         </div>
         <div class="product-card__body">
           <div class="product-card__head">
@@ -406,7 +488,7 @@
       <article class="product-card" data-category="maske" data-reveal>
         <div class="product-card__image" data-asset="product-asit-maske">
           <span class="product-card__step">Bonus</span>
-          <img src="assets/photos/product-asit-maske.jpg" alt="Asit Maske şişesi ve kutusu" />
+          <img src="assets/photos/product-asit-maske.jpg" alt="Asit Maske şişesi kum üzerinde monstera yaprağıyla" />
         </div>
         <div class="product-card__body">
           <div class="product-card__head">
@@ -427,7 +509,7 @@
         <div class="product-card__image" data-asset="product-vitamin-bomb">
           <span class="product-card__badge">En çok satan</span>
           <span class="product-card__step">2x</span>
-          <img src="assets/photos/product-vitamin-bomb.jpg" alt="Vitamin Bomb nemlendirici şişesi, ayna üzerinde okaliptus ile" />
+          <img src="assets/photos/product-vitamin-bomb.jpg" alt="Vitamin Bomb şişesi kum üzerinde okaliptus yaprağıyla" />
         </div>
         <div class="product-card__body">
           <div class="product-card__head">
@@ -447,7 +529,7 @@
       <article class="product-card" data-category="serum" data-reveal>
         <div class="product-card__image" data-asset="product-gunduz-serum">
           <span class="product-card__step">AM</span>
-          <img src="assets/photos/product-gunduz-serum.jpg" alt="Gündüz Serum şişesi kum ve deniz kabukları üzerinde" />
+          <img src="assets/photos/product-gunduz-serum.jpg" alt="Gündüz Serum şişesi okaliptus arka planında, sıralı serum kompozisyonu" />
         </div>
         <div class="product-card__body">
           <div class="product-card__head">
@@ -467,7 +549,7 @@
       <article class="product-card" data-category="maske" data-reveal>
         <div class="product-card__image" data-asset="product-siyah-karbon-maske">
           <span class="product-card__step">Bonus</span>
-          <img src="assets/photos/product-siyah-karbon-maske.jpg" alt="Siyah Karbon Maske şişesi kum ve deniz kabukları üzerinde" />
+          <img src="assets/photos/product-siyah-karbon-maske.jpg" alt="Siyah Karbon Maske şişesi ve eğik duran kutusu, beyaz stüdyo" />
         </div>
         <div class="product-card__body">
           <div class="product-card__head">
@@ -487,7 +569,7 @@
       <article class="product-card" data-category="koruma" data-reveal>
         <div class="product-card__image" data-asset="product-foundation">
           <span class="product-card__step">SPF</span>
-          <img src="assets/photos/product-foundation.jpg" alt="SHERO Foundation 30 SPF kapsüllü mantar tıpalı şişe" />
+          <img src="assets/photos/product-foundation.jpg" alt="SHERO Foundation 30 SPF kapsüllü şişe etrafa dağılmış kapsüller ve gri kutuyla" />
         </div>
         <div class="product-card__body">
           <div class="product-card__head">
@@ -678,6 +760,42 @@
     <div class="routine__cta">
       <p>Nereden başlayacağınızı bilmiyor musunuz? 60 saniyede eşleşin.</p>
       <a href="#quiz" class="btn btn--primary" data-cta data-cta-campaign="routine" data-cta-content="setimi-bul">Setimi bul <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDITORIAL GALLERY ============ -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="section-head gallery__head" data-reveal>
+      <span class="eyebrow">Editöryel</span>
+      <h2 class="section-title">Koleksiyondan <em>anlar.</em></h2>
+    </div>
+    <div class="gallery__grid">
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-1.jpg" alt="Beş ürün beyaz stüdyo zemininde renkli kutularıyla sıralı" loading="lazy" />
+      </figure>
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-2.jpg" alt="Üç serum ayna yansımasında, okaliptus ve ahşap çerçeve ile" loading="lazy" />
+      </figure>
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-3.jpg" alt="İki Foundation kapsül şişesi, kurutulmuş cennetkuşu çiçekleriyle" loading="lazy" />
+      </figure>
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-4.jpg" alt="Foundation kapsüller ipek kumaş üzerinde, etrafa dağılmış halde" loading="lazy" />
+      </figure>
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-5.jpg" alt="Anti Gözenek Temizleme ve Tonik ikilisi mermer üzerinde papatyalarla" loading="lazy" />
+      </figure>
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-6.jpg" alt="Gündüz Serum, Vitamin Bomb ve Gece Serum Maske üç renkli zeminde flat-lay" loading="lazy" />
+      </figure>
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-7.jpg" alt="Siyah Karbon Maske kum üzerinde okaliptus ve deniz kabuklarıyla yukarıdan" loading="lazy" />
+      </figure>
+      <figure class="gallery__item" data-reveal>
+        <img src="assets/photos/gallery-8.jpg" alt="Anti Gözenek Tonik şişesi, monstera yaprağı ve kumlu sahil" loading="lazy" />
+      </figure>
     </div>
   </div>
 </section>
@@ -919,12 +1037,16 @@
 <script type="application/json" id="shero-products">
 {
   "products": [
-    { "id": "gece-serum-maske",   "name": "Gece Serum Maske",   "size": "30ml",   "step": "PM",     "stepLabel": "GECE · BAKIM",        "category": "serum",        "hero": "Peptit, 8D hialuron, beta-glukan ve amino-asit kompleksiyle tüm gece nemlendirme." },
-    { "id": "asit-maske",         "name": "Asit Maske",         "size": "30ml",   "step": "Bonus", "stepLabel": "PEELING · MASKE",      "category": "maske",        "hero": "AHA %10 + BHA %2. Yenilenmiş ve pürüzsüz cilt için glikolik, laktik ve salisilik asit." },
-    { "id": "vitamin-bomb",       "name": "Vitamin Bomb",       "size": "30ml",   "step": "2x",    "stepLabel": "NEMLENDIRME",          "category": "nemlendirici", "hero": "C, B3 ve B5 vitaminleri — cildi parlaklığa kavuşturan vitamin bombası." },
-    { "id": "gunduz-serum",       "name": "Gündüz Serum",       "size": "30ml",   "step": "AM",    "stepLabel": "GÜNDÜZ · KORUMA",      "category": "serum",        "hero": "8D hialuron + 15 SPF. Tüm gün nemlendirme ve güneş koruması." },
-    { "id": "siyah-karbon-maske", "name": "Siyah Karbon Maske", "size": "30ml",   "step": "Bonus", "stepLabel": "DETOKS · MASKE",       "category": "maske",        "hero": "Botanik AHA, BHA ve enzimle mikro-peeling etkisi, aydınlık ve pürüzsüz cilt." },
-    { "id": "foundation",         "name": "Foundation 30 SPF",  "size": "Kapsül", "step": "SPF",   "stepLabel": "FONDÖTEN · SPF",       "category": "koruma",       "hero": "Hialuronik asit ve E vitaminiyle 30 SPF kapsül fondöten." }
+    { "id": "anti-akne-temizleme",    "name": "Anti Akne Temizleme Jeli",    "size": "200ml",  "step": "01",    "stepLabel": "TEMİZLEME · GÜNLÜK",   "category": "temizleme",    "hero": "Lavanta, çay ağacı yağı, niasinamid — pH dengeli, akneye eğilimli cildi yumuşakça arındırır." },
+    { "id": "anti-akne-tonik",        "name": "Anti Akne Tonik",             "size": "200ml",  "step": "02",    "stepLabel": "TONİK · GÜNLÜK",       "category": "tonik",        "hero": "Niasinamid + çay ağacı yağı — gözenekleri sıkılaştırır, sivilcelere eğilimi yatıştırır." },
+    { "id": "anti-gozenek-temizleme", "name": "Anti Gözenek Temizleme Jeli", "size": "200ml",  "step": "01",    "stepLabel": "TEMİZLEME · PAPATYA",  "category": "temizleme",    "hero": "Papatya, cadı fındığı, keten tohumu — gözenek odaklı, sakinleştirici günlük temizlik." },
+    { "id": "anti-gozenek-tonik",     "name": "Anti Gözenek Tonik",          "size": "200ml",  "step": "02",    "stepLabel": "TONİK · PAPATYA",      "category": "tonik",        "hero": "Papatya, niasinamid ve cadı fındığıyla gözenek sıkılaştırıcı ve aydınlatıcı tonik." },
+    { "id": "gece-serum-maske",       "name": "Gece Serum Maske",            "size": "30ml",   "step": "PM",    "stepLabel": "GECE · BAKIM",         "category": "serum",        "hero": "Peptit, 8D hialuron, beta-glukan ve amino-asit kompleksiyle tüm gece nemlendirme." },
+    { "id": "asit-maske",             "name": "Asit Maske",                  "size": "30ml",   "step": "Bonus", "stepLabel": "PEELING · MASKE",      "category": "maske",        "hero": "AHA %10 + BHA %2. Yenilenmiş ve pürüzsüz cilt için glikolik, laktik ve salisilik asit." },
+    { "id": "vitamin-bomb",           "name": "Vitamin Bomb",                "size": "30ml",   "step": "2x",    "stepLabel": "NEMLENDIRME",          "category": "nemlendirici", "hero": "C, B3 ve B5 vitaminleri — cildi parlaklığa kavuşturan vitamin bombası." },
+    { "id": "gunduz-serum",           "name": "Gündüz Serum",                "size": "30ml",   "step": "AM",    "stepLabel": "GÜNDÜZ · KORUMA",      "category": "serum",        "hero": "8D hialuron + 15 SPF. Tüm gün nemlendirme ve güneş koruması." },
+    { "id": "siyah-karbon-maske",     "name": "Siyah Karbon Maske",          "size": "30ml",   "step": "Bonus", "stepLabel": "DETOKS · MASKE",       "category": "maske",        "hero": "Botanik AHA, BHA ve enzimle mikro-peeling etkisi, aydınlık ve pürüzsüz cilt." },
+    { "id": "foundation",             "name": "Foundation 30 SPF",           "size": "Kapsül", "step": "SPF",   "stepLabel": "FONDÖTEN · SPF",       "category": "koruma",       "hero": "Hialuronik asit ve E vitaminiyle 30 SPF kapsül fondöten." }
   ]
 }
 </script>

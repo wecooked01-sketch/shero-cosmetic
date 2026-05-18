@@ -1,6 +1,42 @@
 {
   "products": [
     {
+      "id": "anti-akne-temizleme",
+      "name": "Anti Akne Temizleme Jeli",
+      "size": "200ml",
+      "step": "01",
+      "stepLabel": "TEMİZLEME · GÜNLÜK",
+      "category": "temizleme",
+      "hero": "Lavanta, çay ağacı yağı, niasinamid — pH dengeli, akneye eğilimli cildi yumuşakça arındırır."
+    },
+    {
+      "id": "anti-akne-tonik",
+      "name": "Anti Akne Tonik",
+      "size": "200ml",
+      "step": "02",
+      "stepLabel": "TONİK · GÜNLÜK",
+      "category": "tonik",
+      "hero": "Niasinamid + çay ağacı yağı — gözenekleri sıkılaştırır, sivilcelere eğilimi yatıştırır."
+    },
+    {
+      "id": "anti-gozenek-temizleme",
+      "name": "Anti Gözenek Temizleme Jeli",
+      "size": "200ml",
+      "step": "01",
+      "stepLabel": "TEMİZLEME · PAPATYA",
+      "category": "temizleme",
+      "hero": "Papatya, cadı fındığı, keten tohumu — gözenek odaklı, sakinleştirici günlük temizlik."
+    },
+    {
+      "id": "anti-gozenek-tonik",
+      "name": "Anti Gözenek Tonik",
+      "size": "200ml",
+      "step": "02",
+      "stepLabel": "TONİK · PAPATYA",
+      "category": "tonik",
+      "hero": "Papatya, niasinamid ve cadı fındığıyla gözenek sıkılaştırıcı ve aydınlatıcı tonik."
+    },
+    {
       "id": "gece-serum-maske",
       "name": "Gece Serum Maske",
       "size": "30ml",
@@ -43,7 +79,7 @@
       "step": "Bonus",
       "stepLabel": "DETOKS · MASKE",
       "category": "maske",
-      "hero": "Botanik AHA, BHA ve enzimle mikro-soyturucu etki, aydınlık ve pürüzsüz cilt."
+      "hero": "Botanik AHA, BHA ve enzimle mikro-peeling etkisi, aydınlık ve pürüzsüz cilt."
     },
     {
       "id": "foundation",
