@@ -22,6 +22,7 @@ one, supersede it explicitly (new ADR, mark the old one `Superseded by NNNN`).
 | [0010](0010-visual-identity-apothecary-bw-manrope.md) | Visual identity pivot: apothecary B&W + Manrope | Superseded by 0011 | 2026-05-17 |
 | [0011](0011-visual-identity-warm-decorative-photography.md) | Visual identity pivot #2: warm + decorative + photography-led | Accepted | 2026-05-18 |
 | [0012](0012-legal-pages-as-noindex-drafts.md) | Legal pages ship as noindex draft templates | Accepted | 2026-05-18 |
+| [0013](0013-typography-fraunces-manrope.md) | Typography rewrite: Fraunces + Manrope, one family per headline | Accepted | 2026-05-18 |
 
 ## Statuses
 

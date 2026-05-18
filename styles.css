@@ -39,12 +39,18 @@
   --surface-translucent:   rgba(255, 255, 255, .82);
   --focus-glow:            rgba(26, 24, 20, .15);
 
-  /* Typography
-     - Display: Bagel Fat One — chunky groovy revival, used for the wordmark
-       and decorative typographic moments only.
-     - Heading: Manrope ExtraBold (800) — large editorial section titles.
-     - Body:    Manrope 400-500. */
-  --font-display: 'Bagel Fat One', 'Manrope', system-ui, sans-serif;
+  /* Typography — editorial serif + sans pair (ADR-0013).
+     Rule: within a single headline, ONE family only. Variation comes from
+     weight and italic, never from a mid-headline family swap.
+
+     - Display: Fraunces — variable serif, opsz 9-144, weights 400-600 + italic.
+                Used for h1 hero title and h2 section titles only.
+     - UI/Body: Manrope — weights 400-700. Used for h3 card titles, eyebrows,
+                buttons, captions, paragraphs, forms, micro UI.
+
+     Emphasis inside a headline is marked with <em> (italic, same family).
+     The old .display class is gone — see ADR-0013. */
+  --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-heading: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body:    'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -236,24 +242,20 @@ input, textarea, select { font-family: inherit; font-size: inherit; color: inher
 }
 
 .section-title {
-  font-family: var(--font-heading);
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-weight: 500;
   font-size: clamp(2.2rem, 5vw, 3.6rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 96;
   margin: 0 0 18px;
   color: var(--ink);
 }
 .section-title em {
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--ink-soft);
-}
-.section-title .display {
-  font-family: var(--font-display);
-  font-weight: 400;        /* Bagel Fat One only ships at 400 */
-  letter-spacing: 0;
-  display: inline-block;
+  font-variation-settings: 'opsz' 96;
 }
 
 .lead {
@@ -1273,24 +1275,20 @@ body.is-locked { overflow: hidden; }
 }
 
 .hero__title {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: clamp(2.8rem, 6.4vw, 5.4rem);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  margin: 0 0 28px;
-  color: var(--ink);
-}
-.hero__title .display {
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: 0;
+  font-weight: 500;
+  font-size: clamp(2.8rem, 6.4vw, 5.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-variation-settings: 'opsz' 144;
+  margin: 0 0 28px;
   color: var(--ink);
 }
 .hero__title em {
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--ink-soft);
+  font-variation-settings: 'opsz' 144;
 }
 
 .hero__lead {

@@ -48,14 +48,15 @@ Bugs found during onboarding:
    is missing. All IDs currently exist; added optional-chaining for safety.
 3. GSAP CDN scripts had no SRI integrity hashes. Fixed in Phase 0.
 
-## Current status — 2026-05-18 (full rewrite shipped)
+## Current status — 2026-05-18 (warm rewrite + real assets + Turkish copy shipped)
 
 Owner reviewed the apothecary B&W build (R1+R2+R3+R4) and pivoted to a
 warm + decorative + photography-led aesthetic. The whole site was
-rewritten from scratch in four blocks across this session. ADR-0011
-supersedes ADR-0010 with the rationale.
+rewritten from scratch in four blocks across this session, then real
+photography, real contacts, and Turkish copy were dropped in afterwards.
+ADR-0011 supersedes ADR-0010 with the rationale.
 
-### What's done (latest rewrite)
+### What's done (warm rewrite)
 - **Foundation** (`77a0c02`) — warm cream / sand / orange-accent tokens,
   Bagel Fat One display font, Manrope heading/body, primitives
   (container, section, surface-card, btn, btn-play, chip, pill,
@@ -70,11 +71,45 @@ supersedes ADR-0010 with the rationale.
   pills + three result cards, one inverted to ink), skin quiz rewritten
   with the new aesthetic + accent progress bar + accent-soft selected
   state.
-- **Block 4** (this commit) — routine 5-step (feature step 03 inverted
+- **Block 4** (`57c66ac`) — routine 5-step (feature step 03 inverted
   to ink), testimonials 3-up grid (middle inverted to ink), contact
   (split with info list + form on sand bg), full footer (4-col brand /
   shop / story / newsletter + bottom legal row), mobile nav drawer
   rebuilt for the new aesthetic.
+
+### What's done (post-rewrite, same session)
+- **Legal drafts** (`418cb1a`) — five `noindex` legal pages shipped at
+  the root: `privacy.html`, `terms.html`, `cookies.html`, `shipping.html`,
+  `accessibility.html`. Each has a prominent "DRAFT" banner and
+  cross-page footer nav. Footer in `index.html` wired to them. ADR-0012
+  records the noindex-draft strategy + the review gate before flipping
+  to `index, follow`.
+- **Real asset integration** (`77055c4`) — owner-supplied JPEG photography
+  dropped into the `data-asset` slots: hero collection (`hero-collection.jpg`),
+  hero product cutout (`hero-product-gunduz.jpg`), about atelier
+  (`about-atelier.jpg`), plus all six product card images under
+  `assets/photos/product-*.jpg`. Site copy fully swapped to **Turkish**
+  (`<html lang="tr">`, meta description, OG/Twitter, JSON-LD,
+  every section). `data/products.json` updated with Turkish names + the
+  real SKU lineup (Gece Serum & Maske, Asit Maske, Vitamin Bomb, Gündüz
+  Serum, Siyah Karbon Maske, Foundation). PETA / BUAV / no-animal-test
+  badges added under `badges/`. `script.js` quiz output rewritten for
+  the new product set.
+- **Real contacts + brand story** (`2def5b5`) — real email, phone, and
+  Karaköy address wired through markup + JSON-LD. Real social handles
+  (Instagram, Twitter, LinkedIn, Facebook) replace placeholders. Brand
+  story copy rewritten with the founder voice the owner provided.
+- **Wordmark PNG** (`870c0d3`) — `shero-black.png` + `shero-white.png`
+  wired into header, footer, and mobile nav as the brand wordmark.
+  Bagel Fat One text wordmark replaced where it appeared at logo scale.
+- **Typography rewrite — Fraunces + Manrope** (uncommitted at session
+  resume) — Bagel Fat One fully removed (index.html + all 5 legal
+  pages). Display tier is now Fraunces variable serif (opsz axis, 144
+  for hero, 96 for sections, weight 500). All five `<span class="display">`
+  swapped to `<em>` (italic, same family, ink-soft color) — one family
+  per headline rule. `.display` class deleted from CSS. Manrope retains
+  weight 800 for h3 card titles + stat numbers + eyebrows (18 rules).
+  ADR-0013 records the decision; CLAUDE.md updated.
 
 ### Live URLs
 - **Staging (with R1 + R2 redesign):**
@@ -84,23 +119,50 @@ supersedes ADR-0010 with the rationale.
 
 ### Pending question (owner to answer next session)
 
-"What's next now that legal drafts are shipped?"
+"What's next now that real photos, Turkish copy, and contacts are live?"
 
 | Option | Status | Estimate |
 |---|---|---|
 | Legal counsel review of the five draft pages (privacy/terms/cookies/shipping/accessibility) — see ADR-0012 review gate | Owner-blocked | external |
-| Drop in real photography + decoration PNGs the owner is producing | Owner-blocked | swap into `data-asset` slots, ~30 min once received |
 | Phase 2 — Real integrations (Klaviyo / Formspree / CF Analytics / UTM-tagged outbound) | Blocked on store URL + accounts | 2–4 hr |
 | Production migration (Cloudflare Pages + custom domain) | Blocked on DNS + account | 30 min once unblocked |
+| Bloom decoration PNG (only remaining `data-asset` not filled — currently inline SVG petals) | Optional / owner call | 5 min swap |
+| Backlog polish — fix misleading "Hover each card" routine copy on touch | Unblocked | 10 min |
 
 ### Known state to watch for
 - The current visual system is the warm + decorative one from ADR-0011.
   Apothecary B&W (ADR-0010) is retired; do not mix its tokens or fonts
   into new work. If reverting, start from the R3 commit `b1c9e96`.
-- All photography slots use `data-asset="..."` attributes (hero-main,
-  hero-product-cutout, decor-bloom, about-atelier, product-{id},
-  etc.). Replace the placeholder `<span>` with `<img src="..." alt="">`
-  when assets arrive.
+- **Typography rule (ADR-0013):** within a single `<h1>` or `<h2>`,
+  only ONE family. Emphasis is `<em>` (italic, same family), NEVER
+  a `<span>` swapping to a different font. `.hero__title` and
+  `.section-title` resolve to Fraunces; everything else (h3 cards,
+  eyebrows, body, micro UI) is Manrope. Don't reintroduce Bagel Fat
+  One — superseded.
+- Site is **Turkish-first** since `77055c4`. `<html lang="tr">`, all
+  copy in Turkish, JSON-LD address in Karaköy/Istanbul. Don't accidentally
+  drop English copy back in. A future EN/TR toggle is in the backlog.
+- The `data-asset` slots are now mostly **filled with real `<img>` tags**
+  pointing at `assets/photos/*.jpg` (hero-collection, hero-product-gunduz,
+  about-atelier, product-{gece-serum-maske, asit-maske, vitamin-bomb,
+  gunduz-serum, siyah-karbon-maske, foundation}). The slot wrappers
+  and `data-asset` attributes are still on the parent `<div>`s — keep
+  them; they're useful selectors and the bloom decoration still needs
+  a PNG drop-in. Don't strip them as "dead" markup.
+- The bloom decoration (`decor--bloom-right`) is still an inline SVG
+  with `<ellipse>` petals — owner hasn't supplied a PNG cutout for it.
+  Acceptable as-is; only swap if a real asset arrives.
+- Real contacts in markup + JSON-LD: `hello@sherocosmetic.com`,
+  `+90-850-220-2088`, Karaköy/Istanbul. If these change, update both
+  `index.html` Organization JSON-LD (`@id` block) AND the visible
+  contact section AND the footer. Three sources of truth — keep synced.
+- Real socials are wired: instagram.com/sherocosmetic, twitter.com,
+  facebook.com, linkedin.com/company/sherocosmetic. Update `sameAs[]`
+  in JSON-LD if any change.
+- Wordmark is now `shero-black.png` (light theme) / `shero-white.png`
+  (dark theme) — see header, footer, mobile nav. If editing the
+  wordmark display, swap the PNGs rather than re-introducing Bagel Fat
+  One text-as-logo.
 - The leaf decoration was explicitly REMOVED from the hero per owner
   request. Don't re-add unless asked. The bloom (flower) decoration
   remains in the hero bottom-right.
